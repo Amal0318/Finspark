@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sentinelx_db
+    restart: always
+    environment:
+      POSTGRES_DB: sentinelx
+      POSTGRES_USER: sentinelx_admin
+      POSTGRES_PASSWORD: sentinelx_secure_pass_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sentinelx_admin -d sentinelx"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sentinelx_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sentinelx_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://sentinelx_admin:sentinelx_secure_pass_2026@db:5432/sentinelx
+      - JWT_SECRET=9s8dfyhsdf987ysd9f87ysd98f7ysd9f87ysdfhskjdhfksjdhfksjdhf
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+      - ENVIRONMENT=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sentinelx_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sentinelx_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - sentinelx_network
+
+volumes:
+  pgdata:
+
+networks:
+  sentinelx_network:
+    driver: bridge
