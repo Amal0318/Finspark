@@ -92,8 +92,8 @@ const Incidents = () => {
       <div className="lg:col-span-1 space-y-4">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-bold tracking-wide">Security Incident Queue</h2>
-            <p className="text-[10px] text-gray-500 font-mono mt-0.5">Real-time correlated ledger</p>
+            <h2 className="text-xl font-bold tracking-wide">Security Alerts Queue</h2>
+            <p className="text-[10px] text-gray-500 font-mono mt-0.5">Real-time list of potential threats</p>
           </div>
           <span className="bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-mono font-bold">
             {incidents.length} Alert{incidents.length !== 1 ? 's' : ''}
@@ -151,7 +151,7 @@ const Incidents = () => {
             {/* Header info */}
             <div className="flex justify-between items-start gap-4 pb-4 border-b border-gray-800">
               <div>
-                <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest">Selected Incident Summary</span>
+                <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest">Selected Alert Summary</span>
                 <h3 className="text-base font-bold text-white mt-1 leading-snug">{selectedIncident.title}</h3>
                 <p className="text-[10px] text-gray-400 mt-1 font-mono">Timestamp: {new Date(selectedIncident.timestamp).toLocaleString()}</p>
               </div>
@@ -162,7 +162,7 @@ const Incidents = () => {
                 className="flex items-center space-x-1.5 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors shadow shadow-indigo-950/20"
               >
                 <Sparkles className="h-4 w-4 shrink-0 text-cyan-300 animate-pulse" />
-                <span>Explain Correlation (Gemini API)</span>
+                <span>Explain with AI (Gemini)</span>
               </button>
             </div>
 
@@ -171,7 +171,7 @@ const Incidents = () => {
               <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
                   <Activity className="h-3.5 w-3.5 text-indigo-400" />
-                  Banking Transaction context
+                  Transaction Information
                 </h4>
                 <div className="space-y-2 leading-relaxed">
                   <p><span className="text-gray-500">Transaction ID:</span> <span className="font-mono text-gray-200">TX_{selectedIncident.id}</span></p>
@@ -183,22 +183,22 @@ const Incidents = () => {
               <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
                   <ShieldAlert className="h-3.5 w-3.5 text-rose-450" />
-                  Cybersecurity Telemetry
+                  Security Logs
                 </h4>
                 <div className="space-y-2 leading-relaxed">
                   <p><span className="text-gray-500">Endpoint PC/Device:</span> <span className="text-gray-300">{selectedIncident.details?.device || 'UNKNOWN'}</span></p>
-                  <p><span className="text-gray-500">Authentication status:</span> <span className="font-mono text-gray-300">Success: {selectedIncident.details?.login_success === 1 ? 'YES' : 'NO'}</span></p>
-                  <p><span className="text-gray-500">failed credentials:</span> <span className="font-mono text-rose-450 font-semibold">{selectedIncident.details?.failed_logins || 0} attempts</span></p>
-                  <p><span className="text-gray-500">Network Attack class:</span> <span className="font-semibold text-rose-400 font-mono">{selectedIncident.details?.network_attack === 1 ? 'MALICIOUS DETECTED' : 'BENIGN'}</span></p>
+                  <p><span className="text-gray-500">Login Status:</span> <span className="font-mono text-gray-300">Success: {selectedIncident.details?.login_success === 1 ? 'YES' : 'NO'}</span></p>
+                  <p><span className="text-gray-500">Failed Login Attempts:</span> <span className="font-mono text-rose-450 font-semibold">{selectedIncident.details?.failed_logins || 0} attempts</span></p>
+                  <p><span className="text-gray-500">Malicious Activity:</span> <span className="font-semibold text-rose-400 font-mono">{selectedIncident.details?.network_attack === 1 ? 'SUSPICIOUS DETECTED' : 'NORMAL'}</span></p>
                 </div>
               </div>
             </div>
 
             {/* Description narrative from raw DB alerts */}
             <div className="space-y-2">
-              <h4 className="font-bold text-white uppercase tracking-wider text-[9px]">Original Description log</h4>
+              <h4 className="font-bold text-white uppercase tracking-wider text-[9px]">System Log Message</h4>
               <div className="bg-[#04060E]/50 border border-gray-850 p-4 rounded-xl leading-relaxed text-gray-400">
-                {selectedIncident.description || "No manual log narrative available."}
+                {selectedIncident.description || "No detailed log message available."}
               </div>
             </div>
 
@@ -230,13 +230,13 @@ const Incidents = () => {
 
               <div className="flex items-center space-x-2 border-b border-gray-850 pb-3 mb-6">
                 <Cpu className="h-5 w-5 text-indigo-400 animate-pulse" />
-                <h3 className="text-base font-bold text-white uppercase tracking-wider">AI Narrative Summary Briefing</h3>
+                <h3 className="text-base font-bold text-white uppercase tracking-wider">AI Safety Report</h3>
               </div>
 
               {aiLoading ? (
                 <div className="py-16 flex flex-col items-center justify-center text-gray-400 space-y-4">
                   <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></span>
-                  <span className="font-mono text-[9px] tracking-widest animate-pulse">GENERATING Incident explanation VIA GEMINI API...</span>
+                  <span className="font-mono text-[9px] tracking-widest animate-pulse">AI IS ANALYZING THE ALERT. PLEASE WAIT...</span>
                 </div>
               ) : (
                 <div className="space-y-6 text-xs text-gray-300 leading-relaxed">
