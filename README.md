@@ -1,4 +1,4 @@
-# SentinelX AI 🛡️
+# CyberSense 🛡️
 
 ### AI-Powered Cybersecurity Telemetry & Banking Transaction Correlation Engine
 
