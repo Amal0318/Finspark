@@ -22,8 +22,8 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-[#070A14] border-r border-gray-800 flex flex-col h-full shrink-0 select-none">
-      <div className="h-16 flex items-center px-5 border-b border-gray-800 space-x-2">
+    <aside className="w-64 bg-[#0B0F19] border-r border-slate-800/60 flex flex-col h-full shrink-0 select-none">
+      <div className="h-16 flex items-center px-5 border-b border-slate-800/60 space-x-2">
         <ShieldCheck className="h-6 w-6 text-cyan-400 shrink-0" />
         <span className="font-extrabold text-[15px] tracking-wide text-white font-sans flex items-center gap-1.5 whitespace-nowrap">
           CYBER<span className="text-purple-500">SENSE</span> <span className="text-[9px] bg-purple-500/20 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded font-mono font-bold leading-none">SOC</span>
