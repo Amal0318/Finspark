@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Bell, ShieldCheck, Database, RefreshCw, Cpu } from 'lucide-react';
+import { Bell, ShieldCheck, Database, RefreshCw, Cpu, Sun, Moon } from 'lucide-react';
 
 const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
   const { user } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.remove('light');
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   const getRoleColor = (role) => {
     switch (role?.toLowerCase()) {
@@ -26,6 +45,15 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
       </div>
 
       <div className="flex items-center space-x-4">
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors"
+          title="Toggle Theme"
+        >
+          {theme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+        </button>
+
         {/* Manual Refresh Button */}
         {onRefresh && (
           <button

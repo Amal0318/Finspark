@@ -56,3 +56,164 @@
 .animate-pulse-slow {
   animation: blink 2.5s infinite ease-in-out;
 }
+
+/* ==========================================
+   LIGHT MODE DESIGN THEME OVERRIDES
+   ========================================== */
+
+html.light body {
+  background-color: #FFFFFF;
+  color: #0F172A;
+}
+
+html.light .glass-panel {
+  background-color: #F8FAFC;
+  border-color: #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  color: #0F172A;
+}
+
+html.light .glass-panel-hover:hover {
+  background-color: #F1F5F9;
+  border-color: #CBD5E1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Text overrides in Light Mode */
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+html.light .text-gray-100 {
+  color: #1E293B !important;
+}
+
+html.light .text-gray-200 {
+  color: #334155 !important;
+}
+
+html.light .text-gray-300 {
+  color: #475569 !important;
+}
+
+html.light .text-gray-400 {
+  color: #64748B !important;
+}
+
+html.light .text-gray-500 {
+  color: #94A3B8 !important;
+}
+
+html.light .text-gray-600 {
+  color: #94A3B8 !important;
+}
+
+/* Background overrides in Light Mode */
+html.light .bg-gray-900 {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .bg-gray-800 {
+  background-color: #E2E8F0 !important;
+}
+
+html.light .bg-gray-950 {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#070A13\] {
+  background-color: #E2E8F0 !important;
+}
+
+html.light .bg-\[\#0F1424\] {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#111827\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#1F2937\] {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#1E293B\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#0F172A\] {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-slate-900\/50 {
+  background-color: #E2E8F0 !important;
+}
+
+/* Borders in Light Mode */
+html.light .border-gray-800 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .border-gray-700 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .border-slate-800\/60 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .border-\[\#374151\] {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .divide-gray-800 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .divide-y > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0 !important;
+}
+
+/* Sidebar structure in Light Mode */
+html.light aside {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light aside a:not(.active) {
+  color: #475569 !important;
+}
+
+html.light aside a:not(.active):hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Header structure in Light Mode */
+html.light header {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Table headers & rows */
+html.light thead {
+  background-color: #E2E8F0 !important;
+  color: #334155 !important;
+}
+
+html.light tbody tr:hover {
+  background-color: #F1F5F9 !important;
+}
+
+/* Custom scrollbars for light mode */
+html.light ::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
+}
