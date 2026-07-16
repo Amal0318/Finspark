@@ -39,9 +39,9 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
   return (
     <header className="h-16 border-b border-gray-200 dark:border-[#374151] bg-white dark:bg-[#111827] flex items-center justify-between px-6 z-20 shrink-0 select-none">
       {/* System Brand Header */}
-      <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-600 dark:text-[#CBD5E1]">
+      <div className="flex items-center space-x-2 text-[10px] font-mono text-slate-800 dark:text-[#CBD5E1]">
         <ShieldCheck className="h-4 w-4 text-[#2563EB]" />
-        <span className="tracking-widest uppercase">CyberSense Security Platform</span>
+        <span className="tracking-widest uppercase font-bold">CyberSense Security Platform</span>
       </div>
 
       <div className="flex items-center space-x-4">
@@ -83,20 +83,20 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-72 glass-panel border border-gray-200 dark:border-gray-850 rounded-xl shadow-large p-4 z-30 text-xs">
-              <h4 className="font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-2 mb-2 uppercase tracking-wider">
+            <div className="absolute right-0 mt-2 w-72 glass-panel border border-slate-200 dark:border-gray-850 rounded-xl shadow-large p-4 z-30 text-xs">
+              <h4 className="font-bold text-slate-800 dark:text-white border-b border-slate-100 dark:border-gray-800 pb-2 mb-2 uppercase tracking-wider">
                 System Indicators Feed
               </h4>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {notifications.length === 0 ? (
-                  <p className="text-gray-500 py-4 text-center">No active threat feeds logged</p>
+                  <p className="text-slate-500 dark:text-gray-500 py-4 text-center">No active threat feeds logged</p>
                 ) : (
                   notifications.map((n, idx) => (
-                    <div key={idx} className="p-2 bg-gray-900/80 rounded border border-gray-800/80 flex items-start space-x-2">
+                    <div key={idx} className="p-2 bg-slate-50 dark:bg-gray-900/80 rounded border border-slate-200 dark:border-gray-800/80 flex items-start space-x-2">
                       <span className="h-1.5 w-1.5 bg-rose-500 rounded-full mt-1.5 shrink-0 animate-pulse"></span>
                       <div>
-                        <p className="font-semibold text-gray-200">{n.title}</p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">{n.desc}</p>
+                        <p className="font-semibold text-slate-800 dark:text-gray-200">{n.title}</p>
+                        <p className="text-[10px] text-slate-500 dark:text-gray-500 mt-0.5">{n.desc}</p>
                       </div>
                     </div>
                   ))

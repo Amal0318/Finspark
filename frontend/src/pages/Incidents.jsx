@@ -86,16 +86,16 @@ const Incidents = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-sans text-xs text-white p-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-sans text-xs text-slate-900 dark:text-white p-6">
       
       {/* Left Column: Incidents List */}
       <div className="lg:col-span-1 space-y-4">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-bold tracking-wide">Security Alerts Queue</h2>
-            <p className="text-[10px] text-gray-500 font-mono mt-0.5">Real-time list of potential threats</p>
+            <h2 className="text-xl font-bold tracking-wide text-slate-900 dark:text-white">Security Alerts Queue</h2>
+            <p className="text-[10px] text-slate-500 dark:text-gray-550 font-mono mt-0.5">Real-time list of potential threats</p>
           </div>
-          <span className="bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-mono font-bold">
+          <span className="bg-slate-100 dark:bg-gray-800 text-slate-600 dark:text-gray-400 px-2 py-0.5 rounded font-mono font-bold">
             {incidents.length} Alert{incidents.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -107,7 +107,7 @@ const Incidents = () => {
         ) : (
           <div className="space-y-3 max-h-[calc(100vh-12rem)] overflow-y-auto pr-1">
             {incidents.length === 0 ? (
-              <div className="text-center text-gray-500 py-8 glass-panel rounded-2xl">
+              <div className="text-center text-slate-500 dark:text-gray-500 py-8 glass-panel rounded-2xl">
                 No active threats logged.
               </div>
             ) : (
@@ -119,17 +119,17 @@ const Incidents = () => {
                   className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     selectedIncident?.id === incident.id
                       ? 'ring-1 ring-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/50'
-                      : 'glass-panel hover:bg-gray-100 dark:hover:bg-slate-900/40'
+                      : 'glass-panel hover:bg-slate-50 dark:hover:bg-slate-900/40'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-mono text-[9px] text-gray-500">ALERT #{incident.id}</span>
+                    <span className="font-mono text-[9px] text-slate-500 dark:text-gray-500">ALERT #{incident.id}</span>
                     <span className={`px-2 py-0.5 rounded text-[8px] font-bold uppercase border ${getSeverityBadgeColor(incident.severity)}`}>
                       {incident.severity}
                     </span>
                   </div>
-                  <p className="font-bold text-gray-200 leading-snug line-clamp-2">{incident.title}</p>
-                  <div className="mt-3 flex justify-between items-center text-[10px] text-gray-500">
+                  <p className="font-bold text-slate-800 dark:text-gray-250 leading-snug line-clamp-2">{incident.title}</p>
+                  <div className="mt-3 flex justify-between items-center text-[10px] text-slate-500 dark:text-gray-500">
                     <span>{new Date(incident.timestamp).toLocaleTimeString()}</span>
                     <span className="font-bold font-mono text-[#2563EB] dark:text-[#38BDF8]">Risk Score: {incident.details?.risk_score || 50}%</span>
                   </div>
@@ -149,11 +149,11 @@ const Incidents = () => {
             className="glass-panel rounded-2xl p-6 shadow-xl space-y-6 min-h-[calc(100vh-12rem)]"
           >
             {/* Header info */}
-            <div className="flex justify-between items-start gap-4 pb-4 border-b border-gray-800">
+            <div className="flex justify-between items-start gap-4 pb-4 border-b border-slate-200 dark:border-gray-800">
               <div>
-                <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest">Selected Alert Summary</span>
-                <h3 className="text-base font-bold text-white mt-1 leading-snug">{selectedIncident.title}</h3>
-                <p className="text-[10px] text-gray-400 mt-1 font-mono">Timestamp: {new Date(selectedIncident.timestamp).toLocaleString()}</p>
+                <span className="font-mono text-[9px] text-slate-500 dark:text-gray-500 uppercase tracking-widest">Selected Alert Summary</span>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1 leading-snug">{selectedIncident.title}</h3>
+                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1 font-mono">Timestamp: {new Date(selectedIncident.timestamp).toLocaleString()}</p>
               </div>
 
               {/* simulated LLM trigger */}
@@ -168,36 +168,36 @@ const Incidents = () => {
 
             {/* Inbound parameters details grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-3">
-                <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
+              <div className="bg-slate-50 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/30 rounded-xl p-4 space-y-3">
+                <h4 className="font-bold text-slate-650 dark:text-gray-400 uppercase tracking-wider text-[9px] border-b border-slate-200 dark:border-gray-800 pb-1 flex items-center gap-1.5">
                   <Activity className="h-3.5 w-3.5 text-[#2563EB]" />
                   Transaction Information
                 </h4>
-                <div className="space-y-2 leading-relaxed">
-                  <p><span className="text-gray-500">Transaction ID:</span> <span className="font-mono text-gray-200">TX_{selectedIncident.id}</span></p>
-                  <p><span className="text-gray-500">Transaction Amount:</span> <span className="font-mono text-emerald-400 font-bold">${selectedIncident.details?.transaction_amount?.toFixed(2) || '0.00'} USD</span></p>
-                  <p><span className="text-gray-500">Transaction Deviation:</span> <span className="font-mono text-amber-400">${selectedIncident.details?.transaction_deviation?.toFixed(2) || '0.00'}</span></p>
+                <div className="space-y-2 leading-relaxed text-slate-700 dark:text-gray-300">
+                  <p><span className="text-slate-500 dark:text-gray-500">Transaction ID:</span> <span className="font-mono text-slate-800 dark:text-gray-200">TX_{selectedIncident.id}</span></p>
+                  <p><span className="text-slate-500 dark:text-gray-500">Transaction Amount:</span> <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">${selectedIncident.details?.transaction_amount?.toFixed(2) || '0.00'} USD</span></p>
+                  <p><span className="text-slate-500 dark:text-gray-500">Transaction Deviation:</span> <span className="font-mono text-amber-600 dark:text-amber-400">${selectedIncident.details?.transaction_deviation?.toFixed(2) || '0.00'}</span></p>
                 </div>
               </div>
 
-              <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-3">
-                <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
-                  <ShieldAlert className="h-3.5 w-3.5 text-rose-450" />
+              <div className="bg-slate-50 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/30 rounded-xl p-4 space-y-3">
+                <h4 className="font-bold text-slate-650 dark:text-gray-400 uppercase tracking-wider text-[9px] border-b border-slate-200 dark:border-gray-800 pb-1 flex items-center gap-1.5">
+                  <ShieldAlert className="h-3.5 w-3.5 text-rose-600 dark:text-rose-455" />
                   Security Logs
                 </h4>
-                <div className="space-y-2 leading-relaxed">
-                  <p><span className="text-gray-500">Endpoint PC/Device:</span> <span className="text-gray-300">{selectedIncident.details?.device || 'UNKNOWN'}</span></p>
-                  <p><span className="text-gray-500">Login Status:</span> <span className="font-mono text-gray-300">Success: {selectedIncident.details?.login_success === 1 ? 'YES' : 'NO'}</span></p>
-                  <p><span className="text-gray-500">Failed Login Attempts:</span> <span className="font-mono text-rose-450 font-semibold">{selectedIncident.details?.failed_logins || 0} attempts</span></p>
-                  <p><span className="text-gray-500">Malicious Activity:</span> <span className="font-semibold text-rose-400 font-mono">{selectedIncident.details?.network_attack === 1 ? 'SUSPICIOUS DETECTED' : 'NORMAL'}</span></p>
+                <div className="space-y-2 leading-relaxed text-slate-700 dark:text-gray-300">
+                  <p><span className="text-slate-500 dark:text-gray-500">Endpoint PC/Device:</span> <span className="text-slate-800 dark:text-gray-300">{selectedIncident.details?.device || 'UNKNOWN'}</span></p>
+                  <p><span className="text-slate-500 dark:text-gray-500">Login Status:</span> <span className="font-mono text-slate-800 dark:text-gray-300">Success: {selectedIncident.details?.login_success === 1 ? 'YES' : 'NO'}</span></p>
+                  <p><span className="text-slate-500 dark:text-gray-500">Failed Login Attempts:</span> <span className="font-mono text-rose-650 dark:text-rose-400 font-semibold">{selectedIncident.details?.failed_logins || 0} attempts</span></p>
+                  <p><span className="text-slate-500 dark:text-gray-500">Malicious Activity:</span> <span className="font-semibold text-rose-650 dark:text-rose-400 font-mono">{selectedIncident.details?.network_attack === 1 ? 'SUSPICIOUS DETECTED' : 'NORMAL'}</span></p>
                 </div>
               </div>
             </div>
 
             {/* Description narrative from raw DB alerts */}
             <div className="space-y-2">
-              <h4 className="font-bold text-white uppercase tracking-wider text-[9px]">System Log Message</h4>
-              <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl leading-relaxed text-gray-400">
+              <h4 className="font-bold text-slate-700 dark:text-white uppercase tracking-wider text-[9px]">System Log Message</h4>
+              <div className="bg-slate-50 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/30 p-4 rounded-xl leading-relaxed text-slate-700 dark:text-gray-400">
                 {selectedIncident.description || "No detailed log message available."}
               </div>
             </div>
@@ -219,78 +219,78 @@ const Incidents = () => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0f1424] border border-gray-800 rounded-2xl w-full max-w-2xl p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]"
+              className="bg-white dark:bg-[#0f1424] border border-slate-200 dark:border-gray-880 rounded-2xl w-full max-w-2xl p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]"
             >
               <button
                 onClick={() => setShowAiModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-200 transition-colors"
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="flex items-center space-x-2 border-b border-gray-850 pb-3 mb-6">
+              <div className="flex items-center space-x-2 border-b border-slate-200 dark:border-gray-850 pb-3 mb-6">
                 <Cpu className="h-5 w-5 text-[#2563EB] animate-pulse" />
-                <h3 className="text-base font-bold text-white uppercase tracking-wider">AI Safety Report</h3>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white uppercase tracking-wider">AI Safety Report</h3>
               </div>
 
               {aiLoading ? (
-                <div className="py-16 flex flex-col items-center justify-center text-gray-400 space-y-4">
+                <div className="py-16 flex flex-col items-center justify-center text-slate-500 dark:text-gray-400 space-y-4">
                   <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#2563EB]"></span>
-                  <span className="font-mono text-[9px] tracking-widest animate-pulse">AI IS ANALYZING THE ALERT. PLEASE WAIT...</span>
+                  <span className="font-mono text-[9px] tracking-widest animate-pulse text-slate-500 dark:text-gray-500">AI IS ANALYZING THE ALERT. PLEASE WAIT...</span>
                 </div>
               ) : (
-                <div className="space-y-6 text-xs text-gray-300 leading-relaxed">
+                <div className="space-y-6 text-xs text-slate-700 dark:text-gray-300 leading-relaxed">
                   
                   {/* Threat Title Summary */}
                   <div>
                     <h4 className="font-bold text-[#2563EB] dark:text-[#38BDF8] text-[12px] uppercase tracking-wider mb-1 font-mono">
                       {aiReport?.threat_summary}
                     </h4>
-                    <div className="flex items-center gap-3 text-[10px] text-gray-500 font-mono mt-1.5">
+                    <div className="flex items-center gap-3 text-[10px] text-slate-550 dark:text-gray-500 font-mono mt-1.5">
                       <span>Model Version: Gemini-1.5-Flash</span>
                       <span>•</span>
-                      <span>Confidence score: <span className="text-emerald-450 font-bold">{aiReport?.confidence}%</span></span>
+                      <span>Confidence score: <span className="text-emerald-650 dark:text-emerald-450 font-bold">{aiReport?.confidence}%</span></span>
                     </div>
                   </div>
 
                   {/* Narration and Explanation boxes */}
-                  <div className="bg-gray-50 dark:bg-[#0c1222] border border-gray-200 dark:border-gray-850/30 rounded-xl p-4 space-y-4">
+                  <div className="bg-slate-50 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/30 rounded-xl p-4 space-y-4">
                     <div>
-                      <h5 className="font-bold text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
+                      <h5 className="font-bold text-slate-800 dark:text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
                         <Terminal className="h-3.5 w-3.5 text-[#2563EB]" />
                         1. Detailed Incident Report
                       </h5>
-                      <p className="text-gray-405 leading-relaxed">{aiReport?.incident_report}</p>
+                      <p className="text-slate-650 dark:text-gray-300 leading-relaxed">{aiReport?.incident_report}</p>
                     </div>
 
                     <div>
-                      <h5 className="font-bold text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
-                        <Zap className="h-3.5 w-3.5 text-amber-400 animate-pulse" />
+                      <h5 className="font-bold text-slate-800 dark:text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
+                        <Zap className="h-3.5 w-3.5 text-amber-500 dark:text-amber-450 animate-pulse" />
                         2. Fraud Vector Explanation
                       </h5>
-                      <p className="text-gray-400 leading-relaxed">{aiReport?.fraud_explanation}</p>
+                      <p className="text-slate-600 dark:text-gray-400 leading-relaxed">{aiReport?.fraud_explanation}</p>
                     </div>
 
                     <div>
-                      <h5 className="font-bold text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
-                        <AlertOctagon className="h-3.5 w-3.5 text-rose-400" />
+                      <h5 className="font-bold text-slate-800 dark:text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
+                        <AlertOctagon className="h-3.5 w-3.5 text-rose-500 dark:text-rose-400" />
                         3. Threat Root Cause Analysis
                       </h5>
-                      <p className="text-gray-400 leading-relaxed font-mono text-[10px]">{aiReport?.root_cause}</p>
+                      <p className="text-slate-600 dark:text-gray-400 leading-relaxed font-mono text-[10px]">{aiReport?.root_cause}</p>
                     </div>
                   </div>
 
                   {/* Actions recommended */}
                   <div className="space-y-3">
-                    <h5 className="font-bold text-rose-400 uppercase tracking-widest text-[9px] flex items-center gap-1.5">
-                      <CheckCircle className="h-3.5 w-3.5 text-rose-500" />
+                    <h5 className="font-bold text-rose-600 dark:text-rose-400 uppercase tracking-widest text-[9px] flex items-center gap-1.5">
+                      <CheckCircle className="h-3.5 w-3.5 text-rose-600 dark:text-rose-500" />
                       Recommended Mitigation Actions (SOC)
                     </h5>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {aiReport?.recommended_actions?.map((act, index) => (
                         <div 
                           key={index} 
-                          className="bg-rose-500/5 border border-rose-500/20 px-3 py-2.5 rounded-lg text-rose-300 font-mono text-[10px] font-bold text-center uppercase tracking-wide flex items-center justify-center"
+                          className="bg-rose-500/5 border border-rose-500/20 px-3 py-2.5 rounded-lg text-rose-700 dark:text-rose-300 font-mono text-[10px] font-bold text-center uppercase tracking-wide flex items-center justify-center"
                         >
                           {act}
                         </div>

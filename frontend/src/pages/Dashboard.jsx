@@ -87,7 +87,7 @@ const Dashboard = () => {
       ];
 
   return (
-    <div className="space-y-6 text-white p-6 font-sans select-none">
+    <div className="space-y-6 text-slate-900 dark:text-white p-6 font-sans select-none">
       
       {/* Title Header */}
       <div className="flex justify-between items-center">
@@ -96,7 +96,7 @@ const Dashboard = () => {
             <Activity className="h-6 w-6 text-[#2563EB] animate-pulse" />
             Security & Fraud Monitoring Dashboard
           </h2>
-          <p className="text-xs text-gray-400 mt-1">Real-time monitoring of user logins, transaction risk, and security alerts</p>
+          <p className="text-xs text-slate-500 dark:text-gray-400 mt-1">Real-time monitoring of user logins, transaction risk, and security alerts</p>
         </div>
         <button 
           onClick={() => refetch()} 
@@ -119,9 +119,9 @@ const Dashboard = () => {
             <Database className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Analyzed Events</p>
+            <p className="text-[10px] text-slate-500 dark:text-gray-400 font-mono uppercase tracking-wider">Analyzed Events</p>
             <p className="text-2xl font-extrabold mt-0.5">{stats.total_incidents_analyzed}</p>
-            <p className="text-[9px] text-emerald-400 font-mono mt-1">Total logins & transactions</p>
+            <p className="text-[9px] text-emerald-600 dark:text-emerald-400 font-mono mt-1">Total logins & transactions</p>
           </div>
         </motion.div>
 
@@ -131,13 +131,13 @@ const Dashboard = () => {
           transition={{ duration: 0.3, delay: 0.1 }}
           className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
-          <div className="p-3.5 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-500/20">
+          <div className="p-3.5 bg-rose-500/10 text-rose-600 dark:text-rose-450 rounded-xl border border-rose-500/20">
             <ShieldAlert className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Suspicious Activity</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-rose-450">{stats.anomalies_detected}</p>
-            <p className="text-[9px] text-rose-400 font-mono mt-1">Unusual login patterns</p>
+            <p className="text-[10px] text-slate-500 dark:text-gray-400 font-mono uppercase tracking-wider">Suspicious Activity</p>
+            <p className="text-2xl font-extrabold mt-0.5 text-rose-600 dark:text-rose-400">{stats.anomalies_detected}</p>
+            <p className="text-[9px] text-rose-600 dark:text-rose-400 font-mono mt-1">Unusual login patterns</p>
           </div>
         </motion.div>
 
@@ -147,13 +147,13 @@ const Dashboard = () => {
           transition={{ duration: 0.3, delay: 0.2 }}
           className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
-          <div className="p-3.5 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
+          <div className="p-3.5 bg-amber-500/10 text-amber-600 dark:text-amber-450 rounded-xl border border-amber-500/20">
             <AlertTriangle className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Potential Fraud</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-amber-450">{stats.frauds_detected}</p>
-            <p className="text-[9px] text-amber-400 font-mono mt-1">Flagged bank transactions</p>
+            <p className="text-[10px] text-slate-500 dark:text-gray-400 font-mono uppercase tracking-wider">Potential Fraud</p>
+            <p className="text-2xl font-extrabold mt-0.5 text-amber-600 dark:text-amber-400">{stats.frauds_detected}</p>
+            <p className="text-[9px] text-amber-650 dark:text-amber-400 font-mono mt-1">Flagged bank transactions</p>
           </div>
         </motion.div>
 
@@ -163,13 +163,13 @@ const Dashboard = () => {
           transition={{ duration: 0.3, delay: 0.3 }}
           className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
-          <div className="p-3.5 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
+          <div className="p-3.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-450 rounded-xl border border-emerald-500/20">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Blocked Threats</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-emerald-450">{stats.active_threats_blocked}</p>
-            <p className="text-[9px] text-emerald-400 font-mono mt-1">Auto safety actions taken</p>
+            <p className="text-[10px] text-slate-500 dark:text-gray-400 font-mono uppercase tracking-wider">Blocked Threats</p>
+            <p className="text-2xl font-extrabold mt-0.5 text-emerald-600 dark:text-emerald-400">{stats.active_threats_blocked}</p>
+            <p className="text-[9px] text-emerald-600 dark:text-emerald-400 font-mono mt-1">Auto safety actions taken</p>
           </div>
         </motion.div>
 
@@ -181,8 +181,8 @@ const Dashboard = () => {
         {/* Left: Risk Score Timeline (LineChart) */}
         <div className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Risk Trend Over Time</h3>
-             <span className="text-[9px] px-2 py-0.5 bg-[#2563EB]/10 text-[#38BDF8] rounded border border-[#2563EB]/20 font-mono">LIVE RISK RATING</span>
+            <h3 className="text-xs font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest">Risk Trend Over Time</h3>
+             <span className="text-[9px] px-2 py-0.5 bg-[#2563EB]/10 text-cyan-750 dark:text-[#38BDF8] rounded border border-[#2563EB]/20 font-mono font-bold">LIVE RISK RATING</span>
           </div>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -193,10 +193,10 @@ const Dashboard = () => {
                     <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="time" stroke="#64748b" fontSize={9} />
-                <YAxis stroke="#64748b" fontSize={9} unit="%" />
-                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
+                <XAxis dataKey="time" stroke="var(--chart-text)" fontSize={9} />
+                <YAxis stroke="var(--chart-text)" fontSize={9} unit="%" />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--chart-tooltip-bg)', borderColor: 'var(--chart-tooltip-border)', color: 'var(--chart-tooltip-text)' }} />
                 <Area type="monotone" dataKey="risk" stroke="#3B82F6" strokeWidth={2} fillOpacity={1} fill="url(#colorRisk)" name="Risk Level" />
               </AreaChart>
             </ResponsiveContainer>
@@ -206,16 +206,16 @@ const Dashboard = () => {
         {/* Right: Severity Class Distribution (BarChart) */}
         <div className="lg:col-span-1 glass-panel rounded-2xl p-5 shadow-lg flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Threat Levels</h3>
-            <span className="text-[9px] px-2 py-0.5 bg-rose-500/10 text-rose-400 rounded border border-rose-500/20 font-mono">THREAT CATEGORIES</span>
+            <h3 className="text-xs font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest">Threat Levels</h3>
+            <span className="text-[9px] px-2 py-0.5 bg-rose-500/10 text-rose-700 dark:text-rose-400 rounded border border-rose-500/20 font-mono font-bold">THREAT CATEGORIES</span>
           </div>
           <div className="h-44">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={severityData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="name" stroke="#64748b" fontSize={9} />
-                <YAxis stroke="#64748b" fontSize={9} />
-                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
+                <XAxis dataKey="name" stroke="var(--chart-text)" fontSize={9} />
+                <YAxis stroke="var(--chart-text)" fontSize={9} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--chart-tooltip-bg)', borderColor: 'var(--chart-tooltip-border)', color: 'var(--chart-tooltip-text)' }} />
                 <Bar dataKey="count" radius={[4, 4, 0, 0]} name="Alerts">
                   {severityData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
@@ -224,7 +224,7 @@ const Dashboard = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="text-[10px] text-gray-400 border-t border-gray-850 pt-3 leading-relaxed mt-4">
+          <div className="text-[10px] text-slate-500 dark:text-gray-400 border-t border-slate-150 dark:border-gray-850 pt-3 leading-relaxed mt-4">
             Events with risk scores above 75% are flagged as Critical and require immediate review.
           </div>
         </div>
@@ -233,31 +233,31 @@ const Dashboard = () => {
 
       {/* Real-time System Logs Console */}
       <div className="glass-panel rounded-2xl p-5 shadow-lg">
-        <div className="flex items-center space-x-2 text-xs font-bold text-gray-400 mb-3 font-mono">
-          <Terminal className="h-4 w-4 text-indigo-400 animate-pulse" />
+        <div className="flex items-center space-x-2 text-xs font-bold text-slate-550 dark:text-gray-400 mb-3 font-mono">
+          <Terminal className="h-4 w-4 text-indigo-500 dark:text-indigo-400 animate-pulse" />
           <span>SYSTEM MONITORING LOGS</span>
         </div>
-        <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 font-mono text-[10px] text-indigo-300 space-y-2 h-36 overflow-y-auto shadow-inner">
+        <div className="bg-slate-100 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/30 rounded-xl p-4 font-mono text-[10px] text-indigo-700 dark:text-indigo-300 space-y-2 h-36 overflow-y-auto shadow-inner">
           <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-emerald-400">System online. Anomaly and fraud detection engines loaded.</span>
+            <span className="text-slate-400 dark:text-gray-600">[{new Date().toLocaleTimeString()}]</span>
+            <span className="text-indigo-600 dark:text-indigo-400">$</span>
+            <span className="text-emerald-600 dark:text-emerald-400">System online. Anomaly and fraud detection engines loaded.</span>
           </div>
           <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-indigo-400">Monitoring active: analyzing transaction records.</span>
+            <span className="text-slate-400 dark:text-gray-600">[{new Date().toLocaleTimeString()}]</span>
+            <span className="text-indigo-600 dark:text-indigo-400">$</span>
+            <span className="text-indigo-600 dark:text-indigo-400">Monitoring active: analyzing transaction records.</span>
           </div>
           <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-indigo-400">Optimization active: adjusting data balance for high accuracy.</span>
+            <span className="text-slate-400 dark:text-gray-600">[{new Date().toLocaleTimeString()}]</span>
+            <span className="text-indigo-600 dark:text-indigo-400">$</span>
+            <span className="text-indigo-600 dark:text-indigo-400">Optimization active: adjusting data balance for high accuracy.</span>
           </div>
           {rawTrends.slice(0, 3).map((t, idx) => (
             <div key={idx} className="flex items-start space-x-2">
-              <span className="text-gray-600">[{new Date(t.timestamp).toLocaleTimeString()}]</span>
-              <span className="text-indigo-400">$</span>
-              <span className="text-amber-400">Analysis complete: Risk score is {t.confidence_score}% ({t.label}).</span>
+              <span className="text-slate-400 dark:text-gray-600">[{new Date(t.timestamp).toLocaleTimeString()}]</span>
+              <span className="text-indigo-600 dark:text-indigo-400">$</span>
+              <span className="text-amber-600 dark:text-amber-400">Analysis complete: Risk score is {t.confidence_score}% ({t.label}).</span>
             </div>
           ))}
         </div>

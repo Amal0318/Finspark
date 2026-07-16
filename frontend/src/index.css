@@ -2,49 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --chart-grid: #E2E8F0;
+  --chart-text: #64748B;
+  --chart-tooltip-bg: #FFFFFF;
+  --chart-tooltip-border: #E2E8F0;
+  --chart-tooltip-text: #0F172A;
+}
+
+.dark {
+  --chart-grid: #1E293B;
+  --chart-text: #94A3B8;
+  --chart-tooltip-bg: #1E293B;
+  --chart-tooltip-border: #374151;
+  --chart-tooltip-text: #F9FAFB;
+}
+
 @layer base {
   body {
-    background-color: #0B1220;
-    color: #F9FAFB;
+    @apply bg-slate-50 text-slate-900 dark:bg-[#0B1220] dark:text-[#F9FAFB] transition-colors duration-200;
     font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
 }
 
-/* Redefined card styling (no glassmorphism) */
+/* Card styling */
 .glass-panel {
-  background-color: #1F2937;
-  border: 1px solid #374151;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+  @apply bg-white dark:bg-[#1F2937] border border-slate-200 dark:border-[#374151] rounded-2xl shadow-soft dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.25)] text-slate-900 dark:text-white transition-all duration-200;
 }
 
 .glass-panel-hover {
-  transition: all 0.2s ease-in-out;
+  @apply transition-all duration-200;
 }
 
 .glass-panel-hover:hover {
-  background-color: #273549;
-  border-color: #475569;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.35);
+  @apply bg-slate-50/80 dark:bg-[#273549] border-slate-300 dark:border-[#475569] shadow-medium dark:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.35)];
 }
 
-/* Custom dark scrollbars */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B1220;
+  @apply bg-slate-100 dark:bg-[#0B1220];
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
-  border-radius: 3px;
+  @apply bg-slate-300 dark:bg-[#1F2937] rounded-[3px];
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  @apply bg-slate-400 dark:bg-[#374151];
 }
 
 /* Status blinker animations */
@@ -55,165 +64,4 @@
 
 .animate-pulse-slow {
   animation: blink 2.5s infinite ease-in-out;
-}
-
-/* ==========================================
-   LIGHT MODE DESIGN THEME OVERRIDES
-   ========================================== */
-
-html.light body {
-  background-color: #FFFFFF;
-  color: #0F172A;
-}
-
-html.light .glass-panel {
-  background-color: #F8FAFC;
-  border-color: #E2E8F0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  color: #0F172A;
-}
-
-html.light .glass-panel-hover:hover {
-  background-color: #F1F5F9;
-  border-color: #CBD5E1;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-}
-
-/* Text overrides in Light Mode */
-html.light .text-white {
-  color: #0F172A !important;
-}
-
-html.light .text-gray-100 {
-  color: #1E293B !important;
-}
-
-html.light .text-gray-200 {
-  color: #334155 !important;
-}
-
-html.light .text-gray-300 {
-  color: #475569 !important;
-}
-
-html.light .text-gray-400 {
-  color: #64748B !important;
-}
-
-html.light .text-gray-500 {
-  color: #94A3B8 !important;
-}
-
-html.light .text-gray-600 {
-  color: #94A3B8 !important;
-}
-
-/* Background overrides in Light Mode */
-html.light .bg-gray-900 {
-  background-color: #F1F5F9 !important;
-}
-
-html.light .bg-gray-800 {
-  background-color: #E2E8F0 !important;
-}
-
-html.light .bg-gray-950 {
-  background-color: #F8FAFC !important;
-}
-
-html.light .bg-\[\#070A13\] {
-  background-color: #E2E8F0 !important;
-}
-
-html.light .bg-\[\#0F1424\] {
-  background-color: #F8FAFC !important;
-}
-
-html.light .bg-\[\#111827\] {
-  background-color: #FFFFFF !important;
-}
-
-html.light .bg-\[\#1F2937\] {
-  background-color: #F8FAFC !important;
-}
-
-html.light .bg-\[\#1E293B\] {
-  background-color: #FFFFFF !important;
-}
-
-html.light .bg-\[\#0F172A\] {
-  background-color: #F8FAFC !important;
-}
-
-html.light .bg-slate-900\/50 {
-  background-color: #E2E8F0 !important;
-}
-
-/* Borders in Light Mode */
-html.light .border-gray-800 {
-  border-color: #E2E8F0 !important;
-}
-
-html.light .border-gray-700 {
-  border-color: #E2E8F0 !important;
-}
-
-html.light .border-slate-800\/60 {
-  border-color: #E2E8F0 !important;
-}
-
-html.light .border-\[\#374151\] {
-  border-color: #E2E8F0 !important;
-}
-
-html.light .divide-gray-800 > :not([hidden]) ~ :not([hidden]) {
-  border-color: #E2E8F0 !important;
-}
-
-html.light .divide-y > :not([hidden]) ~ :not([hidden]) {
-  border-color: #E2E8F0 !important;
-}
-
-/* Sidebar structure in Light Mode */
-html.light aside {
-  background-color: #F8FAFC !important;
-  border-color: #E2E8F0 !important;
-}
-
-html.light aside a:not(.active) {
-  color: #475569 !important;
-}
-
-html.light aside a:not(.active):hover {
-  background-color: #E2E8F0 !important;
-  color: #0F172A !important;
-}
-
-/* Header structure in Light Mode */
-html.light header {
-  background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-}
-
-/* Table headers & rows */
-html.light thead {
-  background-color: #E2E8F0 !important;
-  color: #334155 !important;
-}
-
-html.light tbody tr:hover {
-  background-color: #F1F5F9 !important;
-}
-
-/* Custom scrollbars for light mode */
-html.light ::-webkit-scrollbar-track {
-  background: #FFFFFF;
-}
-
-html.light ::-webkit-scrollbar-thumb {
-  background: #E2E8F0;
-}
-
-html.light ::-webkit-scrollbar-thumb:hover {
-  background: #CBD5E1;
 }

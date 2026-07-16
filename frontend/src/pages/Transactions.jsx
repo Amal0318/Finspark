@@ -41,10 +41,10 @@ const Transactions = () => {
   const metrics = calculateMetrics();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-slate-900 dark:text-white">
       <div>
-        <h2 className="text-xl font-bold text-white tracking-wide">Transactions Audit Ledger</h2>
-        <p className="text-xs text-gray-400 mt-0.5">Centralized record of all financial operations monitored for security indicators</p>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">Transactions Audit Ledger</h2>
+        <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Centralized record of all financial operations monitored for security indicators</p>
       </div>
 
       {loading ? (
@@ -55,35 +55,35 @@ const Transactions = () => {
         <div className="space-y-6">
           {/* Sub cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div className="glass-panel border border-gray-800 rounded-xl p-5 shadow flex items-center space-x-4">
-              <div className="p-3 bg-cyan-500/10 text-cyan-400 rounded-lg">
+            <div className="glass-panel rounded-xl p-5 shadow flex items-center space-x-4">
+              <div className="p-3 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-lg">
                 <Landmark className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-[10px] text-gray-500 font-mono uppercase">Total Volume Monitored</p>
-                <p className="text-base font-bold text-white mt-0.5">
+                <p className="text-[10px] text-slate-500 dark:text-gray-500 font-mono uppercase">Total Volume Monitored</p>
+                <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
                   {metrics.totalVolume.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                 </p>
               </div>
             </div>
 
-            <div className="glass-panel border border-gray-800 rounded-xl p-5 shadow flex items-center space-x-4">
-              <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-lg">
+            <div className="glass-panel rounded-xl p-5 shadow flex items-center space-x-4">
+              <div className="p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-[10px] text-gray-500 font-mono uppercase">Legitimate Transactions</p>
-                <p className="text-base font-bold text-white mt-0.5">{metrics.normalCount}</p>
+                <p className="text-[10px] text-slate-500 dark:text-gray-500 font-mono uppercase">Legitimate Transactions</p>
+                <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">{metrics.normalCount}</p>
               </div>
             </div>
 
-            <div className="glass-panel border border-gray-800 rounded-xl p-5 shadow flex items-center space-x-4">
-              <div className="p-3 bg-rose-500/10 text-rose-400 rounded-lg">
+            <div className="glass-panel rounded-xl p-5 shadow flex items-center space-x-4">
+              <div className="p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-lg">
                 <ShieldX className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-[10px] text-gray-500 font-mono uppercase">Flagged Fraud Anomalies</p>
-                <p className="text-base font-bold text-white mt-0.5">{metrics.anomalousCount}</p>
+                <p className="text-[10px] text-slate-500 dark:text-gray-500 font-mono uppercase">Flagged Fraud Anomalies</p>
+                <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">{metrics.anomalousCount}</p>
               </div>
             </div>
           </div>

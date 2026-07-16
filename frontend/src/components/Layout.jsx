@@ -49,15 +49,15 @@ const Layout = () => {
 
         {/* Real-time Incident Warning Ticker Banner */}
         {tickerAlerts.length > 0 && (
-          <div className="bg-rose-500/10 border-b border-rose-500/20 px-6 py-2 flex items-center justify-between text-rose-400 text-xs animate-pulse-slow">
+          <div className="bg-rose-500/10 border-b border-rose-500/20 px-6 py-2 flex items-center justify-between text-rose-750 dark:text-rose-400 text-xs animate-pulse-slow">
             <div className="flex items-center space-x-2 truncate">
-              <ShieldAlert className="h-4 w-4 shrink-0 text-rose-500" />
+              <ShieldAlert className="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-500" />
               <span className="font-bold font-mono text-[10px] bg-rose-500/20 px-1.5 py-0.5 rounded mr-2">WARN</span>
-              <span className="truncate">{tickerAlerts[0].desc}</span>
+              <span className="truncate text-rose-700 dark:text-rose-350">{tickerAlerts[0].desc}</span>
             </div>
             <button 
               onClick={() => setTickerAlerts(tickerAlerts.slice(1))}
-              className="text-gray-400 hover:text-white ml-4 font-bold"
+              className="text-rose-700 hover:text-rose-950 dark:text-gray-400 dark:hover:text-white ml-4 font-bold"
             >
               <X className="h-3.5 w-3.5" />
             </button>

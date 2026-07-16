@@ -22,15 +22,15 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-white dark:bg-[#0F172A] border-r border-gray-200 dark:border-[#374151] flex flex-col h-full shrink-0 select-none">
-      <div className="h-20 flex flex-col justify-center px-5 border-b border-gray-200 dark:border-[#374151]">
+    <aside className="w-64 bg-white dark:bg-[#0F172A] border-r border-slate-250 dark:border-[#374151] flex flex-col h-full shrink-0 select-none">
+      <div className="h-20 flex flex-col justify-center px-5 border-b border-slate-250 dark:border-[#374151]">
         <div className="flex items-center space-x-2">
           <ShieldCheck className="h-5 w-5 text-[#2563EB] shrink-0" />
-          <span className="font-extrabold text-[15px] tracking-wide text-gray-900 dark:text-white font-sans flex items-center gap-1 whitespace-nowrap">
+          <span className="font-extrabold text-[15px] tracking-wide text-slate-900 dark:text-white font-sans flex items-center gap-1 whitespace-nowrap">
             CYBER<span className="text-[#06B6D4]">SENSE</span>
           </span>
         </div>
-        <span className="text-[8.5px] text-gray-500 dark:text-[#94A3B8] tracking-wider uppercase mt-1 font-mono pl-7">
+        <span className="text-[8.5px] text-slate-550 dark:text-[#94A3B8] tracking-wider uppercase mt-1 font-mono pl-7">
           Detect • Correlate • Protect
         </span>
       </div>
@@ -47,7 +47,7 @@ const Sidebar = () => {
                 `flex items-center space-x-3 px-4 py-3 rounded-[12px] text-xs font-semibold tracking-wide transition-all duration-150 ${
                   isActive
                     ? 'bg-[#2563EB] text-white font-bold shadow-md shadow-black/20'
-                    : 'text-gray-600 dark:text-[#CBD5E1] hover:bg-gray-100 dark:hover:bg-[#1E293B] hover:text-gray-900 dark:hover:text-white'
+                    : 'text-slate-650 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-[#1E293B] hover:text-slate-900 dark:hover:text-white'
                 }`
               }
             >
@@ -59,7 +59,7 @@ const Sidebar = () => {
       </nav>
 
       {/* Version badge */}
-      <div className="p-4 border-t border-gray-200 dark:border-[#374151] text-[10px] text-gray-400 dark:text-[#64748B] font-mono text-center">
+      <div className="p-4 border-t border-slate-250 dark:border-[#374151] text-[10px] text-slate-400 dark:text-[#64748B] font-mono text-center">
         CYBERSENSE // SEC-OPS // 2026
       </div>
     </aside>

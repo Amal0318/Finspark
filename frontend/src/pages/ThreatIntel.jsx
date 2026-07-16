@@ -64,31 +64,31 @@ const ThreatIntel = () => {
   };
 
   return (
-    <div className="space-y-6 select-none font-sans">
+    <div className="space-y-6 select-none font-sans text-slate-900 dark:text-white">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-wide">Data Ingestion</h2>
-          <p className="text-xs text-gray-400 mt-0.5">Review active connection logs and system telemetry</p>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">Data Ingestion</h2>
+          <p className="text-xs text-slate-550 dark:text-gray-400 mt-0.5">Review active connection logs and system telemetry</p>
         </div>
         <button
           onClick={fetchThreatData}
-          className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-lg bg-slate-100 dark:bg-gray-900 border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
         >
           <RefreshCw className="h-4 w-4" />
         </button>
       </div>
 
       {/* Tabs Menu */}
-      <div className="flex border-b border-gray-800 space-x-6 text-xs font-semibold">
+      <div className="flex border-b border-slate-200 dark:border-gray-800 space-x-6 text-xs font-semibold">
         <button
           onClick={() => setActiveTab('feeds')}
-          className={`pb-3 transition-colors ${activeTab === 'feeds' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
+          className={`pb-3 transition-colors ${activeTab === 'feeds' ? 'text-purple-600 dark:text-purple-400 border-b-2 border-purple-500' : 'text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-250'}`}
         >
           System Logs
         </button>
         <button
           onClick={() => setActiveTab('upload')}
-          className={`pb-3 transition-colors ${activeTab === 'upload' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
+          className={`pb-3 transition-colors ${activeTab === 'upload' ? 'text-purple-600 dark:text-purple-400 border-b-2 border-purple-500' : 'text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-250'}`}
         >
           Upload Data
         </button>
@@ -104,7 +104,7 @@ const ThreatIntel = () => {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#1F2937] text-gray-400 font-mono border-b border-[#374151]">
+                <thead className="bg-slate-50 dark:bg-[#1F2937] text-slate-650 dark:text-gray-400 font-mono border-b border-slate-250 dark:border-[#374151]">
                   <tr>
                     <th className="p-3">Time</th>
                     <th className="p-3">Device Signature</th>
@@ -114,26 +114,26 @@ const ThreatIntel = () => {
                     <th className="p-3">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-800 text-gray-300">
+                <tbody className="divide-y divide-slate-150 dark:divide-gray-800 text-slate-700 dark:text-gray-300">
                   {logs.length === 0 ? (
                     <tr>
-                      <td colSpan="6" className="p-8 text-center text-gray-500">No active cyber threat logs</td>
+                      <td colSpan="6" className="p-8 text-center text-slate-500 dark:text-gray-500">No active cyber threat logs</td>
                     </tr>
                   ) : (
                     logs.map((log) => (
-                      <tr key={log.id} className="hover:bg-gray-800/10 transition-colors">
-                        <td className="p-3 font-mono text-gray-500">
+                      <tr key={log.id} className="hover:bg-slate-100/50 dark:hover:bg-gray-800/10 transition-colors">
+                        <td className="p-3 font-mono text-slate-500 dark:text-gray-500">
                           {new Date(log.timestamp).toLocaleString()}
                         </td>
-                        <td className="p-3 font-semibold">{log.device_id}</td>
-                        <td className="p-3 font-mono text-cyan-400">{log.source_ip}</td>
-                        <td className="p-3 font-mono text-[10px] text-gray-400 uppercase tracking-wider">{log.event_type}</td>
+                        <td className="p-3 font-semibold text-slate-800 dark:text-gray-200">{log.device_id}</td>
+                        <td className="p-3 font-mono text-cyan-600 dark:text-cyan-400">{log.source_ip}</td>
+                        <td className="p-3 font-mono text-[10px] text-slate-500 dark:text-gray-400 uppercase tracking-wider">{log.event_type}</td>
                         <td className="p-3">
                           <span className={`px-2 py-0.5 rounded border font-bold text-[9px] uppercase ${getSeverityColor(log.severity)}`}>
                             {log.severity}
                           </span>
                         </td>
-                        <td className="p-3 text-gray-400 truncate max-w-xs">{log.description}</td>
+                        <td className="p-3 text-slate-600 dark:text-gray-400 truncate max-w-xs">{log.description}</td>
                       </tr>
                     ))
                   )}
@@ -145,27 +145,27 @@ const ThreatIntel = () => {
       ) : (
         /* CSV Dataset Upload form Tab */
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="glass-panel border border-gray-800 rounded-xl p-6 shadow-lg">
-            <h3 className="text-sm font-bold text-white mb-4">Ingest CSV Logs</h3>
-            <p className="text-xs text-gray-450 mb-6 leading-relaxed">
+          <div className="glass-panel rounded-xl p-6 shadow-lg">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Ingest CSV Logs</h3>
+            <p className="text-xs text-slate-655 dark:text-gray-450 mb-6 leading-relaxed">
               Upload formatted CSV files containing historical records. Uploaded transactions will be automatically analyzed by the ML threat prediction engine.
             </p>
 
             <form onSubmit={handleUpload} className="space-y-5 text-xs">
               <div className="space-y-1">
-                <label className="block text-gray-400">Dataset Target Category</label>
+                <label className="block text-slate-600 dark:text-gray-400">Dataset Target Category</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setUploadType('telemetry')}
-                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'telemetry' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
+                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'telemetry' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-gray-900 text-slate-600 dark:text-gray-400'}`}
                   >
                     Cybersecurity Telemetry
                   </button>
                   <button
                     type="button"
                     onClick={() => setUploadType('transactions')}
-                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'transactions' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
+                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'transactions' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-gray-900 text-slate-600 dark:text-gray-400'}`}
                   >
                     Banking Transactions
                   </button>
@@ -173,7 +173,7 @@ const ThreatIntel = () => {
               </div>
 
               {/* Upload Drop Zone Box */}
-              <div className="border border-dashed border-gray-300 dark:border-gray-800 rounded-xl p-6 bg-gray-50 dark:bg-gray-950 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#2563EB] transition-colors">
+              <div className="border border-dashed border-slate-300 dark:border-gray-800 rounded-xl p-6 bg-slate-50 dark:bg-gray-950 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#2563EB] transition-colors">
                 <input
                   type="file"
                   id="csv-file-upload"
@@ -182,9 +182,9 @@ const ThreatIntel = () => {
                   onChange={(e) => setUploadFile(e.target.files[0])}
                 />
                 <label htmlFor="csv-file-upload" className="cursor-pointer flex flex-col items-center">
-                  <UploadCloud className="h-8 w-8 text-gray-500 mb-2" />
-                  <span className="text-gray-300 font-semibold">{uploadFile ? uploadFile.name : 'Select CSV file'}</span>
-                  <span className="text-[10px] text-gray-600 mt-1">Accepts CSV tables (Max 10MB)</span>
+                  <UploadCloud className="h-8 w-8 text-slate-500 dark:text-gray-500 mb-2" />
+                  <span className="text-slate-700 dark:text-gray-300 font-semibold">{uploadFile ? uploadFile.name : 'Select CSV file'}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-gray-600 mt-1">Accepts CSV tables (Max 10MB)</span>
                 </label>
               </div>
 
@@ -205,13 +205,13 @@ const ThreatIntel = () => {
           {/* Results feedback panels */}
           <div className="flex flex-col justify-center">
             {uploadResult ? (
-              <div className={`p-6 rounded-xl border flex flex-col items-center text-center max-w-sm mx-auto shadow-lg ${uploadResult.success ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-rose-500/10 border-rose-550/20 text-rose-400'}`}>
-                {uploadResult.success ? <CheckCircle className="h-10 w-10 text-emerald-500 mb-3" /> : <ShieldAlert className="h-10 w-10 text-rose-500 mb-3" />}
-                <h4 className="font-bold text-white mb-2">{uploadResult.success ? 'Upload Success' : 'Parsing Failed'}</h4>
-                <p className="text-xs leading-relaxed text-gray-300">{uploadResult.message}</p>
+              <div className={`p-6 rounded-xl border flex flex-col items-center text-center max-w-sm mx-auto shadow-lg ${uploadResult.success ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-400' : 'bg-rose-500/10 border-rose-550/20 text-rose-700 dark:text-rose-400'}`}>
+                {uploadResult.success ? <CheckCircle className="h-10 w-10 text-emerald-600 dark:text-emerald-500 mb-3" /> : <ShieldAlert className="h-10 w-10 text-rose-600 dark:text-rose-500 mb-3" />}
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{uploadResult.success ? 'Upload Success' : 'Parsing Failed'}</h4>
+                <p className="text-xs leading-relaxed text-slate-600 dark:text-gray-300">{uploadResult.message}</p>
               </div>
             ) : (
-              <div className="text-center text-gray-500 text-xs">
+              <div className="text-center text-slate-500 dark:text-gray-500 text-xs">
                 Upload results will display here after processing is complete.
               </div>
             )}

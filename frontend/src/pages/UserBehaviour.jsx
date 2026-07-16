@@ -34,48 +34,48 @@ const UserBehaviour = () => {
   };
 
   const getScoreColor = (score) => {
-    if (score >= 75) return 'text-rose-500 bg-rose-500/10 border-rose-500/20';
-    if (score >= 40) return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
-    return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+    if (score >= 75) return 'text-rose-600 dark:text-rose-500 bg-rose-500/10 border-rose-500/20';
+    if (score >= 40) return 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20';
+    return 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
   };
 
   return (
-    <div className="space-y-6 select-none font-sans text-xs">
+    <div className="space-y-6 select-none font-sans text-xs text-slate-900 dark:text-white">
       <div>
-        <h2 className="text-xl font-bold text-white tracking-wide">User Access Auditing</h2>
-        <p className="text-xs text-gray-400 mt-0.5">Continuous risk assessment for active customer accounts and network IP addresses</p>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">User Access Auditing</h2>
+        <p className="text-xs text-slate-550 dark:text-gray-400 mt-0.5">Continuous risk assessment for active customer accounts and network IP addresses</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left: Input controls */}
-        <div className="lg:col-span-1 glass-panel border border-gray-800 rounded-xl p-5 shadow-lg space-y-4">
-          <h3 className="text-sm font-bold text-white mb-2">Search for Target User or IP</h3>
-          <p className="text-gray-455 leading-relaxed text-[11px]">
+        <div className="lg:col-span-1 glass-panel rounded-xl p-5 shadow-lg space-y-4">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Search for Target User or IP</h3>
+          <p className="text-slate-600 dark:text-gray-455 leading-relaxed text-[11px]">
             Input an IP address or customer account number to extract activity logs and calculate threat risk scores.
           </p>
 
           {msg && (
-            <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-550/20 text-rose-400">
+            <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-550/20 text-rose-600 dark:text-rose-400">
               {msg}
             </div>
           )}
 
           <form onSubmit={handleEvaluate} className="space-y-4">
             <div className="space-y-1">
-              <label className="block text-gray-400 font-semibold">Entity Classification</label>
+              <label className="block text-slate-650 dark:text-gray-400 font-semibold">Entity Classification</label>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => { setEntityType('ip'); setEntityId('192.168.1.99'); }}
-                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'ip' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
+                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'ip' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-gray-900 text-slate-500 dark:text-gray-400'}`}
                 >
                   IP Address
                 </button>
                 <button
                   type="button"
                   onClick={() => { setEntityType('account'); setEntityId('ACC-887766'); }}
-                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'account' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
+                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'account' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-gray-900 text-slate-500 dark:text-gray-400'}`}
                 >
                   Bank Account
                 </button>
@@ -117,13 +117,13 @@ const UserBehaviour = () => {
         {/* Right: Scoring details */}
         <div className="lg:col-span-2 space-y-6">
           {riskData ? (
-            <div className="glass-panel border border-gray-800 rounded-2xl p-6 shadow-lg space-y-6">
+            <div className="glass-panel rounded-2xl p-6 shadow-lg space-y-6">
               
               {/* Dynamic Risk Gauge */}
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Active Profiler Output</span>
-                  <h3 className="text-base font-bold text-white mt-1">Calculated Entity Risk Score</h3>
+                  <span className="font-mono text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest">Active Profiler Output</span>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">Calculated Entity Risk Score</h3>
                 </div>
                 
                 <span className={`px-4 py-2 rounded-xl text-base font-extrabold border ${getScoreColor(riskData.score)}`}>
@@ -132,46 +132,46 @@ const UserBehaviour = () => {
               </div>
 
               {/* Factors list */}
-              <div className="bg-[#0c1222] border border-gray-850/40 rounded-xl p-4 space-y-3">
-                <h4 className="font-bold text-gray-300 uppercase tracking-wider text-[10px] border-b border-gray-800 pb-1">
+              <div className="bg-slate-50 dark:bg-[#0c1222] border border-slate-200 dark:border-gray-850/40 rounded-xl p-4 space-y-3">
+                <h4 className="font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-gray-800 pb-1">
                   Scoring Analysis Factors
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {Object.entries(riskData.factors_json || {}).map(([key, val]) => (
                     <div key={key} className="flex justify-between items-center py-1">
-                      <span className="text-gray-500 capitalize">{key.replace(/_/g, ' ')}:</span>
-                      <span className="font-semibold text-gray-200 font-mono">{String(val)}</span>
+                      <span className="text-slate-500 dark:text-gray-500 capitalize">{key.replace(/_/g, ' ')}:</span>
+                      <span className="font-semibold text-slate-800 dark:text-gray-200 font-mono">{String(val)}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Evaluation histories */}
-              <div className="border-t border-gray-800 pt-6 space-y-4">
-                <h4 className="font-bold text-white uppercase tracking-wider text-[10px] flex items-center space-x-1">
+              <div className="border-t border-slate-200 dark:border-gray-800 pt-6 space-y-4">
+                <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px] flex items-center space-x-1">
                   <Clock className="h-4 w-4 text-purple-400" />
                   <span>Evaluation Logs History</span>
                 </h4>
                 
                 <div className="space-y-2">
                   {riskHistory.slice(1).map((h) => (
-                    <div key={h.id} className="p-3 bg-[#0F1424] border border-gray-850/40 rounded-lg flex items-center justify-between">
-                      <span className="text-gray-500 font-mono">{new Date(h.timestamp).toLocaleString()}</span>
-                      <span className={`px-2 py-0.5 rounded font-mono font-bold ${h.score >= 60 ? 'text-rose-400' : 'text-emerald-400'}`}>
+                    <div key={h.id} className="p-3 bg-slate-50 dark:bg-[#0F1424] border border-slate-200 dark:border-gray-850/40 rounded-lg flex items-center justify-between">
+                      <span className="text-slate-500 dark:text-gray-500 font-mono">{new Date(h.timestamp).toLocaleString()}</span>
+                      <span className={`px-2 py-0.5 rounded font-mono font-bold ${h.score >= 60 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
                         {h.score}%
                       </span>
                     </div>
                   ))}
                   {riskHistory.length <= 1 && (
-                    <p className="text-gray-500 italic">No historical risk logs registered for this entity</p>
+                    <p className="text-slate-500 dark:text-gray-500 italic">No historical risk logs registered for this entity</p>
                   )}
                 </div>
               </div>
 
             </div>
           ) : (
-            <div className="glass-panel border border-gray-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[300px] text-gray-500">
-              <Users className="h-10 w-10 text-gray-700 mb-2" />
+            <div className="glass-panel rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[300px] text-slate-500">
+              <Users className="h-10 w-10 text-slate-400 dark:text-gray-700 mb-2" />
               <p>Execute scoring evaluations to audit parameters</p>
             </div>
           )}
