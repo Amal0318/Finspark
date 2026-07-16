@@ -28,7 +28,7 @@ const Sidebar = () => {
       <div className="h-16 flex items-center px-6 border-b border-gray-800 space-x-3">
         <ShieldCheck className="h-7 w-7 text-cyan-400" />
         <span className="font-extrabold text-lg tracking-wider text-white font-sans">
-          SENTINEL<span className="text-purple-500">X</span> <span className="text-xs bg-purple-500/20 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded font-mono">SOC</span>
+          CYBER<span className="text-purple-500">SENSE</span> <span className="text-xs bg-purple-500/20 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded font-mono">SOC</span>
         </span>
       </div>
 
