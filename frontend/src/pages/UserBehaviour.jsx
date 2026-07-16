@@ -42,17 +42,17 @@ const UserBehaviour = () => {
   return (
     <div className="space-y-6 select-none font-sans text-xs">
       <div>
-        <h2 className="text-xl font-bold text-white tracking-wide">User & IP Behaviour Profiling</h2>
-        <p className="text-xs text-gray-400 mt-0.5">Continuous risk assessment for active client accounts and network IPs</p>
+        <h2 className="text-xl font-bold text-white tracking-wide">User Access Auditing</h2>
+        <p className="text-xs text-gray-400 mt-0.5">Continuous risk assessment for active customer accounts and network IP addresses</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left: Input controls */}
         <div className="lg:col-span-1 glass-panel border border-gray-800 rounded-xl p-5 shadow-lg space-y-4">
-          <h3 className="text-sm font-bold text-white mb-2">Entity Search Investigator</h3>
-          <p className="text-gray-450 leading-relaxed text-[11px]">
-            Input an IP address or customer account number to extract logged telemetry activities and compute dynamic threat scores.
+          <h3 className="text-sm font-bold text-white mb-2">Search for Target User or IP</h3>
+          <p className="text-gray-455 leading-relaxed text-[11px]">
+            Input an IP address or customer account number to extract activity logs and calculate threat risk scores.
           </p>
 
           {msg && (

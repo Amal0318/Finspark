@@ -13,13 +13,12 @@ import {
 
 const Sidebar = () => {
   const menuItems = [
-    { name: 'SOC Dashboard', path: '/', icon: LayoutDashboard },
-    { name: 'Threat Intelligence', path: '/threat-intel', icon: Globe },
-    { name: 'Incident Correlations', path: '/incidents', icon: AlertOctagon },
-    { name: 'Fraud Analytics', path: '/analytics', icon: BarChart3 },
-    { name: 'User Behaviour Audit', path: '/user-behaviour', icon: Users },
-    { name: 'Quantum Readiness', path: '/quantum', icon: Cpu },
-    { name: 'SOC Settings', path: '/settings', icon: Settings },
+    { name: 'Security Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'Data Feed Ingestion', path: '/threat-intel', icon: Globe },
+    { name: 'Threat Alerts Queue', path: '/incidents', icon: AlertOctagon },
+    { name: 'Predictive Analytics', path: '/analytics', icon: BarChart3 },
+    { name: 'User Access Auditing', path: '/user-behaviour', icon: Users },
+    { name: 'System Settings', path: '/settings', icon: Settings },
   ];
 
   return (

@@ -67,8 +67,8 @@ const ThreatIntel = () => {
     <div className="space-y-6 select-none font-sans">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-wide">Threat Intelligence Feed</h2>
-          <p className="text-xs text-gray-400 mt-0.5">Vulnerability logs ingest timelines and IOC records curation</p>
+          <h2 className="text-xl font-bold text-white tracking-wide">Data Ingestion</h2>
+          <p className="text-xs text-gray-400 mt-0.5">Review active connection logs and system telemetry</p>
         </div>
         <button
           onClick={fetchThreatData}
@@ -84,13 +84,13 @@ const ThreatIntel = () => {
           onClick={() => setActiveTab('feeds')}
           className={`pb-3 transition-colors ${activeTab === 'feeds' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
         >
-          Telemetry Event Feeds
+          System Logs
         </button>
         <button
           onClick={() => setActiveTab('upload')}
           className={`pb-3 transition-colors ${activeTab === 'upload' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
         >
-          Bulk Dataset Upload
+          Upload Data
         </button>
       </div>
 
@@ -148,7 +148,7 @@ const ThreatIntel = () => {
           <div className="glass-panel border border-gray-800 rounded-xl p-6 shadow-lg">
             <h3 className="text-sm font-bold text-white mb-4">Ingest CSV Logs</h3>
             <p className="text-xs text-gray-450 mb-6 leading-relaxed">
-              Upload formatted CSV files containing historical records. Ingested transaction datasets will stream automatically through the ML prediction correlation networks.
+              Upload formatted CSV files containing historical records. Uploaded transactions will be automatically analyzed by the ML threat prediction engine.
             </p>
 
             <form onSubmit={handleUpload} className="space-y-5 text-xs">
@@ -196,7 +196,7 @@ const ThreatIntel = () => {
                 {isUploading ? (
                   <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 ) : (
-                  <span>Commit File Ingest</span>
+                  <span>Upload and Process File</span>
                 )}
               </button>
             </form>
@@ -212,7 +212,7 @@ const ThreatIntel = () => {
               </div>
             ) : (
               <div className="text-center text-gray-500 text-xs">
-                Upload results will display here after processing compiles
+                Upload results will display here after processing is complete.
               </div>
             )}
           </div>

@@ -31,8 +31,8 @@ const SettingsPage = () => {
   return (
     <div className="space-y-6 select-none font-sans text-xs">
       <div>
-        <h2 className="text-xl font-bold text-white tracking-wide">SOC Settings Panel</h2>
-        <p className="text-xs text-gray-400 mt-0.5">Manage model parameters, operator credentials, and sandbox databases</p>
+        <h2 className="text-xl font-bold text-white tracking-wide">System Settings</h2>
+        <p className="text-xs text-gray-400 mt-0.5">Manage ML model retraining, credentials, and settings</p>
       </div>
 
       {/* Tabs Menu */}
@@ -41,13 +41,13 @@ const SettingsPage = () => {
           onClick={() => setActiveTab('profile')}
           className={`pb-3 transition-colors ${activeTab === 'profile' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
         >
-          Operator Profile
+          User Profile
         </button>
         <button
           onClick={() => setActiveTab('models')}
           className={`pb-3 transition-colors ${activeTab === 'models' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
         >
-          ML Anomaly Models
+          Model Retraining
         </button>
       </div>
 
@@ -67,17 +67,17 @@ const SettingsPage = () => {
           <div className="space-y-3">
             <div className="flex justify-between items-center py-1.5 border-b border-gray-850">
               <span className="text-gray-500 font-semibold">Authentication Status:</span>
-              <span className="text-gray-300 font-mono">ACTIVE JWT CONTEXT</span>
+              <span className="text-gray-300 font-mono">SECURE ACTIVE SESSION</span>
             </div>
             <div className="flex justify-between items-center py-1.5 border-b border-gray-850">
-              <span className="text-gray-500 font-semibold">System RBAC Role:</span>
+              <span className="text-gray-500 font-semibold">Account Access Role:</span>
               <span className="text-purple-400 font-bold uppercase tracking-widest font-mono text-[9px] bg-purple-500/15 border border-purple-500/20 px-2 py-0.5 rounded">
                 {user?.role || 'viewer'}
               </span>
             </div>
             <div className="flex justify-between items-center py-1.5">
               <span className="text-gray-500 font-semibold">Superuser Status:</span>
-              <span className="text-gray-300 font-mono">{user?.is_superuser ? 'TRUE' : 'FALSE'}</span>
+              <span className="text-gray-300 font-mono">{user?.is_superuser ? 'ENABLED' : 'DISABLED'}</span>
             </div>
           </div>
         </div>
@@ -87,9 +87,9 @@ const SettingsPage = () => {
           <div className="flex items-start space-x-3">
             <Cpu className="h-6 w-6 text-cyan-400 mt-0.5 shrink-0" />
             <div>
-              <h3 className="text-sm font-bold text-white">Isolation Forest Anomaly Classifier</h3>
+              <h3 className="text-sm font-bold text-white">ML Anomaly Detection Engine</h3>
               <p className="text-gray-450 leading-relaxed text-[11px] mt-1">
-                The ML model scores transaction risks by mapping transaction amounts, hours, and concurrent security event counts. You can manually retrain the model when new datasets are committed.
+                The ML model dynamically scores transaction risks. You can manually trigger a model retrain to refresh the intelligence with newly uploaded datasets.
               </p>
             </div>
           </div>
@@ -102,8 +102,8 @@ const SettingsPage = () => {
 
           <div className="border-t border-gray-800 pt-4 flex items-center justify-between gap-4">
             <div className="text-gray-500">
-              <p className="font-semibold text-gray-450">Contamination Coefficient: 5.0%</p>
-              <p className="text-[10px] text-gray-600 mt-0.5">Algorithm parameters: IsolationForest (n_estimators=100)</p>
+              <p className="font-semibold text-gray-450">Model Margin: 5.0%</p>
+              <p className="text-[10px] text-gray-600 mt-0.5">Underlying algorithm: Anomaly Isolation Forest</p>
             </div>
 
             <button
