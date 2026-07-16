@@ -34,7 +34,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="flex h-screen bg-[#04060E] text-gray-100 overflow-hidden font-sans">
+    <div className="flex h-screen bg-white dark:bg-[#0B1220] text-gray-900 dark:text-gray-100 overflow-hidden font-sans">
       {/* Dynamic Sidebar */}
       <Sidebar />
 
@@ -65,7 +65,7 @@ const Layout = () => {
         )}
 
         {/* Page Content viewport */}
-        <main className="flex-1 overflow-y-auto bg-[#04060E] p-6 relative">
+        <main className="flex-1 overflow-y-auto bg-[#F3F4F6] dark:bg-[#0B1220] p-6 relative">
           <Outlet />
         </main>
       </div>
