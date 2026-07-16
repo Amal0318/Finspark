@@ -3,7 +3,6 @@ import datetime
 from typing import Dict, Any, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.prediction import MlPrediction
-from app.ml.predict import predictor
 from app.ml.risk_engine import RiskScoreEngine
 from app.services.llm_service import LLMService
 from app.utils.logger import logger

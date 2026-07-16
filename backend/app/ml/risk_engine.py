@@ -1,5 +1,6 @@
 from typing import Dict, Any
-from app.ml.predict import predictor
+import requests
+from app.core.config import settings
 from app.utils.logger import logger
 
 class RiskScoreEngine:
@@ -60,9 +61,22 @@ class RiskScoreEngine:
         Formula:
           Risk Score = 40% * Fraud Prob + 30% * Anomaly Score + 20% * Cyber Threat + 10% * Business Rules
         """
-        # 1. Run ML models
-        anomaly_res = predictor.predict_anomaly(features)
-        fraud_res = predictor.predict_fraud(features)
+        # 1. Run ML models via the separate ML container
+        try:
+            url = f"{settings.ML_SERVICE_URL}/predict"
+            response = requests.post(url, json={"features": features}, timeout=5.0)
+            if response.status_code == 200:
+                res_data = response.json()
+                anomaly_res = res_data.get("anomaly", {})
+                fraud_res = res_data.get("fraud", {})
+            else:
+                logger.error(f"ML Service returned status {response.status_code}: {response.text}")
+                anomaly_res = {"anomaly_score": 50.0, "is_anomaly": False, "status": f"http_error_{response.status_code}"}
+                fraud_res = {"fraud_probability": 0.0, "is_fraud": False, "status": f"http_error_{response.status_code}"}
+        except Exception as e:
+            logger.error(f"Error connecting to ML service: {e}")
+            anomaly_res = {"anomaly_score": 50.0, "is_anomaly": False, "status": f"connection_error: {str(e)}"}
+            fraud_res = {"fraud_probability": 0.0, "is_fraud": False, "status": f"connection_error: {str(e)}"}
 
         anomaly_score = float(anomaly_res.get("anomaly_score", 50.0))
         fraud_prob = float(fraud_res.get("fraud_probability", 0.0))

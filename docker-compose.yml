@@ -31,13 +31,31 @@ services:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgresql+asyncpg://sentinelx_admin:sentinelx_secure_pass_2026@db:5432/sentinelx
-      - JWT_SECRET=9s8dfyhsdf987ysd9f87ysd98f7ysd9f87ysdfhskjdhfksjdhfksjdhf
+      - JWT_SECRET=9s8dfyhsdf987ysd9f87ysd9f87ysd98f7ysd9f87ysdfhskjdhfksjdhf
       - ACCESS_TOKEN_EXPIRE_MINUTES=60
       - ENVIRONMENT=production
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - ML_SERVICE_URL=http://ml:8080
     depends_on:
       db:
         condition: service_healthy
+      ml:
+        condition: service_started
+    volumes:
+      - ml_models:/app/app/ml/models
+    networks:
+      - sentinelx_network
+
+  ml:
+    build:
+      context: ./ml_service
+      dockerfile: Dockerfile
+    container_name: sentinelx_ml
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ml_models:/app/app/models
     networks:
       - sentinelx_network
 
@@ -56,6 +74,7 @@ services:
 
 volumes:
   pgdata:
+  ml_models:
 
 networks:
   sentinelx_network:

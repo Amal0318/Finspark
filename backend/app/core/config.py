@@ -34,5 +34,7 @@ class Settings(BaseSettings):
     FIRST_SUPERUSER_EMAIL: str = "admin@sentinelx.ai"
     FIRST_SUPERUSER_PASSWORD: str = "SentinelXAdminSecurePass2026!"
 
+    ML_SERVICE_URL: str = "http://ml:8080"
+
 
 settings = Settings()

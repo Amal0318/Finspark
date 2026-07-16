@@ -7,11 +7,12 @@ class ModelLoader:
     """
     Handles saving and loading serialized scikit-learn model artifacts.
     """
-    MODELS_DIR = os.path.dirname(os.path.abspath(__file__))
+    MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
 
     @classmethod
     def save_model(cls, model: Any, filename: str) -> str:
         """Serializes and saves a model artifact to the designated location."""
+        os.makedirs(cls.MODELS_DIR, exist_ok=True)
         filepath = os.path.join(cls.MODELS_DIR, filename)
         logger.info(f"Saving model to: {filepath}")
         try:
