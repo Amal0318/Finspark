@@ -36,7 +36,7 @@ const QuantumReadiness = () => {
       case 'IN_PROGRESS':
         return 'bg-amber-550/10 text-amber-400 border border-amber-550/20';
       default:
-        return 'bg-purple-500/10 text-purple-400 border border-purple-550/20';
+        return 'bg-[#06B6D4]/10 text-[#06B6D4] dark:text-[#38BDF8] border border-[#06B6D4]/20';
     }
   };
 
@@ -50,7 +50,7 @@ const QuantumReadiness = () => {
       {/* Numerical Metrics Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="glass-panel border border-gray-800 rounded-xl p-5 shadow flex items-center space-x-4">
-          <div className="p-3 bg-purple-500/10 text-purple-400 rounded-lg">
+          <div className="p-3 bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8] rounded-lg">
             <Binary className="h-5 w-5" />
           </div>
           <div>

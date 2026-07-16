@@ -36,16 +36,16 @@ const SettingsPage = () => {
       </div>
 
       {/* Tabs Menu */}
-      <div className="flex border-b border-gray-800 space-x-6 text-xs font-semibold">
+      <div className="flex border-b border-gray-200 dark:border-gray-800 space-x-6 text-xs font-semibold">
         <button
           onClick={() => setActiveTab('profile')}
-          className={`pb-3 transition-colors ${activeTab === 'profile' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
+          className={`pb-3 transition-colors ${activeTab === 'profile' ? 'text-[#2563EB] dark:text-[#38BDF8] border-b-2 border-[#2563EB]' : 'text-gray-400 hover:text-gray-200'}`}
         >
           User Profile
         </button>
         <button
           onClick={() => setActiveTab('models')}
-          className={`pb-3 transition-colors ${activeTab === 'models' ? 'text-purple-400 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-200'}`}
+          className={`pb-3 transition-colors ${activeTab === 'models' ? 'text-[#2563EB] dark:text-[#38BDF8] border-b-2 border-[#2563EB]' : 'text-gray-400 hover:text-gray-200'}`}
         >
           Model Retraining
         </button>
@@ -55,7 +55,7 @@ const SettingsPage = () => {
       {activeTab === 'profile' ? (
         <div className="glass-panel border border-gray-800 rounded-xl p-6 max-w-xl space-y-6">
           <div className="flex items-center space-x-4 border-b border-gray-800 pb-4">
-            <div className="bg-purple-500/10 p-4 rounded-full border border-purple-500/20 text-purple-400">
+            <div className="bg-[#2563EB]/10 p-4 rounded-full border border-[#2563EB]/20 text-[#2563EB] dark:text-[#38BDF8]">
               <UserIcon className="h-6 w-6" />
             </div>
             <div>
@@ -71,7 +71,7 @@ const SettingsPage = () => {
             </div>
             <div className="flex justify-between items-center py-1.5 border-b border-gray-850">
               <span className="text-gray-500 font-semibold">Account Access Role:</span>
-              <span className="text-purple-400 font-bold uppercase tracking-widest font-mono text-[9px] bg-purple-500/15 border border-purple-500/20 px-2 py-0.5 rounded">
+              <span className="text-[#2563EB] dark:text-[#38BDF8] font-bold uppercase tracking-widest font-mono text-[9px] bg-[#2563EB]/15 border border-[#2563EB]/20 px-2 py-0.5 rounded">
                 {user?.role || 'viewer'}
               </span>
             </div>
@@ -109,7 +109,7 @@ const SettingsPage = () => {
             <button
               onClick={handleRetrain}
               disabled={isRetraining}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold px-4 py-2.5 rounded-lg shadow-lg shadow-purple-950/20 transition-all flex items-center space-x-2 disabled:opacity-50"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold px-4 py-2.5 rounded-lg shadow-lg shadow-blue-950/20 transition-all flex items-center space-x-2 disabled:opacity-50"
             >
               {isRetraining ? (
                 <RefreshCw className="h-4 w-4 animate-spin text-white" />

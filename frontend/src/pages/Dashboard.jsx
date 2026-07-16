@@ -93,14 +93,14 @@ const Dashboard = () => {
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold tracking-wide flex items-center gap-2">
-            <Activity className="h-6 w-6 text-indigo-500 animate-pulse" />
+            <Activity className="h-6 w-6 text-[#2563EB] animate-pulse" />
             Security & Fraud Monitoring Dashboard
           </h2>
           <p className="text-xs text-gray-400 mt-1">Real-time monitoring of user logins, transaction risk, and security alerts</p>
         </div>
         <button 
           onClick={() => refetch()} 
-          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-mono font-bold transition-all shadow-lg hover:shadow-indigo-500/20"
+          className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg text-xs font-mono font-bold transition-all shadow-lg hover:shadow-[#2563EB]/20"
         >
           REFRESH DATA
         </button>
@@ -115,7 +115,7 @@ const Dashboard = () => {
           transition={{ duration: 0.3 }}
           className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
-          <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
+          <div className="p-3.5 bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8] rounded-xl border border-[#2563EB]/20">
             <Database className="h-6 w-6" />
           </div>
           <div>

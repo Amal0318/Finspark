@@ -158,14 +158,14 @@ const ThreatIntel = () => {
                   <button
                     type="button"
                     onClick={() => setUploadType('telemetry')}
-                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'telemetry' ? 'border-purple-500 bg-purple-500/10 text-purple-400' : 'border-gray-800 bg-gray-900 text-gray-400'}`}
+                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'telemetry' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
                   >
                     Cybersecurity Telemetry
                   </button>
                   <button
                     type="button"
                     onClick={() => setUploadType('transactions')}
-                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'transactions' ? 'border-purple-500 bg-purple-500/10 text-purple-400' : 'border-gray-800 bg-gray-900 text-gray-400'}`}
+                    className={`p-3 rounded-lg border text-center font-semibold transition-all ${uploadType === 'transactions' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
                   >
                     Banking Transactions
                   </button>
@@ -173,7 +173,7 @@ const ThreatIntel = () => {
               </div>
 
               {/* Upload Drop Zone Box */}
-              <div className="border border-dashed border-gray-800 rounded-xl p-6 bg-gray-950 flex flex-col items-center justify-center text-center cursor-pointer hover:border-purple-500 transition-colors">
+              <div className="border border-dashed border-gray-300 dark:border-gray-800 rounded-xl p-6 bg-gray-50 dark:bg-gray-950 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#2563EB] transition-colors">
                 <input
                   type="file"
                   id="csv-file-upload"
@@ -191,7 +191,7 @@ const ThreatIntel = () => {
               <button
                 type="submit"
                 disabled={isUploading || !uploadFile}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white p-3 rounded-lg font-bold shadow-lg shadow-purple-950/20 disabled:opacity-50 transition-all flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white p-3 rounded-lg font-bold shadow-lg shadow-blue-950/20 disabled:opacity-50 transition-all flex items-center justify-center space-x-2"
               >
                 {isUploading ? (
                   <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>

@@ -68,14 +68,14 @@ const UserBehaviour = () => {
                 <button
                   type="button"
                   onClick={() => { setEntityType('ip'); setEntityId('192.168.1.99'); }}
-                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'ip' ? 'border-purple-500 bg-purple-500/10 text-purple-400' : 'border-gray-800 bg-gray-900 text-gray-400'}`}
+                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'ip' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
                 >
                   IP Address
                 </button>
                 <button
                   type="button"
                   onClick={() => { setEntityType('account'); setEntityId('ACC-887766'); }}
-                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'account' ? 'border-purple-500 bg-purple-500/10 text-purple-400' : 'border-gray-800 bg-gray-900 text-gray-400'}`}
+                  className={`p-2 rounded-lg border text-center font-bold transition-all ${entityType === 'account' ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] dark:text-[#38BDF8]' : 'border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-gray-500 dark:text-gray-400'}`}
                 >
                   Bank Account
                 </button>
@@ -92,7 +92,7 @@ const UserBehaviour = () => {
                   placeholder={entityType === 'ip' ? 'e.g. 192.168.1.50' : 'e.g. ACC-123456'}
                   value={entityId}
                   onChange={(e) => setEntityId(e.target.value)}
-                  className="w-full bg-[#0F1424] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-gray-50 dark:bg-[#0F1424] border border-gray-250 dark:border-gray-800 rounded-lg p-2.5 pl-10 text-gray-900 dark:text-white focus:outline-none focus:border-[#2563EB] transition-colors"
                 />
               </div>
             </div>
@@ -100,7 +100,7 @@ const UserBehaviour = () => {
             <button
               type="submit"
               disabled={loading || !entityId}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white p-3 rounded-lg font-bold shadow-lg shadow-purple-950/20 disabled:opacity-50 transition-all flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white p-3 rounded-lg font-bold shadow-lg shadow-blue-950/20 disabled:opacity-50 transition-all flex items-center justify-center space-x-2"
             >
               {loading ? (
                 <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>

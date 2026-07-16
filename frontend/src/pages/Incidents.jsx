@@ -75,13 +75,13 @@ const Incidents = () => {
   const getSeverityBadgeColor = (severity) => {
     switch (String(severity).toUpperCase()) {
       case 'CRITICAL':
-        return 'text-purple-400 bg-purple-500/10 border-purple-500/30';
+        return 'text-rose-500 dark:text-rose-450 bg-rose-500/10 border-rose-500/30';
       case 'HIGH':
-        return 'text-rose-400 bg-rose-500/10 border-rose-500/30';
+        return 'text-orange-600 dark:text-orange-400 bg-orange-500/10 border-orange-500/30';
       case 'MEDIUM':
-        return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+        return 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20';
       default:
-        return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+        return 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
     }
   };
 
@@ -118,8 +118,8 @@ const Incidents = () => {
                   onClick={() => setSelectedIncident(incident)}
                   className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     selectedIncident?.id === incident.id
-                      ? 'ring-1 ring-indigo-500 bg-indigo-950/20 border-indigo-500/50'
-                      : 'glass-panel hover:bg-slate-900/40'
+                      ? 'ring-1 ring-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/50'
+                      : 'glass-panel hover:bg-gray-100 dark:hover:bg-slate-900/40'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-2">
@@ -131,7 +131,7 @@ const Incidents = () => {
                   <p className="font-bold text-gray-200 leading-snug line-clamp-2">{incident.title}</p>
                   <div className="mt-3 flex justify-between items-center text-[10px] text-gray-500">
                     <span>{new Date(incident.timestamp).toLocaleTimeString()}</span>
-                    <span className="font-bold font-mono text-indigo-400">Risk Score: {incident.details?.risk_score || 50}%</span>
+                    <span className="font-bold font-mono text-[#2563EB] dark:text-[#38BDF8]">Risk Score: {incident.details?.risk_score || 50}%</span>
                   </div>
                 </motion.div>
               ))
@@ -159,7 +159,7 @@ const Incidents = () => {
               {/* simulated LLM trigger */}
               <button
                 onClick={() => handleFetchAiExplanation(selectedIncident)}
-                className="flex items-center space-x-1.5 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors shadow shadow-indigo-950/20"
+                className="flex items-center space-x-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors shadow shadow-[#2563EB]/20"
               >
                 <Sparkles className="h-4 w-4 shrink-0 text-cyan-300 animate-pulse" />
                 <span>Explain with AI (Gemini)</span>
@@ -170,7 +170,7 @@ const Incidents = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
-                  <Activity className="h-3.5 w-3.5 text-indigo-400" />
+                  <Activity className="h-3.5 w-3.5 text-[#2563EB]" />
                   Transaction Information
                 </h4>
                 <div className="space-y-2 leading-relaxed">
@@ -229,13 +229,13 @@ const Incidents = () => {
               </button>
 
               <div className="flex items-center space-x-2 border-b border-gray-850 pb-3 mb-6">
-                <Cpu className="h-5 w-5 text-indigo-400 animate-pulse" />
+                <Cpu className="h-5 w-5 text-[#2563EB] animate-pulse" />
                 <h3 className="text-base font-bold text-white uppercase tracking-wider">AI Safety Report</h3>
               </div>
 
               {aiLoading ? (
                 <div className="py-16 flex flex-col items-center justify-center text-gray-400 space-y-4">
-                  <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></span>
+                  <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#2563EB]"></span>
                   <span className="font-mono text-[9px] tracking-widest animate-pulse">AI IS ANALYZING THE ALERT. PLEASE WAIT...</span>
                 </div>
               ) : (
@@ -243,24 +243,24 @@ const Incidents = () => {
                   
                   {/* Threat Title Summary */}
                   <div>
-                    <h4 className="font-bold text-white text-[12px] uppercase tracking-wider mb-1 font-mono text-indigo-400">
+                    <h4 className="font-bold text-[#2563EB] dark:text-[#38BDF8] text-[12px] uppercase tracking-wider mb-1 font-mono">
                       {aiReport?.threat_summary}
                     </h4>
                     <div className="flex items-center gap-3 text-[10px] text-gray-500 font-mono mt-1.5">
                       <span>Model Version: Gemini-1.5-Flash</span>
                       <span>•</span>
-                      <span>Confidence score: <span className="text-emerald-400 font-bold">{aiReport?.confidence}%</span></span>
+                      <span>Confidence score: <span className="text-emerald-450 font-bold">{aiReport?.confidence}%</span></span>
                     </div>
                   </div>
 
                   {/* Narration and Explanation boxes */}
-                  <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-4">
+                  <div className="bg-gray-50 dark:bg-[#0c1222] border border-gray-200 dark:border-gray-850/30 rounded-xl p-4 space-y-4">
                     <div>
                       <h5 className="font-bold text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
-                        <Terminal className="h-3.5 w-3.5 text-indigo-400" />
+                        <Terminal className="h-3.5 w-3.5 text-[#2563EB]" />
                         1. Detailed Incident Report
                       </h5>
-                      <p className="text-gray-400 leading-relaxed">{aiReport?.incident_report}</p>
+                      <p className="text-gray-405 leading-relaxed">{aiReport?.incident_report}</p>
                     </div>
 
                     <div>

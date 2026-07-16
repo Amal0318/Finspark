@@ -28,18 +28,18 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
   const getRoleColor = (role) => {
     switch (role?.toLowerCase()) {
       case 'admin':
-        return 'border-indigo-500/40 text-indigo-400 bg-indigo-500/10';
+        return 'border-[#2563EB]/40 text-[#2563EB] bg-[#2563EB]/10 dark:border-[#6366F1]/40 dark:text-[#6366F1] dark:bg-[#6366F1]/10';
       case 'investigator':
-        return 'border-sky-500/40 text-sky-400 bg-sky-500/10';
+        return 'border-[#06B6D4]/40 text-[#06B6D4] bg-[#06B6D4]/10 dark:border-[#38BDF8]/40 dark:text-[#38BDF8] dark:bg-[#38BDF8]/10';
       default:
-        return 'border-gray-800 text-gray-500 bg-gray-900/40';
+        return 'border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/40';
     }
   };
 
   return (
-    <header className="h-16 border-b border-[#374151] bg-[#111827] flex items-center justify-between px-6 z-20 shrink-0 select-none">
+    <header className="h-16 border-b border-gray-200 dark:border-[#374151] bg-white dark:bg-[#111827] flex items-center justify-between px-6 z-20 shrink-0 select-none">
       {/* System Brand Header */}
-      <div className="flex items-center space-x-2 text-[10px] font-mono text-[#CBD5E1]">
+      <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-600 dark:text-[#CBD5E1]">
         <ShieldCheck className="h-4 w-4 text-[#2563EB]" />
         <span className="tracking-widest uppercase">CyberSense Security Platform</span>
       </div>
@@ -48,7 +48,7 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
           title="Toggle Theme"
         >
           {theme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
@@ -59,7 +59,7 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
           <button
             onClick={onRefresh}
             disabled={refreshing}
-            className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors"
+            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? 'animate-spin' : ''}`} />
           </button>
@@ -74,7 +74,7 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors relative"
+            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative"
           >
             <Bell className="h-4 w-4" />
             {notifications.length > 0 && (
@@ -83,8 +83,8 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-72 glass-panel border border-gray-850 rounded-xl shadow-2xl p-4 z-30 text-xs">
-              <h4 className="font-bold text-white border-b border-gray-800 pb-2 mb-2 uppercase tracking-wider">
+            <div className="absolute right-0 mt-2 w-72 glass-panel border border-gray-200 dark:border-gray-850 rounded-xl shadow-large p-4 z-30 text-xs">
+              <h4 className="font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-2 mb-2 uppercase tracking-wider">
                 System Indicators Feed
               </h4>
               <div className="space-y-2 max-h-48 overflow-y-auto">

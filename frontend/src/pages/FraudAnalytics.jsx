@@ -73,18 +73,18 @@ const FraudAnalytics = () => {
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold tracking-wide flex items-center gap-2">
-            <TrendingUp className="h-6 w-6 text-indigo-500" />
+            <TrendingUp className="h-6 w-6 text-[#2563EB]" />
             Fraud Analytics & Model Evaluation
           </h2>
           <p className="text-xs text-gray-400 mt-1">Supervised Random Forest evaluations and feature split importance coefficients</p>
         </div>
 
         {/* Tab switchers */}
-        <div className="flex bg-[#0e1322] p-1.5 rounded-xl border border-gray-800/60">
+        <div className="flex bg-gray-100 dark:bg-[#0e1322] p-1.5 rounded-xl border border-gray-200 dark:border-gray-800/60">
           <button 
             onClick={() => setActiveTab('metrics')}
             className={`px-4 py-1.5 rounded-lg font-mono text-[10px] font-bold transition-all ${
-              activeTab === 'metrics' ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:text-white'
+              activeTab === 'metrics' ? 'bg-[#2563EB] text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             METRICS MATRIX
@@ -92,7 +92,7 @@ const FraudAnalytics = () => {
           <button 
             onClick={() => setActiveTab('plots')}
             className={`px-4 py-1.5 rounded-lg font-mono text-[10px] font-bold transition-all ${
-              activeTab === 'plots' ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:text-white'
+              activeTab === 'plots' ? 'bg-[#2563EB] text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             VALIDATION PLOTS
