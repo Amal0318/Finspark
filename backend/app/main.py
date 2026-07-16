@@ -43,9 +43,23 @@ async def lifespan(app: FastAPI):
         logger.info("Initial seeding completed.")
     except Exception as e:
         logger.error(f"Error seeding database: {e}")
+
+    # Launch Kafka consumer in background
+    from app.services.kafka import start_kafka_consumer, stop_kafka_consumer, stop_kafka_producer
+    import asyncio
+    logger.info("Starting background Kafka consumer daemon...")
+    app.state.kafka_consumer_task = asyncio.create_task(start_kafka_consumer())
         
     yield
     # Shutdown actions
+    logger.info("Stopping background Kafka consumer daemon and cleanup...")
+    await stop_kafka_consumer()
+    await stop_kafka_producer()
+    app.state.kafka_consumer_task.cancel()
+    try:
+        await app.state.kafka_consumer_task
+    except asyncio.CancelledError:
+        pass
     logger.info("Shutting down CyberSense API application.")
 
 
