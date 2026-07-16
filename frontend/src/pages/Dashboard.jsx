@@ -46,7 +46,7 @@ const Dashboard = () => {
       <div className="h-full flex items-center justify-center bg-[#070b19]">
         <div className="flex flex-col items-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-          <p className="text-gray-400 text-sm font-mono tracking-widest animate-pulse">CONNECTING TO SENTINELX CORE...</p>
+          <p className="text-gray-400 text-xs font-mono tracking-widest animate-pulse">LOADING SECURE CONNECTION...</p>
         </div>
       </div>
     );
