@@ -11,7 +11,7 @@ const api = axios.create({
 // Request interceptor to append JWT token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('sentinelx_token');
+    const token = localStorage.getItem('cybersense_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -174,7 +174,7 @@ export const llmAPI = {
   },
 };
 
-// Core ML Platform bindings (SentinelX Core)
+// Core ML Platform bindings (CyberSense Core)
 export const mlAPI = {
   uploadDataset: async (file) => {
     const formData = new FormData();

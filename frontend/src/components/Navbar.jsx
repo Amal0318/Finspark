@@ -22,7 +22,7 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
       {/* System Brand Header */}
       <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-400">
         <ShieldCheck className="h-4 w-4 text-purple-500" />
-        <span className="tracking-widest uppercase">SentinelX Security Platform</span>
+        <span className="tracking-widest uppercase">CyberSense Security Platform</span>
       </div>
 
       <div className="flex items-center space-x-4">

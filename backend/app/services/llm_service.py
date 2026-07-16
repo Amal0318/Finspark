@@ -81,7 +81,7 @@ class LLMService:
         try:
             logger.info("Persisting threat report to PostgreSQL database...")
             report_log = ThreatReport(
-                source="SentinelX_LLM",
+                source="CyberSense_LLM",
                 title=report.get("threat_summary", "Threat Alert"),
                 description=report.get("incident_report", ""),
                 severity=risk_level,
@@ -134,7 +134,7 @@ class LLMService:
 
         report = {
             "threat_summary": summary,
-            "incident_report": f"SentinelX correlation analysis flagged a {risk_level} severity alert. Client initiated a payment of ${amount:,.2f} from device signature: {features.get('device', 'UNKNOWN')}.",
+            "incident_report": f"CyberSense correlation analysis flagged a {risk_level} severity alert. Client initiated a payment of ${amount:,.2f} from device signature: {features.get('device', 'UNKNOWN')}.",
             "fraud_explanation": f"Fraud likelihood estimated at {prediction_result.get('fraud_probability', 0.0)}%. Anomaly checks indicate {prediction_result.get('anomaly_score', 0.0)}% behavioral deviation.",
             "root_cause": root_cause,
             "confidence": 85.0 if risk_level in ["Critical", "High"] else 70.0,

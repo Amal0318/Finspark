@@ -19,7 +19,7 @@ from app.models.threat_report import ThreatReport
 from app.utils.logger import logger
 
 # Initialize router with standard prefix
-router = APIRouter(prefix="/ml", tags=["SentinelX AI Core"])
+router = APIRouter(prefix="/ml", tags=["CyberSense Core"])
 
 # Authorization check dependencies
 analyst_only = RoleChecker(allowed_roles=["admin", "investigator"])

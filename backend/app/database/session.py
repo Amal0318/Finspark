@@ -46,7 +46,7 @@ async def seed_data(db: AsyncSession) -> None:
         await db.commit()
     
     # 2. Seed Investigator
-    investigator_email = "investigator@sentinelx.ai"
+    investigator_email = "investigator@cybersense.ai"
     result_investigator = await db.execute(
         select(User).where(User.email == investigator_email)
     )
@@ -54,7 +54,7 @@ async def seed_data(db: AsyncSession) -> None:
     if not investigator_user:
         new_investigator = User(
             email=investigator_email,
-            hashed_password=get_password_hash("SentinelXInvestigator2026!"),
+            hashed_password=get_password_hash("CyberSenseInvestigator2026!"),
             full_name="Lead Incident Investigator",
             role="investigator",
             is_active=True,
@@ -64,7 +64,7 @@ async def seed_data(db: AsyncSession) -> None:
         await db.commit()
 
     # 3. Seed Viewer
-    viewer_email = "viewer@sentinelx.ai"
+    viewer_email = "viewer@cybersense.ai"
     result_viewer = await db.execute(
         select(User).where(User.email == viewer_email)
     )
@@ -72,7 +72,7 @@ async def seed_data(db: AsyncSession) -> None:
     if not viewer_user:
         new_viewer = User(
             email=viewer_email,
-            hashed_password=get_password_hash("SentinelXViewer2026!"),
+            hashed_password=get_password_hash("CyberSenseViewer2026!"),
             full_name="Compliance Auditor",
             role="viewer",
             is_active=True,

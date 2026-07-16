@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Dict, Any
 from app.predictor import predictor
 
-app = FastAPI(title="SentinelX ML Service", version="1.0.0")
+app = FastAPI(title="CyberSense ML Service", version="1.0.0")
 
 class PredictRequest(BaseModel):
     features: Dict[str, Any]

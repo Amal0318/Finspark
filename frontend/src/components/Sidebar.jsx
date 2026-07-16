@@ -57,7 +57,7 @@ const Sidebar = () => {
 
       {/* Version badge */}
       <div className="p-4 border-t border-gray-800 text-[10px] text-gray-600 font-mono text-center">
-        SENTINELX // SEC-OPS // 2026
+        CYBERSENSE // SEC-OPS // 2026
       </div>
     </aside>
   );

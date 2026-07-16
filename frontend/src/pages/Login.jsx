@@ -13,20 +13,20 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handlePreFillAdmin = () => {
-    setEmail('admin@sentinelx.ai');
-    setPassword('SentinelXAdminSecurePass2026!');
+    setEmail('admin@cybersense.ai');
+    setPassword('CyberSenseAdminSecurePass2026!');
     setError('');
   };
 
   const handlePreFillInvestigator = () => {
-    setEmail('investigator@sentinelx.ai');
-    setPassword('SentinelXInvestigator2026!');
+    setEmail('investigator@cybersense.ai');
+    setPassword('CyberSenseInvestigator2026!');
     setError('');
   };
 
   const handlePreFillViewer = () => {
-    setEmail('viewer@sentinelx.ai');
-    setPassword('SentinelXViewer2026!');
+    setEmail('viewer@cybersense.ai');
+    setPassword('CyberSenseViewer2026!');
     setError('');
   };
 
@@ -60,7 +60,7 @@ const Login = () => {
             <ShieldCheck className="h-10 w-10 text-purple-400" />
           </div>
           <h2 className="text-2xl font-extrabold tracking-tight text-white">
-            SENTINEL<span className="text-purple-500">X</span> <span className="text-cyan-400">SOC</span>
+            CYBER<span className="text-purple-500">SENSE</span> <span className="text-cyan-400">SOC</span>
           </h2>
           <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest font-mono">
             Enterprise Security Operations Center

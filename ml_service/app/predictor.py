@@ -7,7 +7,7 @@ from typing import Dict, Any
 
 # Configure logger
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("sentinelx-ml")
+logger = logging.getLogger("cybersense-ml")
 
 
 class ModelPredictor:

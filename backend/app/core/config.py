@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     )
 
     API_V1_STR: str = "/api/v1"
-    PROJECT_NAME: str = "SentinelX AI"
+    PROJECT_NAME: str = "CyberSense"
     ENVIRONMENT: str = "development"
 
     JWT_SECRET: str
@@ -31,8 +31,8 @@ class Settings(BaseSettings):
         List[str], BeforeValidator(parse_cors)
     ] = ["http://localhost", "http://localhost:5173", "http://localhost:3000"]
 
-    FIRST_SUPERUSER_EMAIL: str = "admin@sentinelx.ai"
-    FIRST_SUPERUSER_PASSWORD: str = "SentinelXAdminSecurePass2026!"
+    FIRST_SUPERUSER_EMAIL: str = "admin@cybersense.ai"
+    FIRST_SUPERUSER_PASSWORD: str = "CyberSenseAdminSecurePass2026!"
 
     ML_SERVICE_URL: str = "http://ml:8080"
 
