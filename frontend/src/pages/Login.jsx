@@ -18,6 +18,18 @@ const Login = () => {
     setError('');
   };
 
+  const handlePreFillInvestigator = () => {
+    setEmail('investigator@sentinelx.ai');
+    setPassword('SentinelXInvestigator2026!');
+    setError('');
+  };
+
+  const handlePreFillViewer = () => {
+    setEmail('viewer@sentinelx.ai');
+    setPassword('SentinelXViewer2026!');
+    setError('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -110,14 +122,34 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Quick Seeding Help */}
-          <div className="mt-6 pt-6 border-t border-gray-800/80 text-center">
-            <button
-              onClick={handlePreFillAdmin}
-              className="text-[11px] text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4"
-            >
-              Use System Administrator Sandbox Access
-            </button>
+          {/* Quick Sandbox Access Links */}
+          <div className="mt-6 pt-6 border-t border-gray-800/80 text-center space-y-2">
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Sandbox Demo Quick-Fill</p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
+              <button
+                type="button"
+                onClick={handlePreFillAdmin}
+                className="text-[11px] text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 cursor-pointer"
+              >
+                Admin
+              </button>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <button
+                type="button"
+                onClick={handlePreFillInvestigator}
+                className="text-[11px] text-indigo-400 hover:text-indigo-300 font-semibold underline underline-offset-4 cursor-pointer"
+              >
+                Investigator
+              </button>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <button
+                type="button"
+                onClick={handlePreFillViewer}
+                className="text-[11px] text-cyan-400 hover:text-cyan-300 font-semibold underline underline-offset-4 cursor-pointer"
+              >
+                Viewer
+              </button>
+            </div>
           </div>
         </div>
       </div>
