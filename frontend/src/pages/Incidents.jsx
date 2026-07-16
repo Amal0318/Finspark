@@ -86,7 +86,7 @@ const Incidents = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-sans text-xs text-white bg-[#070b19] p-6 min-h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-sans text-xs text-white p-6">
       
       {/* Left Column: Incidents List */}
       <div className="lg:col-span-1 space-y-4">
@@ -107,7 +107,7 @@ const Incidents = () => {
         ) : (
           <div className="space-y-3 max-h-[calc(100vh-12rem)] overflow-y-auto pr-1">
             {incidents.length === 0 ? (
-              <div className="text-center text-gray-500 py-8 bg-[#0f172a]/40 border border-gray-800 rounded-2xl">
+              <div className="text-center text-gray-500 py-8 glass-panel rounded-2xl">
                 No active threats logged.
               </div>
             ) : (
@@ -118,8 +118,8 @@ const Incidents = () => {
                   onClick={() => setSelectedIncident(incident)}
                   className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     selectedIncident?.id === incident.id
-                      ? 'ring-1 ring-indigo-500 bg-[#0f172a]/90 border-indigo-500/50'
-                      : 'bg-[#0f172a]/40 border-gray-800 hover:bg-[#0f172a]/60'
+                      ? 'ring-1 ring-indigo-500 bg-indigo-950/20 border-indigo-500/50'
+                      : 'glass-panel hover:bg-slate-900/40'
                   }`}
                 >
                   <div className="flex justify-between items-center mb-2">
@@ -146,7 +146,7 @@ const Incidents = () => {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-6 shadow-xl space-y-6 min-h-[calc(100vh-12rem)]"
+            className="glass-panel rounded-2xl p-6 shadow-xl space-y-6 min-h-[calc(100vh-12rem)]"
           >
             {/* Header info */}
             <div className="flex justify-between items-start gap-4 pb-4 border-b border-gray-800">
@@ -168,7 +168,7 @@ const Incidents = () => {
 
             {/* Inbound parameters details grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-3">
+              <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
                   <Activity className="h-3.5 w-3.5 text-indigo-400" />
                   Transaction Information
@@ -180,7 +180,7 @@ const Incidents = () => {
                 </div>
               </div>
 
-              <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-3">
+              <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-400 uppercase tracking-wider text-[9px] border-b border-gray-800 pb-1 flex items-center gap-1.5">
                   <ShieldAlert className="h-3.5 w-3.5 text-rose-450" />
                   Security Logs
@@ -197,14 +197,14 @@ const Incidents = () => {
             {/* Description narrative from raw DB alerts */}
             <div className="space-y-2">
               <h4 className="font-bold text-white uppercase tracking-wider text-[9px]">System Log Message</h4>
-              <div className="bg-[#04060E]/50 border border-gray-850 p-4 rounded-xl leading-relaxed text-gray-400">
+              <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl leading-relaxed text-gray-400">
                 {selectedIncident.description || "No detailed log message available."}
               </div>
             </div>
 
           </motion.div>
         ) : (
-          <div className="bg-[#0f172a]/40 border border-gray-850 rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[calc(100vh-12rem)] text-gray-500">
+          <div className="glass-panel rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[calc(100vh-12rem)] text-gray-500">
             <AlertOctagon className="h-12 w-12 text-gray-700 mb-2" />
             <p>Select a correlated threat alert from the list to assess risk factors</p>
           </div>
@@ -219,7 +219,7 @@ const Incidents = () => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0f172a] border border-gray-800 rounded-2xl w-full max-w-2xl p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]"
+              className="bg-[#0f1424] border border-gray-800 rounded-2xl w-full max-w-2xl p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]"
             >
               <button
                 onClick={() => setShowAiModal(false)}
@@ -254,7 +254,7 @@ const Incidents = () => {
                   </div>
 
                   {/* Narration and Explanation boxes */}
-                  <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-4">
+                  <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 space-y-4">
                     <div>
                       <h5 className="font-bold text-white uppercase tracking-widest text-[9px] mb-1.5 flex items-center gap-1.5">
                         <Terminal className="h-3.5 w-3.5 text-indigo-400" />

@@ -41,8 +41,8 @@ const Sidebar = () => {
               className={({ isActive }) =>
                 `flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 border-l-2 ${
                   isActive
-                    ? 'bg-gradient-to-r from-purple-900/20 to-blue-900/10 text-purple-400 border-purple-500 shadow-sm shadow-purple-950/20'
-                    : 'text-gray-400 border-transparent hover:bg-gray-900/50 hover:text-gray-200'
+                    ? 'bg-indigo-600/15 text-indigo-400 border-indigo-500 shadow-sm shadow-indigo-950/10 font-bold'
+                    : 'text-gray-400 border-transparent hover:bg-slate-900/50 hover:text-gray-200'
                 }`
               }
             >

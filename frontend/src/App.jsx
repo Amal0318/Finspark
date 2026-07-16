@@ -8,7 +8,6 @@ import ThreatIntel from './pages/ThreatIntel';
 import Incidents from './pages/Incidents';
 import FraudAnalytics from './pages/FraudAnalytics';
 import UserBehaviour from './pages/UserBehaviour';
-import QuantumReadiness from './pages/QuantumReadiness';
 import Settings from './pages/Settings';
 
 // Protected Route Component
@@ -17,8 +16,8 @@ const ProtectedRoute = ({ children }) => {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#04060E] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-500"></div>
+      <div className="min-h-screen bg-[#090D16] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-500"></div>
       </div>
     );
   }
@@ -48,7 +47,6 @@ function App() {
             <Route path="incidents" element={<Incidents />} />
             <Route path="analytics" element={<FraudAnalytics />} />
             <Route path="user-behaviour" element={<UserBehaviour />} />
-            <Route path="quantum" element={<QuantumReadiness />} />
             <Route path="settings" element={<Settings />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

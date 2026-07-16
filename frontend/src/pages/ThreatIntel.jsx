@@ -96,7 +96,7 @@ const ThreatIntel = () => {
 
       {/* Content Viewports */}
       {activeTab === 'feeds' ? (
-        <div className="bg-[#0F1424] border border-gray-800 rounded-xl p-5 shadow-lg">
+        <div className="glass-panel rounded-xl p-5 shadow-lg">
           {loading ? (
             <div className="h-48 flex items-center justify-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
@@ -104,7 +104,7 @@ const ThreatIntel = () => {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#070A13] text-gray-400 font-mono border-b border-gray-800">
+                <thead className="bg-[#0b0f19]/80 text-gray-400 font-mono border-b border-gray-800">
                   <tr>
                     <th className="p-3">Time</th>
                     <th className="p-3">Device Signature</th>

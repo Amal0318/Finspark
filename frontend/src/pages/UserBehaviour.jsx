@@ -92,7 +92,7 @@ const UserBehaviour = () => {
                   placeholder={entityType === 'ip' ? 'e.g. 192.168.1.50' : 'e.g. ACC-123456'}
                   value={entityId}
                   onChange={(e) => setEntityId(e.target.value)}
-                  className="w-full bg-[#070A13] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-[#0F1424] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
                 />
               </div>
             </div>
@@ -132,7 +132,7 @@ const UserBehaviour = () => {
               </div>
 
               {/* Factors list */}
-              <div className="bg-[#04060E] border border-gray-850 rounded-xl p-4 space-y-3">
+              <div className="bg-[#0c1222] border border-gray-850/40 rounded-xl p-4 space-y-3">
                 <h4 className="font-bold text-gray-300 uppercase tracking-wider text-[10px] border-b border-gray-800 pb-1">
                   Scoring Analysis Factors
                 </h4>
@@ -155,7 +155,7 @@ const UserBehaviour = () => {
                 
                 <div className="space-y-2">
                   {riskHistory.slice(1).map((h) => (
-                    <div key={h.id} className="p-3 bg-[#070A13] border border-gray-850 rounded-lg flex items-center justify-between">
+                    <div key={h.id} className="p-3 bg-[#0F1424] border border-gray-850/40 rounded-lg flex items-center justify-between">
                       <span className="text-gray-500 font-mono">{new Date(h.timestamp).toLocaleString()}</span>
                       <span className={`px-2 py-0.5 rounded font-mono font-bold ${h.score >= 60 ? 'text-rose-400' : 'text-emerald-400'}`}>
                         {h.score}%

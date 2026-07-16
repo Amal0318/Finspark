@@ -9,16 +9,16 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
   const getRoleColor = (role) => {
     switch (role?.toLowerCase()) {
       case 'admin':
-        return 'border-purple-500 text-purple-400 bg-purple-500/10 shadow-glow-purple';
+        return 'border-indigo-500/40 text-indigo-400 bg-indigo-500/10';
       case 'investigator':
-        return 'border-cyan-500 text-cyan-400 bg-cyan-500/10 shadow-glow-cyan';
+        return 'border-sky-500/40 text-sky-400 bg-sky-500/10';
       default:
-        return 'border-gray-500 text-gray-400 bg-gray-500/10';
+        return 'border-gray-800 text-gray-500 bg-gray-900/40';
     }
   };
 
   return (
-    <header className="h-16 border-b border-gray-800 bg-[#0A0D1A]/90 flex items-center justify-between px-6 z-20 shrink-0 select-none">
+    <header className="h-16 border-b border-gray-850 bg-[#090D16]/95 backdrop-blur-md flex items-center justify-between px-6 z-20 shrink-0 select-none">
       {/* System Brand Header */}
       <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-400">
         <ShieldCheck className="h-4 w-4 text-purple-500" />

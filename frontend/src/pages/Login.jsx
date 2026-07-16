@@ -48,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#04060E] flex flex-col items-center justify-center p-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#090D16] flex flex-col items-center justify-center p-4 relative overflow-hidden font-sans">
       {/* Background Cyber Glowing Accents */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[150px] pointer-events-none"></div>
@@ -89,7 +89,7 @@ const Login = () => {
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#0A0D1A] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-[#0F1424] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
                 />
               </div>
             </div>
@@ -104,7 +104,7 @@ const Login = () => {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#0A0D1A] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-[#0F1424] border border-gray-800 rounded-lg p-2.5 pl-10 text-white focus:outline-none focus:border-purple-500 transition-colors"
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white p-3 rounded-lg font-bold transition-all shadow-lg shadow-purple-950/20 flex items-center justify-center space-x-2 disabled:opacity-50"
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white p-3 rounded-lg font-bold transition-all shadow-lg shadow-indigo-950/25 flex items-center justify-center space-x-2 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>

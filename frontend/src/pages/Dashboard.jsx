@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-[#070b19]">
+      <div className="h-full flex items-center justify-center bg-[#090D16]">
         <div className="flex flex-col items-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
           <p className="text-gray-400 text-xs font-mono tracking-widest animate-pulse">LOADING SECURE CONNECTION...</p>
@@ -87,7 +87,7 @@ const Dashboard = () => {
       ];
 
   return (
-    <div className="space-y-6 text-white bg-[#070b19] p-6 min-h-screen font-sans select-none">
+    <div className="space-y-6 text-white p-6 font-sans select-none">
       
       {/* Title Header */}
       <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
+          className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
           <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
             <Database className="h-6 w-6" />
@@ -129,7 +129,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
+          className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
           <div className="p-3.5 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-500/20">
             <ShieldAlert className="h-6 w-6" />
@@ -145,7 +145,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
+          className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
           <div className="p-3.5 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
             <AlertTriangle className="h-6 w-6" />
@@ -161,7 +161,7 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
+          className="glass-panel rounded-2xl p-5 shadow-lg flex items-center space-x-4"
         >
           <div className="p-3.5 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
             <ShieldCheck className="h-6 w-6" />
@@ -179,7 +179,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left: Risk Score Timeline (LineChart) */}
-        <div className="lg:col-span-2 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+        <div className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Risk Trend Over Time</h3>
             <span className="text-[9px] px-2 py-0.5 bg-indigo-500/10 text-indigo-400 rounded border border-indigo-500/20 font-mono">LIVE RISK RATING</span>
@@ -204,7 +204,7 @@ const Dashboard = () => {
         </div>
 
         {/* Right: Severity Class Distribution (BarChart) */}
-        <div className="lg:col-span-1 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+        <div className="lg:col-span-1 glass-panel rounded-2xl p-5 shadow-lg flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Threat Levels</h3>
             <span className="text-[9px] px-2 py-0.5 bg-rose-500/10 text-rose-400 rounded border border-rose-500/20 font-mono">THREAT CATEGORIES</span>
@@ -232,12 +232,12 @@ const Dashboard = () => {
       </div>
 
       {/* Real-time System Logs Console */}
-      <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+      <div className="glass-panel rounded-2xl p-5 shadow-lg">
         <div className="flex items-center space-x-2 text-xs font-bold text-gray-400 mb-3 font-mono">
           <Terminal className="h-4 w-4 text-indigo-400 animate-pulse" />
           <span>SYSTEM MONITORING LOGS</span>
         </div>
-        <div className="bg-[#04060e] border border-gray-850 rounded-xl p-4 font-mono text-[10px] text-indigo-350 space-y-2 h-36 overflow-y-auto shadow-inner">
+        <div className="bg-[#0c1222] border border-gray-850/30 rounded-xl p-4 font-mono text-[10px] text-indigo-300 space-y-2 h-36 overflow-y-auto shadow-inner">
           <div className="flex items-start space-x-2">
             <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
             <span className="text-indigo-400">$</span>

@@ -36,7 +36,7 @@ const FraudAnalytics = () => {
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-[#070b19]">
+      <div className="h-full flex items-center justify-center bg-[#090D16]">
         <div className="flex flex-col items-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
           <p className="text-gray-400 text-sm font-mono tracking-widest animate-pulse">RETRIEVING PIPELINE METRICS...</p>
@@ -67,7 +67,7 @@ const FraudAnalytics = () => {
   ];
 
   return (
-    <div className="space-y-6 text-white bg-[#070b19] p-6 min-h-screen font-sans select-none text-xs">
+    <div className="space-y-6 text-white p-6 font-sans select-none text-xs">
       
       {/* Page Header */}
       <div className="flex justify-between items-center">
@@ -80,7 +80,7 @@ const FraudAnalytics = () => {
         </div>
 
         {/* Tab switchers */}
-        <div className="flex bg-[#0f172a] p-1.5 rounded-xl border border-gray-800">
+        <div className="flex bg-[#0e1322] p-1.5 rounded-xl border border-gray-800/60">
           <button 
             onClick={() => setActiveTab('metrics')}
             className={`px-4 py-1.5 rounded-lg font-mono text-[10px] font-bold transition-all ${
@@ -108,23 +108,23 @@ const FraudAnalytics = () => {
         >
           {/* Card Scorecards Row */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-            <div className="bg-[#0f172a]/80 border border-gray-800 rounded-xl p-4 text-center">
+            <div className="glass-panel rounded-xl p-4 text-center">
               <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Classification Accuracy</p>
               <p className="text-xl font-extrabold text-white mt-1">{(rfMetrics.accuracy * 100).toFixed(2)}%</p>
             </div>
-            <div className="bg-[#0f172a]/80 border border-gray-800 rounded-xl p-4 text-center">
+            <div className="glass-panel rounded-xl p-4 text-center">
               <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Precision (PPV)</p>
               <p className="text-xl font-extrabold text-indigo-400 mt-1">{(rfMetrics.precision * 100).toFixed(2)}%</p>
             </div>
-            <div className="bg-[#0f172a]/80 border border-gray-800 rounded-xl p-4 text-center">
+            <div className="glass-panel rounded-xl p-4 text-center">
               <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Recall (Sensitivity)</p>
               <p className="text-xl font-extrabold text-amber-400 mt-1">{(rfMetrics.recall * 100).toFixed(2)}%</p>
             </div>
-            <div className="bg-[#0f172a]/80 border border-gray-800 rounded-xl p-4 text-center">
+            <div className="glass-panel rounded-xl p-4 text-center">
               <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Mean Cross-Val F1</p>
               <p className="text-xl font-extrabold text-purple-400 mt-1">{(rfMetrics.mean_cv_f1_score * 100).toFixed(2)}%</p>
             </div>
-            <div className="bg-[#0f172a]/80 border border-gray-800 rounded-xl p-4 text-center">
+            <div className="glass-panel rounded-xl p-4 text-center">
               <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Area Under ROC (AUC)</p>
               <p className="text-xl font-extrabold text-emerald-400 mt-1">{(rfMetrics.roc_auc * 100).toFixed(2)}%</p>
             </div>
@@ -132,7 +132,7 @@ const FraudAnalytics = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left: Recharts Feature Importance */}
-            <div className="lg:col-span-2 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+            <div className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-lg">
               <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-1.5">
                 <Award className="h-4.5 w-4.5 text-indigo-400" />
                 Feature Importance Index
@@ -151,25 +151,25 @@ const FraudAnalytics = () => {
             </div>
 
             {/* Right: Confusion Matrix */}
-            <div className="lg:col-span-1 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+            <div className="lg:col-span-1 glass-panel rounded-2xl p-5 shadow-lg flex flex-col justify-between">
               <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-1.5">
                 <ShieldAlert className="h-4.5 w-4.5 text-rose-450" />
                 Confusion Matrix Model 2
               </h3>
               <div className="grid grid-cols-2 gap-4 font-mono text-center my-4">
-                <div className="bg-[#04060E] border border-gray-850 p-4 rounded-xl">
+                <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl">
                   <p className="text-gray-500 text-[8px] uppercase tracking-wider">True Legitimate (TN)</p>
                   <p className="text-2xl font-extrabold text-emerald-400 mt-1">5,975</p>
                 </div>
-                <div className="bg-[#04060E] border border-gray-850 p-4 rounded-xl">
+                <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl">
                   <p className="text-gray-500 text-[8px] uppercase tracking-wider">False Fraud (FP)</p>
                   <p className="text-2xl font-extrabold text-rose-400 mt-1">14</p>
                 </div>
-                <div className="bg-[#04060E] border border-gray-850 p-4 rounded-xl">
+                <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl">
                   <p className="text-gray-500 text-[8px] uppercase tracking-wider">False Legitimate (FN)</p>
                   <p className="text-2xl font-extrabold text-amber-400 mt-1">8</p>
                 </div>
-                <div className="bg-[#04060E] border border-gray-850 p-4 rounded-xl">
+                <div className="bg-[#0c1222] border border-gray-850/30 p-4 rounded-xl">
                   <p className="text-gray-500 text-[8px] uppercase tracking-wider">True Fraud (TP)</p>
                   <p className="text-2xl font-extrabold text-indigo-400 mt-1">3</p>
                 </div>
@@ -187,9 +187,9 @@ const FraudAnalytics = () => {
           animate={{ opacity: 1, y: 0 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div className="glass-panel rounded-2xl p-5 shadow-lg">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-mono">Receiver Operating Characteristic (ROC)</h3>
-            <div className="bg-[#04060E] rounded-xl overflow-hidden border border-gray-850 flex items-center justify-center p-2">
+            <div className="bg-[#0c1222]/80 rounded-xl overflow-hidden border border-gray-850/30 flex items-center justify-center p-2">
               <img 
                 src="/plots/roc_curve.png" 
                 alt="ROC Curve" 
@@ -198,9 +198,9 @@ const FraudAnalytics = () => {
             </div>
           </div>
 
-          <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div className="glass-panel rounded-2xl p-5 shadow-lg">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-mono">Precision-Recall Curve</h3>
-            <div className="bg-[#04060E] rounded-xl overflow-hidden border border-gray-850 flex items-center justify-center p-2">
+            <div className="bg-[#0c1222]/80 rounded-xl overflow-hidden border border-gray-850/30 flex items-center justify-center p-2">
               <img 
                 src="/plots/precision_recall_curve.png" 
                 alt="Precision Recall Curve" 
@@ -209,9 +209,9 @@ const FraudAnalytics = () => {
             </div>
           </div>
 
-          <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div className="glass-panel rounded-2xl p-5 shadow-lg">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-mono">Risk Scores Distribution Density</h3>
-            <div className="bg-[#04060E] rounded-xl overflow-hidden border border-gray-850 flex items-center justify-center p-2">
+            <div className="bg-[#0c1222]/80 rounded-xl overflow-hidden border border-gray-850/30 flex items-center justify-center p-2">
               <img 
                 src="/plots/risk_distribution.png" 
                 alt="Risk Density Distribution" 
@@ -220,9 +220,9 @@ const FraudAnalytics = () => {
             </div>
           </div>
 
-          <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div className="glass-panel rounded-2xl p-5 shadow-lg">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 font-mono">Model Correlation Heatmap Matrix</h3>
-            <div className="bg-[#04060E] rounded-xl overflow-hidden border border-gray-850 flex items-center justify-center p-2">
+            <div className="bg-[#0c1222]/80 rounded-xl overflow-hidden border border-gray-850/30 flex items-center justify-center p-2">
               <img 
                 src="/plots/correlation_heatmap.png" 
                 alt="Correlation Heatmap Matrix" 
