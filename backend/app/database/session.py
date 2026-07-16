@@ -26,14 +26,14 @@ async def init_db_tables() -> None:
 
 async def seed_data(db: AsyncSession) -> None:
     """
-    Seeds initial superuser if it doesn't already exist.
+    Seeds initial test accounts for each role.
     """
-    result = await db.execute(
+    # 1. Seed Admin
+    result_admin = await db.execute(
         select(User).where(User.email == settings.FIRST_SUPERUSER_EMAIL)
     )
-    user = result.scalars().first()
-    
-    if not user:
+    admin_user = result_admin.scalars().first()
+    if not admin_user:
         new_admin = User(
             email=settings.FIRST_SUPERUSER_EMAIL,
             hashed_password=get_password_hash(settings.FIRST_SUPERUSER_PASSWORD),
@@ -44,4 +44,39 @@ async def seed_data(db: AsyncSession) -> None:
         )
         db.add(new_admin)
         await db.commit()
-        await db.refresh(new_admin)
+    
+    # 2. Seed Investigator
+    investigator_email = "investigator@sentinelx.ai"
+    result_investigator = await db.execute(
+        select(User).where(User.email == investigator_email)
+    )
+    investigator_user = result_investigator.scalars().first()
+    if not investigator_user:
+        new_investigator = User(
+            email=investigator_email,
+            hashed_password=get_password_hash("SentinelXInvestigator2026!"),
+            full_name="Lead Incident Investigator",
+            role="investigator",
+            is_active=True,
+            is_superuser=False
+        )
+        db.add(new_investigator)
+        await db.commit()
+
+    # 3. Seed Viewer
+    viewer_email = "viewer@sentinelx.ai"
+    result_viewer = await db.execute(
+        select(User).where(User.email == viewer_email)
+    )
+    viewer_user = result_viewer.scalars().first()
+    if not viewer_user:
+        new_viewer = User(
+            email=viewer_email,
+            hashed_password=get_password_hash("SentinelXViewer2026!"),
+            full_name="Compliance Auditor",
+            role="viewer",
+            is_active=True,
+            is_superuser=False
+        )
+        db.add(new_viewer)
+        await db.commit()
