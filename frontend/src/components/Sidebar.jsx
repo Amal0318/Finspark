@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-0 h-screen w-[280px] bg-night-black z-40 flex flex-col border-r border-outline-variant overflow-y-auto sidebar-scroll">
       <div className="p-xl">
-        <h1 className="font-headline-md text-headline-md font-bold text-white tracking-tight">Fortress AI</h1>
+        <h1 className="font-headline-md text-headline-md font-bold text-white tracking-tight">CyberSense.AI</h1>
         <p className="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest mt-xs">Tier 3 SOC</p>
       </div>
       

@@ -68,7 +68,7 @@ const ThreatIntel = () => {
       <header className="flex justify-between items-end">
         <div>
           <nav className="flex gap-2 text-label-sm text-on-surface-variant mb-2">
-            <span className="hover:text-primary cursor-pointer transition-colors">Fortress AI</span>
+            <span className="hover:text-primary cursor-pointer transition-colors">CyberSense.AI</span>
             <span>/</span>
             <span className="text-on-surface">Threat Intelligence</span>
           </nav>
