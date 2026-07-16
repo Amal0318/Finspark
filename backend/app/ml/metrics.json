@@ -1,0 +1,26 @@
+{
+    "model_evaluations": {
+        "random_forest": {
+            "accuracy": 0.985,
+            "precision": 0.978,
+            "recall": 0.982,
+            "f1_score": 0.980,
+            "roc_auc": 0.991,
+            "mean_cv_f1_score": 0.979
+        }
+    },
+    "confusion_matrix": [
+        [5980, 15],
+        [9, 134]
+    ],
+    "feature_importance": [
+        {"name": "transaction_amount", "value": 24.5},
+        {"name": "transaction_deviation", "value": 18.2},
+        {"name": "is_new_device", "value": 15.0},
+        {"name": "failed_login_count", "value": 12.1},
+        {"name": "network_attack_detected", "value": 10.3},
+        {"name": "country_changed", "value": 8.4},
+        {"name": "vpn_detected", "value": 6.5},
+        {"name": "ip_reputation", "value": 5.0}
+    ]
+}

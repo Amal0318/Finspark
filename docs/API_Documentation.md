@@ -1,6 +1,6 @@
-# SentinelX AI - API Documentation
+# CyberSense AI - API Documentation
 
-The SentinelX API uses standard HTTP JSON endpoints protected by JWT OAuth2 bearer token constraints.
+The CyberSense API uses standard HTTP JSON endpoints protected by JWT OAuth2 bearer token constraints.
 
 ---
 

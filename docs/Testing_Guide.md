@@ -1,6 +1,6 @@
-# SentinelX AI - Testing Guide
+# CyberSense AI - Testing Guide
 
-This document describes how to execute automated tests, unit tests, and validation scripts in SentinelX AI.
+This document describes how to execute automated tests, unit tests, and validation scripts in CyberSense AI.
 
 ---
 

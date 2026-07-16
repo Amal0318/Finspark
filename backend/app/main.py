@@ -10,6 +10,7 @@ from app.core.config import settings
 from app.core.database import AsyncSessionLocal
 from app.database.session import init_db_tables, seed_data
 from app.utils.logger import logger
+from app.ml.model_loader import ModelLoader
 
 # Import API routes
 from app.routes.auth import router as auth_router
@@ -44,14 +45,17 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"Error seeding database: {e}")
         
+    logger.info("Loading ML models into memory...")
+    ModelLoader.init_models()
+        
     yield
     # Shutdown actions
-    logger.info("Shutting down SentinelX API application.")
+    logger.info("Shutting down CyberSense API application.")
 
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    description="SentinelX AI - Cybersecurity Telemetry & Banking Transaction Correlation Engine",
+    description="CyberSense AI - Cybersecurity Telemetry & Banking Transaction Correlation Engine",
     version="1.0.0",
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     docs_url=f"{settings.API_V1_STR}/docs",
@@ -125,5 +129,5 @@ app.include_router(prediction_router, prefix=settings.API_V1_STR, tags=["ML Pred
 app.include_router(analytics_router, prefix=settings.API_V1_STR, tags=["Analytics Trends"])
 app.include_router(risk_router, prefix=settings.API_V1_STR, tags=["Threat Risk Scoring"])
 app.include_router(llm_router, prefix=settings.API_V1_STR, tags=["Simulated LLM Explainer"])
-app.include_router(ml_router, prefix=settings.API_V1_STR, tags=["SentinelX AI Core"])
+app.include_router(ml_router, prefix=settings.API_V1_STR, tags=["CyberSense AI Core"])
 

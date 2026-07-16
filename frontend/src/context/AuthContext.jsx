@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem('sentinelx_token');
+      const token = localStorage.getItem('cybersense_token');
       if (token) {
         const userData = await authAPI.getMe();
         setUser(userData);
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('Error fetching current user:', error);
       // If token is invalid, clear it
-      localStorage.removeItem('sentinelx_token');
+      localStorage.removeItem('cybersense_token');
       setUser(null);
     } finally {
       setLoading(false);
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const data = await authAPI.login(email, password);
-      localStorage.setItem('sentinelx_token', data.access_token);
+      localStorage.setItem('cybersense_token', data.access_token);
       await fetchUser();
       return true;
     } catch (error) {
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('sentinelx_token');
+    localStorage.removeItem('cybersense_token');
     setUser(null);
   };
 

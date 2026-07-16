@@ -16,7 +16,7 @@ admin_only = RoleChecker(allowed_roles=["admin"])
 async def upload_transactions_dataset(
     file: UploadFile = File(...),
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(admin_only)
+    current_user: User = Depends(RoleChecker(allowed_roles=["admin", "investigator"]))
 ):
     """
     Upload a CSV file containing banking transactions.
@@ -29,7 +29,7 @@ async def upload_transactions_dataset(
 async def upload_telemetry_dataset(
     file: UploadFile = File(...),
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(admin_only)
+    current_user: User = Depends(RoleChecker(allowed_roles=["admin", "investigator"]))
 ):
     """
     Upload a CSV file containing security telemetry logs.

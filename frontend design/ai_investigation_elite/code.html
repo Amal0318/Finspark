@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CyberSense.AI - AI Investigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4c5ac;
+            border-radius: 10px;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #ECECEC;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .ai-pulse {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#fcbc0b",
+                      "on-secondary-container": "#636262",
+                      "secondary-container": "#e2dfde",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e4e2e2",
+                      "on-background": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "background": "#fbf9f8",
+                      "surface-container-highest": "#e4e2e2",
+                      "surface-container-low": "#f5f3f3",
+                      "primary-container": "#febe10",
+                      "on-primary-fixed-variant": "#5c4300",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-container": "#efeded",
+                      "on-primary-container": "#6c4f00",
+                      "surface-dim": "#dbdad9",
+                      "surface": "#fbf9f8",
+                      "inverse-surface": "#303031",
+                      "primary": "#7a5900",
+                      "secondary": "#5f5e5e",
+                      "tertiary-container": "#c8c8c8",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#ffdea1",
+                      "on-surface-variant": "#504532",
+                      "on-error": "#ffffff",
+                      "outline": "#827560",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#5d5f5f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#525454",
+                      "secondary-fixed": "#e5e2e1",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-surface": "#1b1c1c",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#d4c5ac",
+                      "surface-tint": "#7a5900",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "tertiary-fixed": "#e2e2e2",
+                      "inverse-primary": "#fcbc0b",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#261900",
+                      "on-secondary-fixed-variant": "#474746",
+                      "surface-bright": "#fbf9f8",
+                      "surface-container-high": "#e9e8e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "40px",
+                      "xl": "32px",
+                      "base": "8px",
+                      "2xl": "48px",
+                      "3xl": "64px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "metric-lg": ["Inter"],
+                      "metric-xl": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "metric-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                      "metric-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen overflow-y-auto flex flex-col z-40 bg-[#1A1A1A] border-r border-outline-variant w-[280px]">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-white tracking-tight">Fortress AI</h1>
+<p class="text-secondary font-label-sm uppercase tracking-widest mt-1">Tier 3 SOC</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-body-md">Threat Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-body-md">Incident Correlation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md">Fraud Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-body-md">User Behaviour</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary border-l-2 border-primary bg-primary-container/10 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">neurology</span>
+<span class="font-body-md font-bold">AI Investigation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-body-md">Quantum Readiness</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-white/10">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg cursor-pointer">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary-container/30">
+<img class="w-full h-full object-cover" data-alt="A professional security analyst with a sharp focus, wearing a dark navy suit and looking into the distance with a neutral, authoritative expression. High-key studio lighting emphasizes the clean, premium corporate aesthetic with soft shadows on a minimalist light grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8wy8DY8wvypjv7OSgB6uFwJ5rsxUJke57aiFuw1DIgP8zcPrIyldplrJMtHPPQm9v37f8tX3Pn4dxZJJVCmlvvuI0l8r5MMEm_PXkq0e_RouBDXzsmalC0S_a1a29HS-qAC4HdXnr0A27tN6hHxR3qdt3oDTvvA80HBAFqXxOQ_IcwXSQDbvrgG-Vj87cBa3kfZYnV0mUHuXIONr-8i920BtxUzguF0IYxH74C1mk01j8SRdR1WlZ2JZl49g4NQgq3MC-q3UtVSEp"/>
+</div>
+<div>
+<p class="text-white font-label-md">Tier 3 Analyst</p>
+<p class="text-secondary font-label-sm">System: Operational</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 right-0 z-30 flex justify-between items-center px-6 py-4 ml-[280px] w-[calc(100%-280px)] bg-surface-container-low border-b border-outline-variant backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-full border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none text-body-sm" placeholder="Search investigation logs, hash values, or IPs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">dns</button>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 bg-secondary text-white font-label-md rounded-lg hover:bg-on-background transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                    Export PDF
+                </button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container font-label-md rounded-lg hover:brightness-110 transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                    Share Case
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] p-8 max-w-7xl mx-auto space-y-8">
+<!-- Chat-style Header / AI Prompt -->
+<section class="space-y-6">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center ai-pulse shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-on-primary-container text-[28px]">neurology</span>
+</div>
+<div class="flex-1 pt-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Investigation: Anomalous Data Exfiltration Case #8492-X</h2>
+<p class="text-on-surface-variant font-body-lg max-w-3xl">CyberSense.AI has completed a deep-neural forensic analysis of the recent traffic spike in the Tokyo data center. I have identified a sophisticated lateral movement attempt originating from an internal dev-ops endpoint.</p>
+</div>
+</div>
+</section>
+<!-- Metrics & Risk Bento Grid -->
+<div class="bento-grid">
+<!-- Risk Score Card -->
+<div class="col-span-12 md:col-span-4 glass-card p-6 rounded-2xl border border-outline-variant flex flex-col justify-between overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+<div>
+<h3 class="font-label-sm text-secondary uppercase tracking-widest">Risk Severity Score</h3>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-metric-xl text-metric-xl text-on-surface">94.2</span>
+<span class="font-headline-sm text-primary">/ 100</span>
+</div>
+<div class="mt-2 h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 94.2%"></div>
+</div>
+</div>
+<div class="mt-6 p-3 bg-error-container/10 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-error">priority_high</span>
+<p class="font-label-sm text-on-error-container">Critical Intervention Required</p>
+</div>
+</div>
+<!-- Executive Summary -->
+<div class="col-span-12 md:col-span-8 glass-card p-8 rounded-2xl border border-outline-variant">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">article</span>
+<h3 class="font-headline-sm text-on-surface">Executive Summary</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<p class="text-on-surface-variant leading-relaxed">
+                            A compromised credential on host <code class="bg-surface-container-highest px-1.5 py-0.5 rounded text-primary">TYO-DEV-049</code> initiated an encrypted tunnel to an unknown external endpoint in the <code class="bg-surface-container-highest px-1.5 py-0.5 rounded text-primary">RU-UR-01</code> region. 
+                        </p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 font-label-md text-on-surface">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span>
+                                Incident Type: Lateral Movement
+                            </li>
+<li class="flex items-center gap-2 font-label-md text-on-surface">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span>
+                                Confidence Level: 98%
+                            </li>
+</ul>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-outline-variant/30">
+<p class="font-label-sm text-secondary mb-3 uppercase tracking-tighter">AI Forensics Sentiment</p>
+<div class="flex items-center gap-2 mb-2">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[88%]"></div>
+</div>
+<span class="font-label-sm text-primary">Hostile Intent</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[12%]"></div>
+</div>
+<span class="font-label-sm text-secondary">False Positive</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Incident Timeline -->
+<div class="col-span-12 lg:col-span-7 glass-card p-8 rounded-2xl border border-outline-variant">
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">history</span>
+<h3 class="font-headline-sm text-on-surface">Incident Timeline</h3>
+</div>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+                        View Full Logs <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="relative pl-8 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#1A1A1A] border-4 border-primary-container"></div>
+<p class="font-label-sm text-secondary mb-1">14:22:04 UTC — Initial Access</p>
+<p class="font-body-md text-on-surface font-semibold">Brute force successful on VPN Gateway #4</p>
+<p class="text-body-sm text-on-surface-variant mt-1">Source IP: 194.28.115.XX. Credential used: 'svc_deployment'.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-surface border-4 border-outline"></div>
+<p class="font-label-sm text-secondary mb-1">14:31:12 UTC — Enumeration</p>
+<p class="font-body-md text-on-surface">Port scanning initiated on local subnet 10.4.0.0/24</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#1A1A1A] border-4 border-primary-container ai-pulse"></div>
+<p class="font-label-sm text-secondary mb-1">14:45:55 UTC — Detection Spike</p>
+<p class="font-body-md text-on-surface font-semibold">Large outbound DNS tunnel established</p>
+<p class="text-body-sm text-on-surface-variant mt-1">540MB exfiltrated via chunked DNS queries to domain 'cdn-verify.net'.</p>
+</div>
+</div>
+</div>
+<!-- Root Cause Card -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div class="glass-card p-6 rounded-2xl border border-outline-variant bg-[#1A1A1A] text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary-container">search_insights</span>
+<h3 class="font-headline-sm">Root Cause Discovery</h3>
+</div>
+<p class="text-secondary-fixed text-body-md leading-relaxed">
+                        The primary vulnerability was a <span class="text-primary-container font-bold">misconfigured LDAP policy</span> on the secondary authentication server which allowed service accounts to bypass Multi-Factor Authentication (MFA) from specific 'trusted' legacy IP blocks.
+                    </p>
+<div class="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-secondary">Attacker Persistence</span>
+<span class="font-label-sm text-primary-container">Medium-High</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full">
+<div class="h-full bg-primary-container w-[72%]"></div>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl border border-outline-variant bg-white">
+<h3 class="font-label-sm text-secondary uppercase tracking-widest mb-4">Network Visualization</h3>
+<div class="relative h-48 rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated network node visualization showing complex interconnections in a high-end enterprise aesthetic. The background is a crisp white with fine-line geometric structures and glowing gold data points representing active network traffic. The style is architectural and clean, using a palette of white, black, and prestigious gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzCfp5bWRNSBcjGMfQj1EbCMdhe2bm3qRI-oGK3C9ryJIIXBnmLUeSmWSx1qWX4XHZ2sWHE8FMBZ6G1vjEqBeJHe_j3OTpXzymVEL8rvXj4lGPzoTECETJZohB8n1o3TqrSIHjbeRNFE2-WuW0KrFfxNmpLbrIeSH5yvX3fD3oOxB5T5nFf3V2OYO87C35XEy-gI4AKJpxju-zSFi7OrEB9ww5lKk2BVccnuhvYSTjIp8wEjccOUOb797fJuZi0_10-4Yhw_cDiP04"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<p class="text-white font-label-md">View 3D Topology Map</p>
+</div>
+</div>
+</div>
+</div>
+<!-- MITRE ATT&CK Mapping -->
+<div class="col-span-12 glass-card p-8 rounded-2xl border border-outline-variant">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">grid_view</span>
+<h3 class="font-headline-sm text-on-surface">MITRE ATT&amp;CK® Mapping</h3>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-label-sm text-on-surface-variant">Techniques Found: 4</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p class="font-label-sm text-secondary mb-1">Initial Access</p>
+<p class="font-body-md font-bold text-on-surface">External Remote Services</p>
+<p class="text-xs text-on-surface-variant mt-1">T1133</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p class="font-label-sm text-secondary mb-1">Persistence</p>
+<p class="font-body-md font-bold text-on-surface">Account Manipulation</p>
+<p class="text-xs text-on-surface-variant mt-1">T1098</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p class="font-label-sm text-secondary mb-1">Lateral Movement</p>
+<p class="font-body-md font-bold text-on-surface">Remote Services</p>
+<p class="text-xs text-on-surface-variant mt-1">T1021</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p class="font-label-sm text-secondary mb-1">Exfiltration</p>
+<p class="font-body-md font-bold text-on-surface">Exfiltration Over Alternative Protocol</p>
+<p class="text-xs text-on-surface-variant mt-1">T1048</p>
+</div>
+</div>
+</div>
+<!-- Recommendations -->
+<div class="col-span-12 glass-card p-8 rounded-2xl border border-outline-variant bg-surface-container-highest/30">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<h3 class="font-headline-sm text-on-surface">Remediation Recommendations</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">lock_reset</span>
+</div>
+<h4 class="font-body-md font-bold text-on-surface">Immediate Lockdown</h4>
+<p class="text-body-sm text-on-surface-variant">Disable all 'svc_deployment' credentials across the TYO region and force MFA re-enrollment.</p>
+<button class="font-label-sm text-primary flex items-center gap-1">Execute Action <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">dns</span>
+</div>
+<h4 class="font-body-md font-bold text-on-surface">Network Filtering</h4>
+<p class="text-body-sm text-on-surface-variant">Update Palo Alto firewalls to block DNS traffic to 'cdn-verify.net' and siblings.</p>
+<button class="font-label-sm text-primary flex items-center gap-1">Execute Action <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">psychology_alt</span>
+</div>
+<h4 class="font-body-md font-bold text-on-surface">AI Policy Update</h4>
+<p class="text-body-sm text-on-surface-variant">Increase sensitivity of user behavior models for service accounts in Tokyo VPC.</p>
+<button class="font-label-sm text-primary flex items-center gap-1">Update Model <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Chat Input Placeholder (ChatGPT Style) -->
+<div class="sticky bottom-8 left-0 right-0 max-w-4xl mx-auto z-40">
+<div class="bg-white/80 backdrop-blur-xl border border-outline-variant shadow-2xl rounded-2xl p-2 flex items-center gap-2 group transition-all focus-within:ring-2 focus-within:ring-primary-container/50">
+<button class="p-3 hover:bg-surface-container rounded-xl text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 border-none focus:ring-0 bg-transparent py-4 text-body-md" placeholder="Ask CyberSense.AI to perform further forensic analysis..." type="text"/>
+<button class="p-3 bg-primary-container text-on-primary-container rounded-xl shadow-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+<p class="text-center text-label-sm text-secondary mt-3">CyberSense.AI can make mistakes. Verify critical security findings with a human analyst.</p>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for the input field
+        const input = document.querySelector('input[type="text"]');
+        const container = input.parentElement;
+
+        input.addEventListener('focus', () => {
+            container.classList.add('border-primary-container');
+        });
+
+        input.addEventListener('blur', () => {
+            container.classList.remove('border-primary-container');
+        });
+
+        // Add subtle hover effects to the timeline items
+        const timelineItems = document.querySelectorAll('.relative.pl-8 > div');
+        timelineItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(4px)';
+                item.style.transition = 'transform 0.2s ease-out';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,6 +1,6 @@
-# SentinelX AI - Installation Guide
+# CyberSense AI - Installation Guide
 
-This guide provides step-by-step instructions to configure and run the SentinelX AI platform locally on your development machine.
+This guide provides step-by-step instructions to configure and run the CyberSense AI platform locally on your development machine.
 
 ---
 

@@ -1,4 +1,4 @@
-# SentinelX AI - Training Report
+# CyberSense AI - Training Report
 
 This document reports the hyperparameters, training sizes, contamination parameters, and Gini split parameters of the model classifiers.
 

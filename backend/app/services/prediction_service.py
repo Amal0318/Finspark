@@ -145,6 +145,29 @@ class PredictionService:
             confidence=float(risk_score / 100.0)
         )
         db.add(prediction_log)
+        
+        # Incident Engine: Create incident if Risk Score > 50 (High or Critical)
+        if risk_score > 50.0:
+            from app.models.incident import Incident
+            import uuid
+            
+            new_incident = Incident(
+                incident_id=f"INC-{uuid.uuid4().hex[:8].upper()}",
+                user_id=str(transaction.get("customer_id") or transaction.get("user") or "Unknown"),
+                transaction_id=str(transaction.get("transaction_id") or "N/A"),
+                source_ip=str(transaction.get("source_ip") or "127.0.0.1"),
+                destination_ip=str(transaction.get("destination_ip") or "Unknown"),
+                fraud_probability=breakdown["fraud_probability"],
+                behaviour_score=breakdown["anomaly_score"],
+                threat_score=breakdown["threat_severity"],
+                risk_score=risk_score,
+                severity=risk_level,
+                recommendation="Investigate and execute mitigation protocols.",
+                status="Open",
+                resolved=False
+            )
+            db.add(new_incident)
+
         await db.commit()
         await db.refresh(prediction_log)
 

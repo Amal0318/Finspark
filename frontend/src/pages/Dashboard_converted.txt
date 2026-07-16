@@ -1,0 +1,283 @@
+<main className="ml-[280px] p-xl min-h-screen">
+<!-- Dashboard Header -->
+<div className="flex justify-between items-end mb-xl">
+<div>
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Executive Overview</p>
+<h2 className="font-headline-lg text-headline-lg font-extrabold text-night-black">Security Operations Center</h2>
+</div>
+<div className="flex gap-md">
+<button className="flex items-center gap-2 px-md py-sm bg-white border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-all">
+<span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                    Last 24 Hours
+                </button>
+<button className="flex items-center gap-2 px-md py-sm bg-night-black text-white rounded-lg font-label-md text-label-md hover:bg-black transition-all">
+<span className="material-symbols-outlined text-[18px]">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Top KPI Cards -->
+<div className="grid grid-cols-1 md:grid-cols-5 gap-lg mb-xl">
+<!-- KPI 1 -->
+<div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Events Correlated</p>
+<h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">1.2M</h3>
+<div className="flex items-center gap-1 mt-md text-green-600 font-label-sm text-label-sm">
+<span className="material-symbols-outlined text-sm">trending_up</span>
+<span>14.2%</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Fraud Alerts</p>
+<h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">12</h3>
+<div className="flex items-center gap-1 mt-md text-error font-label-sm text-label-sm">
+<span className="material-symbols-outlined text-sm">priority_high</span>
+<span>Action Required</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Behaviour Anomalies</p>
+<h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">42</h3>
+<div className="flex items-center gap-1 mt-md text-on-surface-variant font-label-sm text-label-sm">
+<span className="material-symbols-outlined text-sm">history</span>
+<span>Stable</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Critical Threats</p>
+<h3 className="font-metric-lg text-metric-lg text-error mt-xs">3</h3>
+<div className="flex items-center gap-1 mt-md text-error font-label-sm text-label-sm">
+<span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: ""FILL" 1" }}>warning</span>
+<span>Immediate Action</span>
+</div>
+</div>
+<!-- KPI 5 -->
+<div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Avg Risk Score</p>
+<h3 className="font-metric-lg text-metric-lg text-green-600 mt-xs">Low</h3>
+<div className="flex items-center gap-1 mt-md text-green-600 font-label-sm text-label-sm">
+<span className="material-symbols-outlined text-sm">verified</span>
+<span>Within Limits</span>
+</div>
+</div>
+</div>
+<!-- Charts Bento Grid -->
+<div className="grid grid-cols-12 gap-lg">
+<!-- Risk Timeline (Large) -->
+<div className="col-span-12 lg:col-span-8 glass-card p-lg rounded-2xl custom-shadow">
+<div className="flex justify-between items-start mb-xl">
+<h4 className="font-headline-sm text-headline-sm text-night-black">Risk Timeline</h4>
+<span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-night-black">more_horiz</span>
+</div>
+<div className="h-64 w-full relative">
+<!-- Faux Line Chart using CSS/SVG -->
+<svg className="w-full h-full overflow-visible" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="goldGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FEBE10" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#FEBE10" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#ECECEC" stroke-width="1" x1="0" x2="1000" y1="0" y2="0"></line>
+<line stroke="#ECECEC" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="#ECECEC" stroke-width="1" x1="0" x2="1000" y1="100" y2="100"></line>
+<line stroke="#ECECEC" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#ECECEC" stroke-width="1" x1="0" x2="1000" y1="200" y2="200"></line>
+<!-- Area Fill -->
+<path d="M0,180 L100,160 L200,170 L300,120 L400,140 L500,40 L600,80 L700,60 L800,100 L900,90 L1000,110 L1000,200 L0,200 Z" fill="url(#goldGradient)"></path>
+<!-- Data Line -->
+<polyline fill="none" points="0,180 100,160 200,170 300,120 400,140 500,40 600,80 700,60 800,100 900,90 1000,110" stroke="#FEBE10" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Tooltip Indicator -->
+<circle cx="500" cy="40" fill="#1A1A1A" r="5" stroke="#FEBE10" stroke-width="2"></circle>
+</svg>
+<div className="flex justify-between mt-md px-1">
+<span className="font-label-sm text-label-sm text-on-surface-variant">08:00</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">12:00</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant font-bold text-night-black">Peak Risk (14:32)</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">20:00</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">00:00</span>
+</div>
+</div>
+</div>
+<!-- Threat Distribution (Donut) -->
+<div className="col-span-12 lg:col-span-4 glass-card p-lg rounded-2xl custom-shadow flex flex-col">
+<h4 className="font-headline-sm text-headline-sm text-night-black mb-xl">Threat Distribution</h4>
+<div className="flex-1 flex flex-col items-center justify-center">
+<div className="relative w-48 h-48">
+<!-- CSS Donut Chart -->
+<svg className="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#F2F2F2" stroke-width="3.8"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#FEBE10" stroke-dasharray="70 100" stroke-width="3.8"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#1A1A1A" stroke-dasharray="15 100" stroke-dashoffset="-70" stroke-width="3.8"></circle>
+</svg>
+<div className="absolute inset-0 flex flex-col items-center justify-center">
+<span className="font-headline-md text-headline-md font-bold">57</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Total</span>
+</div>
+</div>
+<div className="w-full mt-xl space-y-md">
+<div className="flex justify-between items-center">
+<div className="flex items-center gap-2">
+<div className="w-3 h-3 rounded-full bg-madrid-gold"></div>
+<span className="font-body-sm text-body-sm text-on-surface-variant">Social Engineering</span>
+</div>
+<span className="font-label-md text-label-md font-bold">70%</span>
+</div>
+<div className="flex justify-between items-center">
+<div className="flex items-center gap-2">
+<div className="w-3 h-3 rounded-full bg-night-black"></div>
+<span className="font-body-sm text-body-sm text-on-surface-variant">Brute Force</span>
+</div>
+<span className="font-label-md text-label-md font-bold">15%</span>
+</div>
+<div className="flex justify-between items-center">
+<div className="flex items-center gap-2">
+<div className="w-3 h-3 rounded-full bg-secondary-container"></div>
+<span className="font-body-sm text-body-sm text-on-surface-variant">Other</span>
+</div>
+<span className="font-label-md text-label-md font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fraud Trend (Bar) -->
+<div className="col-span-12 lg:col-span-6 glass-card p-lg rounded-2xl custom-shadow">
+<h4 className="font-headline-sm text-headline-sm text-night-black mb-xl">Fraud Trend Analysis</h4>
+<div className="h-64 flex items-end justify-between gap-2 px-md">
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "30%" }}></div>
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "45%" }}></div>
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "80%" }}></div>
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "60%" }}></div>
+<div className="flex-1 bg-madrid-gold rounded-t-lg" style={{ height: "95%" }}></div>
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "70%" }}></div>
+<div className="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-madrid-gold" style={{ height: "40%" }}></div>
+</div>
+<div className="flex justify-between mt-md px-md">
+<span className="font-label-sm text-label-sm text-on-surface-variant">Mon</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Wed</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Thu</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant font-bold text-night-black">Fri</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Sat</span>
+<span className="font-label-sm text-label-sm text-on-surface-variant">Sun</span>
+</div>
+</div>
+<!-- Country Threat Map (Map Placeholder) -->
+<div className="col-span-12 lg:col-span-6 glass-card rounded-2xl custom-shadow overflow-hidden relative flex flex-col">
+<div className="p-lg flex justify-between items-center bg-white/50 backdrop-blur z-10">
+<h4 className="font-headline-sm text-headline-sm text-night-black">Geospatial Threat Map</h4>
+<div className="flex items-center gap-2">
+<span className="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span className="font-label-sm text-label-sm text-error font-bold">Active Attacks</span>
+</div>
+</div>
+<div className="flex-1 w-full relative">
+<div className="absolute inset-0 bg-cover bg-center" data-alt="A sophisticated dark-themed world map visualization with glowing data points concentrated in global financial hubs. Subtle gold lines interconnect major cities, symbolizing network traffic. The map uses a minimalist, grayscale palette for the continents with intense, pulsing gold and red markers representing active security threats. The style is premium, high-tech, and editorial." style={{ backgroundImage: "url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3fAHE79EmuCkqdBnuD1pHRZUFCJhz_-fe7CglU_PGI913U8FGrNshpI8SWG-lqAdpuV-mkUTUqMX0Ku2-hf9WydrNkUdxWhHqRgANxeqPwv5DwA33mqykcCs0CfjJHu7jZw4lp5kFm4Mbce31hCePII6EFKBjrdj7obATByl3mHPKHyDuAjXY6xnOv7bvWUEtJBnrf2q8GmDpm2YB7459gP3jNLj8jbiCOlpqZlIAU9WFuIVoCrOkELdVF7QLyIeIHCDRYmaC87oD")" }}></div>
+<!-- Mock Data Overlays -->
+<div className="absolute top-1/4 left-1/3 w-4 h-4 bg-error/40 rounded-full border border-error animate-pulse"></div>
+<div className="absolute top-1/2 left-1/2 w-8 h-8 bg-madrid-gold/40 rounded-full border border-madrid-gold animate-pulse"></div>
+<div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-error/40 rounded-full border border-error animate-pulse"></div>
+<div className="absolute bottom-md right-md p-md glass-card rounded-xl">
+<p className="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs">Origin Hotspot</p>
+<p className="font-body-md text-body-md font-bold text-night-black">Beijing, CN (Risk: 8.4)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Transactions/Incidents Table -->
+<div className="mt-xl glass-card rounded-2xl custom-shadow">
+<div className="p-lg border-b border-outline-variant flex justify-between items-center">
+<h4 className="font-headline-sm text-headline-sm text-night-black">Critical Incident Response</h4>
+<button className="text-primary font-label-md text-label-md hover:underline">View All Intelligence</button>
+</div>
+<div className="overflow-x-auto">
+<table className="w-full text-left">
+<thead>
+<tr className="bg-surface-container-low">
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Incident ID</th>
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Source Entity</th>
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Severity</th>
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Threat Vector</th>
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Status</th>
+<th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody className="divide-y divide-outline-variant">
+<tr className="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td className="px-lg py-md font-body-sm text-body-sm font-bold">#SX-9482</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-3">
+<div className="w-8 h-8 rounded bg-night-black flex items-center justify-center text-white font-bold text-xs">JP</div>
+<span className="font-body-sm text-body-sm">JP Morgan Institutional Node</span>
+</div>
+</td>
+<td className="px-lg py-md">
+<span className="px-3 py-1 rounded-full bg-error/10 text-error font-label-sm text-label-sm border border-error/20">Critical</span>
+</td>
+<td className="px-lg py-md font-body-sm text-body-sm">Unauthorized Lateral Movement</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span className="w-2 h-2 rounded-full bg-madrid-gold"></span> Investigating
+                                </div>
+</td>
+<td className="px-lg py-md">
+<button className="p-2 rounded hover:bg-white text-on-surface-variant group-hover:text-night-black transition-all">
+<span className="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr className="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td className="px-lg py-md font-body-sm text-body-sm font-bold">#SX-9479</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-3">
+<div className="w-8 h-8 rounded bg-night-black flex items-center justify-center text-white font-bold text-xs">HS</div>
+<span className="font-body-sm text-body-sm">HSBC Private Banking Gateway</span>
+</div>
+</td>
+<td className="px-lg py-md">
+<span className="px-3 py-1 rounded-full bg-orange-500/10 text-orange-700 font-label-sm text-label-sm border border-orange-500/20">High</span>
+</td>
+<td className="px-lg py-md font-body-sm text-body-sm">Fraudulent SWIFT Transfer</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span className="w-2 h-2 rounded-full bg-green-500"></span> Blocked
+                                </div>
+</td>
+<td className="px-lg py-md">
+<button className="p-2 rounded hover:bg-white text-on-surface-variant group-hover:text-night-black transition-all">
+<span className="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr className="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td className="px-lg py-md font-body-sm text-body-sm font-bold">#SX-9475</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-3">
+<div className="w-8 h-8 rounded bg-night-black flex items-center justify-center text-white font-bold text-xs">DB</div>
+<span className="font-body-sm text-body-sm">Deutsche Bank Clearing API</span>
+</div>
+</td>
+<td className="px-lg py-md">
+<span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-700 font-label-sm text-label-sm border border-blue-500/20">Medium</span>
+</td>
+<td className="px-lg py-md font-body-sm text-body-sm">Abnormal API Payload Size</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span className="w-2 h-2 rounded-full bg-blue-500"></span> Monitoring
+                                </div>
+</td>
+<td className="px-lg py-md">
+<button className="p-2 rounded hover:bg-white text-on-surface-variant group-hover:text-night-black transition-all">
+<span className="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>

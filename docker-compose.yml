@@ -3,34 +3,34 @@ version: '3.8'
 services:
   db:
     image: postgres:15-alpine
-    container_name: sentinelx_db
+    container_name: cybersense_db
     restart: always
     environment:
-      POSTGRES_DB: sentinelx
-      POSTGRES_USER: sentinelx_admin
-      POSTGRES_PASSWORD: sentinelx_secure_pass_2026
+      POSTGRES_DB: cybersense
+      POSTGRES_USER: cybersense_admin
+      POSTGRES_PASSWORD: cybersense_secure_pass_2026
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U sentinelx_admin -d sentinelx"]
+      test: ["CMD-SHELL", "pg_isready -U cybersense_admin -d cybersense"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
-      - sentinelx_network
+      - cybersense_network
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: sentinelx_backend
+    container_name: cybersense_backend
     restart: always
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql+asyncpg://sentinelx_admin:sentinelx_secure_pass_2026@db:5432/sentinelx
+      - DATABASE_URL=postgresql+asyncpg://cybersense_admin:cybersense_secure_pass_2026@db:5432/cybersense
       - JWT_SECRET=9s8dfyhsdf987ysd9f87ysd98f7ysd9f87ysdfhskjdhfksjdhfksjdhf
       - ACCESS_TOKEN_EXPIRE_MINUTES=60
       - ENVIRONMENT=production
@@ -39,24 +39,24 @@ services:
       db:
         condition: service_healthy
     networks:
-      - sentinelx_network
+      - cybersense_network
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: sentinelx_frontend
+    container_name: cybersense_frontend
     restart: always
     ports:
       - "80:80"
     depends_on:
       - backend
     networks:
-      - sentinelx_network
+      - cybersense_network
 
 volumes:
   pgdata:
 
 networks:
-  sentinelx_network:
+  cybersense_network:
     driver: bridge

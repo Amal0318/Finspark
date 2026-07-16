@@ -6,7 +6,7 @@ from typing import Dict, Any, List
 from app.core.database import get_db
 from app.controllers.llm_controller import LLMController
 from app.services.llm_service import LLMService
-from app.middleware.auth import RoleChecker
+from app.middleware.auth import RoleChecker, get_current_user
 from app.models.user import User
 
 router = APIRouter(prefix="/llm")
@@ -26,7 +26,7 @@ class GenerateReportRequest(BaseModel):
 async def explain_incident_correlation(
     alert_id: int,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(analyst_only)
+    current_user: User = Depends(get_current_user)
 ):
     """
     Simulates a security LLM brief generation that synthesizes banking log histories

@@ -1,6 +1,6 @@
-# SentinelX AI - System Architecture
+# CyberSense AI - System Architecture
 
-SentinelX AI is an enterprise-grade AI-powered Cybersecurity Telemetry & Banking Transaction Correlation Platform. It integrates machine learning anomaly models, transaction risk scoring, and generative LLM explanations to protect financial ecosystems.
+CyberSense AI is an enterprise-grade AI-powered Cybersecurity Telemetry & Banking Transaction Correlation Platform. It integrates machine learning anomaly models, transaction risk scoring, and generative LLM explanations to protect financial ecosystems.
 
 ---
 

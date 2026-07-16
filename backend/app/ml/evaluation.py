@@ -142,7 +142,7 @@ class PipelineEvaluator:
         if "risk_indicator" in df.columns:
             plt.figure(figsize=(7, 5))
             sns.histplot(df["risk_indicator"], kde=True, bins=30, color="purple")
-            plt.title("SentinelX Composite Risk Score Distribution", fontsize=12, fontweight="bold")
+            plt.title("CyberSense Composite Risk Score Distribution", fontsize=12, fontweight="bold")
             plt.xlabel("Calculated Risk Score (%)", fontsize=10)
             plt.ylabel("Frequency (Events count)", fontsize=10)
             plt.tight_layout()

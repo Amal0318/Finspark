@@ -68,15 +68,15 @@ class RiskScoreEngine:
         fraud_prob = float(fraud_res.get("fraud_probability", 0.0))
 
         # 2. Calculate auxiliary threat/compliance scores
-        cyber_score = cls.calculate_cyber_threat_score(features)
-        business_score = cls.calculate_business_rules_score(features)
+        threat_severity = cls.calculate_cyber_threat_score(features)
+        auth_risk = cls.calculate_business_rules_score(features)
 
         # 3. Calculate weighted composite score (0 to 100%)
         composite_score = (
             (0.40 * fraud_prob) +
             (0.30 * anomaly_score) +
-            (0.20 * cyber_score) +
-            (0.10 * business_score)
+            (0.20 * threat_severity) +
+            (0.10 * auth_risk)
         )
         composite_score = round(float(max(0.0, min(100.0, composite_score))), 2)
 
@@ -107,7 +107,7 @@ class RiskScoreEngine:
             "breakdown": {
                 "fraud_probability": fraud_prob,
                 "anomaly_score": anomaly_score,
-                "cyber_threat_score": cyber_score,
-                "business_rules_score": business_score
+                "threat_severity": threat_severity,
+                "authentication_risk": auth_risk
             }
         }

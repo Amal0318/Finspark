@@ -1,8 +1,8 @@
-# SentinelX AI 🛡️
+# CyberSense AI 🛡️
 
 ### AI-Powered Cybersecurity Telemetry & Banking Transaction Correlation Engine
 
-SentinelX AI is a production-ready, clean-architecture security intelligence platform designed to ingest multi-modal telemetry logs, correlate them with live banking transaction streams, and employ dual Machine Learning models (Isolation Forest + SMOTE Random Forest) to mitigate fraud, cyber exploits, and insider threats in real-time.
+CyberSense AI is a production-ready, clean-architecture security intelligence platform designed to ingest multi-modal telemetry logs, correlate them with live banking transaction streams, and employ dual Machine Learning models (Isolation Forest + SMOTE Random Forest) to mitigate fraud, cyber exploits, and insider threats in real-time.
 
 ---
 

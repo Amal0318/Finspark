@@ -12,20 +12,14 @@ class ModelPredictor:
     """
 
     def __init__(self):
-        # Load serialized model files
-        self.iforest = ModelLoader.load_model("isolation_forest.pkl")
-        self.rf_clf = ModelLoader.load_model("random_forest.pkl")
-        
-        if not self.iforest:
-            logger.warning("Failed to load isolation_forest.pkl. Anomaly predictions will fallback.")
-        if not self.rf_clf:
-            logger.warning("Failed to load random_forest.pkl. Fraud predictions will fallback.")
+        pass
 
     def predict_anomaly(self, input_features: Dict[str, Any]) -> Dict[str, Any]:
         """
         Executes Isolation Forest anomaly scoring on behavioral features.
         """
-        if not self.iforest:
+        iforest = ModelLoader.get_model("isolation_forest")
+        if not iforest:
             return {"anomaly_score": 50.0, "is_anomaly": False, "status": "model_unavailable"}
 
         # Align with exact training column feature names
@@ -46,13 +40,13 @@ class ModelPredictor:
 
         try:
             # Isolation Forest decision_function outputs negative values for anomalies
-            raw_score = self.iforest.decision_function(features)[0]
+            raw_score = iforest.decision_function(features)[0]
             # Convert decision boundary to a 0-100% anomaly score
             anomaly_score = (0.5 - raw_score) * 100.0
             anomaly_score = float(np.clip(anomaly_score, 0.0, 100.0))
 
             # -1 represents an anomaly prediction
-            prediction = self.iforest.predict(features)[0]
+            prediction = iforest.predict(features)[0]
             is_anomaly = bool(prediction == -1)
 
             return {
@@ -68,7 +62,8 @@ class ModelPredictor:
         """
         Executes Random Forest binary classification for payment transaction fraud.
         """
-        if not self.rf_clf:
+        rf_clf = ModelLoader.get_model("random_forest")
+        if not rf_clf:
             return {"fraud_probability": 0.0, "is_fraud": False, "status": "model_unavailable"}
 
         # Align with exact training column feature names
@@ -90,8 +85,8 @@ class ModelPredictor:
         }])
 
         try:
-            prob = self.rf_clf.predict_proba(features)[0, 1]
-            pred = self.rf_clf.predict(features)[0]
+            prob = rf_clf.predict_proba(features)[0, 1]
+            pred = rf_clf.predict(features)[0]
             is_fraud = bool(pred == 1)
 
             return {

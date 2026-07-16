@@ -1,87 +1,30 @@
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { Bell, ShieldCheck, Database, RefreshCw, Cpu } from 'lucide-react';
+import React from 'react';
 
-const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
-  const { user } = useAuth();
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  const getRoleColor = (role) => {
-    switch (role?.toLowerCase()) {
-      case 'admin':
-        return 'border-purple-500 text-purple-400 bg-purple-500/10 shadow-glow-purple';
-      case 'investigator':
-        return 'border-cyan-500 text-cyan-400 bg-cyan-500/10 shadow-glow-cyan';
-      default:
-        return 'border-gray-500 text-gray-400 bg-gray-500/10';
-    }
-  };
-
+const Navbar = ({ onRefresh, refreshing, notifications }) => {
   return (
-    <header className="h-16 border-b border-gray-800 bg-[#0A0D1A]/90 flex items-center justify-between px-6 z-20 shrink-0 select-none">
-      {/* Active System Metrics Badges */}
-      <div className="flex items-center space-x-3 text-[10px] font-mono">
-        <span className="flex items-center space-x-1.5 bg-gray-900 border border-gray-800 px-2.5 py-1 rounded-full text-emerald-400">
-          <Database className="h-3 w-3 animate-pulse" />
-          <span>DB ACTIVE</span>
-        </span>
-        <span className="flex items-center space-x-1.5 bg-gray-900 border border-gray-800 px-2.5 py-1 rounded-full text-cyan-400">
-          <Cpu className="h-3 w-3 animate-pulse-slow" />
-          <span>ML ENGINE RUNNING</span>
-        </span>
+    <header className="sticky top-0 z-30 flex justify-between items-center px-6 py-4 bg-surface-container-low border-b border-outline-variant backdrop-blur-md shadow-sm">
+      <div className="flex items-center gap-xl w-1/2">
+        <div className="relative w-full max-w-md group">
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-madrid-gold transition-colors">search</span>
+          <input className="w-full bg-white border border-outline-variant rounded-lg pl-10 pr-4 py-2 font-body-sm text-body-sm focus:ring-1 focus:ring-madrid-gold focus:border-madrid-gold outline-none transition-all" placeholder="Search incidents, entities or assets..." type="text"/>
+        </div>
       </div>
-
-      <div className="flex items-center space-x-4">
-        {/* Manual Refresh Button */}
-        {onRefresh && (
-          <button
-            onClick={onRefresh}
-            disabled={refreshing}
-            className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors"
-          >
-            <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? 'animate-spin' : ''}`} />
-          </button>
-        )}
-
-        {/* User Role Badge */}
-        <span className={`px-2.5 py-1 rounded border text-[10px] font-bold uppercase tracking-widest ${getRoleColor(user?.role)}`}>
-          {user?.role || 'viewer'}
-        </span>
-
-        {/* Notifications Icon and dropdown */}
-        <div className="relative">
-          <button
-            onClick={() => setShowNotifications(!showNotifications)}
-            className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors relative"
-          >
-            <Bell className="h-4 w-4" />
-            {notifications.length > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 h-2 w-2 bg-rose-500 rounded-full animate-ping"></span>
+      <div className="flex items-center gap-lg">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-700">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span className="font-label-sm text-label-sm font-bold">System: Operational</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <button className="relative material-symbols-outlined text-on-surface-variant hover:text-madrid-gold transition-colors">
+            notifications
+            {notifications && notifications.length > 0 && (
+              <span className="absolute top-0 right-0 w-2 h-2 bg-error rounded-full animate-ping"></span>
             )}
           </button>
-
-          {showNotifications && (
-            <div className="absolute right-0 mt-2 w-72 glass-panel border border-gray-850 rounded-xl shadow-2xl p-4 z-30 text-xs">
-              <h4 className="font-bold text-white border-b border-gray-800 pb-2 mb-2 uppercase tracking-wider">
-                System Indicators Feed
-              </h4>
-              <div className="space-y-2 max-h-48 overflow-y-auto">
-                {notifications.length === 0 ? (
-                  <p className="text-gray-500 py-4 text-center">No active threat feeds logged</p>
-                ) : (
-                  notifications.map((n, idx) => (
-                    <div key={idx} className="p-2 bg-gray-900/80 rounded border border-gray-800/80 flex items-start space-x-2">
-                      <span className="h-1.5 w-1.5 bg-rose-500 rounded-full mt-1.5 shrink-0 animate-pulse"></span>
-                      <div>
-                        <p className="font-semibold text-gray-200">{n.title}</p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">{n.desc}</p>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          )}
+          <button className="material-symbols-outlined text-on-surface-variant hover:text-madrid-gold transition-colors" onClick={onRefresh} disabled={refreshing}>
+            {refreshing ? 'sync' : 'dns'}
+          </button>
+          <button className="material-symbols-outlined text-on-surface-variant hover:text-madrid-gold transition-colors">psychology</button>
         </div>
       </div>
     </header>

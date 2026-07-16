@@ -1,0 +1,253 @@
+<main className="ml-[280px] p-xl space-y-xl max-w-[1600px]">
+<!-- Page Header -->
+<header className="flex justify-between items-end">
+<div>
+<nav className="flex gap-2 text-label-sm text-on-surface-variant mb-2">
+<span className="hover:text-primary cursor-pointer transition-colors">Fortress AI</span>
+<span>/</span>
+<span className="text-on-surface">Threat Intelligence</span>
+</nav>
+<h2 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Active Threat Vector Matrix</h2>
+<p className="text-body-md text-on-surface-variant mt-1">Real-time identification and mitigation of high-impact institutional attack surfaces.</p>
+</div>
+<div className="flex gap-3">
+<button className="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-label-md text-on-surface hover:bg-surface-container-high transition-all">
+<span className="material-symbols-outlined text-[20px]">upload_file</span>
+                    CSV Import
+                </button>
+<button className="flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary-fixed-variant rounded-lg font-label-md hover:brightness-105 transition-all shadow-sm">
+<span className="material-symbols-outlined text-[20px]">download</span>
+                    Export Ledger
+                </button>
+</div>
+</header>
+<!-- Threat Dashboard Bento -->
+<div className="grid grid-cols-12 gap-lg">
+<!-- Filter Actions -->
+<div className="col-span-12 flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+<button className="px-5 py-2.5 bg-primary text-white rounded-full font-label-md flex items-center gap-2 whitespace-nowrap">
+                    All Feeds (284)
+                </button>
+<button className="px-5 py-2.5 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md flex items-center gap-2 whitespace-nowrap hover:border-primary transition-colors">
+<div className="w-2 h-2 rounded-full bg-error"></div>
+                    Critical Only
+                </button>
+<button className="px-5 py-2.5 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md flex items-center gap-2 whitespace-nowrap hover:border-primary transition-colors">
+<div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                    High Severity
+                </button>
+<button className="px-5 py-2.5 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md flex items-center gap-2 whitespace-nowrap hover:border-primary transition-colors">
+<span className="material-symbols-outlined text-[18px]">public</span>
+                    International Traffic
+                </button>
+<button className="px-5 py-2.5 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md flex items-center gap-2 whitespace-nowrap hover:border-primary transition-colors">
+<span className="material-symbols-outlined text-[18px]">psychology</span>
+                    AI Flagged
+                </button>
+<div className="flex-1"></div>
+<div className="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-lg border border-outline-variant">
+<span className="text-label-sm text-on-surface-variant">Refresh in:</span>
+<span className="font-mono text-label-sm text-primary font-bold">12s</span>
+</div>
+</div>
+<!-- Main Table Container -->
+<div className="col-span-12 bg-white rounded-2xl border border-outline-variant custom-shadow overflow-hidden">
+<div className="overflow-x-auto">
+<table className="w-full text-left border-collapse">
+<thead>
+<tr className="bg-surface-container-low border-b border-outline-variant sticky top-0 z-10">
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Timestamp</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Source IP</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Destination IP</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Origin</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Attack Type</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Severity</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider text-right">Confidence</th>
+<th className="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody className="divide-y divide-outline-variant" id="threat-table-body">
+<!-- Threat Row 1 -->
+<tr className="hover:bg-primary-container/5 transition-colors group cursor-pointer">
+<td className="px-lg py-md font-body-sm text-on-surface whitespace-nowrap">2023-11-24 14:22:01</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">192.168.12.104</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">10.0.4.52</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2">
+<span className="text-lg">🇨🇳</span>
+<span className="font-body-sm text-on-surface">China</span>
+</div>
+</td>
+<td className="px-lg py-md font-body-sm text-on-surface">DDoS Amplification</td>
+<td className="px-lg py-md">
+<span className="px-2 py-1 rounded bg-error/10 text-error font-label-sm border border-error/20">CRITICAL</span>
+</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface text-right">98.4%</td>
+<td className="px-lg py-md text-right">
+<button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Threat Row 2 -->
+<tr className="hover:bg-primary-container/5 transition-colors group cursor-pointer">
+<td className="px-lg py-md font-body-sm text-on-surface whitespace-nowrap">2023-11-24 14:21:45</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">45.231.11.2</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">10.0.8.120</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2">
+<span className="text-lg">🇷🇺</span>
+<span className="font-body-sm text-on-surface">Russia</span>
+</div>
+</td>
+<td className="px-lg py-md font-body-sm text-on-surface">SQL Injection Attempt</td>
+<td className="px-lg py-md">
+<span className="px-2 py-1 rounded bg-orange-500/10 text-orange-600 font-label-sm border border-orange-500/20">HIGH</span>
+</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface text-right">82.1%</td>
+<td className="px-lg py-md text-right">
+<button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Threat Row 3 -->
+<tr className="hover:bg-primary-container/5 transition-colors group cursor-pointer">
+<td className="px-lg py-md font-body-sm text-on-surface whitespace-nowrap">2023-11-24 14:20:12</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">172.16.0.4</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">Internal Hub</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2">
+<span className="text-lg">🇺🇸</span>
+<span className="font-body-sm text-on-surface">USA</span>
+</div>
+</td>
+<td className="px-lg py-md font-body-sm text-on-surface">Lateral Movement</td>
+<td className="px-lg py-md">
+<span className="px-2 py-1 rounded bg-error/10 text-error font-label-sm border border-error/20">CRITICAL</span>
+</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface text-right">99.9%</td>
+<td className="px-lg py-md text-right">
+<button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Threat Row 4 -->
+<tr className="hover:bg-primary-container/5 transition-colors group cursor-pointer">
+<td className="px-lg py-md font-body-sm text-on-surface whitespace-nowrap">2023-11-24 14:18:55</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">103.24.201.44</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface">DMZ-Srv-01</td>
+<td className="px-lg py-md">
+<div className="flex items-center gap-2">
+<span className="text-lg">🇮🇳</span>
+<span className="font-body-sm text-on-surface">India</span>
+</div>
+</td>
+<td className="px-lg py-md font-body-sm text-on-surface">Credential Stuffing</td>
+<td className="px-lg py-md">
+<span className="px-2 py-1 rounded bg-orange-500/10 text-orange-600 font-label-sm border border-orange-500/20">HIGH</span>
+</td>
+<td className="px-lg py-md font-mono text-body-sm text-on-surface text-right">76.5%</td>
+<td className="px-lg py-md text-right">
+<button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State Block (Hidden by Default) -->
+<div className="hidden flex-col items-center justify-center py-32 px-lg text-center space-y-6" id="empty-state">
+<div className="relative w-64 h-64 mx-auto mb-4">
+<div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+</div>
+<div className="max-w-md mx-auto">
+<h3 className="font-headline-sm text-headline-sm text-on-surface">No Threats Detected</h3>
+<p className="text-body-md text-on-surface-variant mt-2">The AI surveillance network is currently reporting zero active high-severity threats across your infrastructure. Enjoy the silence.</p>
+<button className="mt-8 px-6 py-3 bg-primary-container text-on-primary-fixed-variant rounded-lg font-label-md hover:brightness-105 transition-all" onclick="resetFilters()">
+                            Scan Network Manually
+                        </button>
+</div>
+</div>
+<!-- Table Footer -->
+<div className="px-lg py-md bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<p className="text-label-sm text-on-surface-variant">Showing 1 to 24 of 284 threats</p>
+<div className="flex items-center gap-2">
+<button className="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-50">
+<span className="material-symbols-outlined">chevron_left</span>
+</button>
+<button className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-label-md">1</button>
+<button className="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">2</button>
+<button className="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">3</button>
+<button className="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">
+<span className="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Supplementary Insights Cards -->
+<div className="col-span-12 lg:col-span-4 bg-white p-lg rounded-2xl border border-outline-variant custom-shadow">
+<div className="flex justify-between items-center mb-6">
+<h3 className="font-headline-sm text-headline-sm">Origin Distribution</h3>
+<span className="material-symbols-outlined text-on-surface-variant">info</span>
+</div>
+<div className="space-y-4">
+<div className="space-y-1">
+<div className="flex justify-between text-label-sm">
+<span className="text-on-surface">China (CN)</span>
+<span className="text-on-surface-variant">42%</span>
+</div>
+<div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div className="bg-primary h-full" style={{ width: "42%" }}></div>
+</div>
+</div>
+<div className="space-y-1">
+<div className="flex justify-between text-label-sm">
+<span className="text-on-surface">Russia (RU)</span>
+<span className="text-on-surface-variant">28%</span>
+</div>
+<div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div className="bg-primary h-full opacity-80" style={{ width: "28%" }}></div>
+</div>
+</div>
+<div className="space-y-1">
+<div className="flex justify-between text-label-sm">
+<span className="text-on-surface">United States (US)</span>
+<span className="text-on-surface-variant">15%</span>
+</div>
+<div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div className="bg-primary h-full opacity-60" style={{ width: "15%" }}></div>
+</div>
+</div>
+</div>
+</div>
+<div className="col-span-12 lg:col-span-8 bg-white p-lg rounded-2xl border border-outline-variant custom-shadow relative overflow-hidden">
+<div className="relative z-10">
+<div className="flex justify-between items-center mb-6">
+<h3 className="font-headline-sm text-headline-sm">Threat Velocity Index</h3>
+<div className="flex items-center gap-3">
+<span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">STABLE</span>
+<span className="text-label-sm text-on-surface-variant">Last 24h</span>
+</div>
+</div>
+<div className="flex items-end gap-1 h-32">
+<!-- Simulated Bar Chart -->
+<div className="flex-1 bg-primary/20 rounded-t h-[60%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[45%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[30%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[80%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[55%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[40%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[90%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[65%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[50%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[35%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[75%] transition-all hover:bg-primary"></div>
+<div className="flex-1 bg-primary/20 rounded-t h-[55%] transition-all hover:bg-primary"></div>
+</div>
+<div className="flex justify-between mt-4 text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">
+<span>14:00</span>
+<span>16:00</span>
+<span>18:00</span>
+<span>20:00</span>
+<span>22:00</span>
+<span>00:00</span>
+</div>
+</div>
+</div>
+</div>
+</main>

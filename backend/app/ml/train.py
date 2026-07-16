@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
@@ -10,7 +11,7 @@ from app.ml.metrics import ModelEvaluator
 from app.ml.model_loader import ModelLoader
 from app.ml.evaluation import PipelineEvaluator
 
-DATASETS_DIR = r"d:\Programs\Finspark\Datasets"
+DATASETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "Datasets"))
 PROCESSED_FILE = os.path.join(DATASETS_DIR, "processed_dataset.csv")
 
 class ModelTrainer:
@@ -157,6 +158,29 @@ class ModelTrainer:
 
         # Save Model 2
         ModelLoader.save_model(rf_clf, "random_forest.pkl")
+
+        # Save Metrics to JSON
+        metrics_data = {
+            "model_evaluations": {
+                "random_forest": {
+                    "accuracy": rf_metrics["accuracy"],
+                    "precision": rf_metrics["precision"],
+                    "recall": rf_metrics["recall"],
+                    "f1_score": rf_metrics["f1_score"],
+                    "roc_auc": rf_metrics["roc_auc"],
+                    "mean_cv_f1_score": float(cv_scores.mean())
+                }
+            },
+            "confusion_matrix": rf_metrics["confusion_matrix"],
+            "feature_importance": [
+                {"name": row["feature"], "value": float(row["importance"] * 100)}
+                for _, row in feat_imp.iterrows()
+            ]
+        }
+        metrics_path = os.path.join(os.path.dirname(__file__), "metrics.json")
+        with open(metrics_path, "w") as f:
+            json.dump(metrics_data, f, indent=4)
+        logger.info(f"Metrics saved to {metrics_path}")
 
 if __name__ == "__main__":
     ModelTrainer.train_pipeline()

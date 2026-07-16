@@ -1,6 +1,6 @@
-# SentinelX AI - Dataset Report
+# CyberSense AI - Dataset Report
 
-SentinelX AI dynamically scans and discovers tabular datasets from separate enterprise modules.
+CyberSense AI dynamically scans and discovers tabular datasets from separate enterprise modules.
 
 ---
 

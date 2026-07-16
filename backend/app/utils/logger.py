@@ -15,5 +15,5 @@ logging.basicConfig(
 )
 
 # Export application logger
-logger = logging.getLogger("sentinelx")
+logger = logging.getLogger("cybersense")
 logger.setLevel(logging.INFO)

@@ -8,6 +8,19 @@ class ModelLoader:
     Handles saving and loading serialized scikit-learn model artifacts.
     """
     MODELS_DIR = os.path.dirname(os.path.abspath(__file__))
+    _loaded_models = {}
+
+    @classmethod
+    def init_models(cls):
+        """Loads models into memory on application startup."""
+        logger.info("Initializing and caching ML models in memory...")
+        cls._loaded_models["isolation_forest"] = cls.load_model("isolation_forest.pkl")
+        cls._loaded_models["random_forest"] = cls.load_model("random_forest.pkl")
+        
+    @classmethod
+    def get_model(cls, name: str) -> Optional[Any]:
+        """Retrieves a cached model."""
+        return cls._loaded_models.get(name)
 
     @classmethod
     def save_model(cls, model: Any, filename: str) -> str:

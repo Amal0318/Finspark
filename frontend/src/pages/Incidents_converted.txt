@@ -1,0 +1,215 @@
+<main className="ml-[280px] p-8 max-w-7xl mx-auto space-y-8">
+<!-- Chat-style Header / AI Prompt -->
+<section className="space-y-6">
+<div className="flex items-start gap-6">
+<div className="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center ai-pulse shadow-lg shadow-primary-container/20">
+<span className="material-symbols-outlined text-on-primary-container text-[28px]">neurology</span>
+</div>
+<div className="flex-1 pt-2">
+<h2 className="font-headline-lg text-headline-lg text-on-surface mb-2">Investigation: Anomalous Data Exfiltration Case #8492-X</h2>
+<p className="text-on-surface-variant font-body-lg max-w-3xl">CyberSense AI has completed a deep-neural forensic analysis of the recent traffic spike in the Tokyo data center. I have identified a sophisticated lateral movement attempt originating from an internal dev-ops endpoint.</p>
+</div>
+</div>
+</section>
+<!-- Metrics & Risk Bento Grid -->
+<div className="bento-grid">
+<!-- Risk Score Card -->
+<div className="col-span-12 md:col-span-4 glass-card p-6 rounded-2xl border border-outline-variant flex flex-col justify-between overflow-hidden relative">
+<div className="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+<div>
+<h3 className="font-label-sm text-secondary uppercase tracking-widest">Risk Severity Score</h3>
+<div className="mt-4 flex items-baseline gap-2">
+<span className="font-metric-xl text-metric-xl text-on-surface">94.2</span>
+<span className="font-headline-sm text-primary">/ 100</span>
+</div>
+<div className="mt-2 h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div className="h-full bg-primary-container" style={{ width: "94.2%" }}></div>
+</div>
+</div>
+<div className="mt-6 p-3 bg-error-container/10 rounded-lg flex items-center gap-3">
+<span className="material-symbols-outlined text-error">priority_high</span>
+<p className="font-label-sm text-on-error-container">Critical Intervention Required</p>
+</div>
+</div>
+<!-- Executive Summary -->
+<div className="col-span-12 md:col-span-8 glass-card p-8 rounded-2xl border border-outline-variant">
+<div className="flex items-center gap-3 mb-6">
+<span className="material-symbols-outlined text-primary">article</span>
+<h3 className="font-headline-sm text-on-surface">Executive Summary</h3>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div className="space-y-4">
+<p className="text-on-surface-variant leading-relaxed">
+                            A compromised credential on host <code className="bg-surface-container-highest px-1.5 py-0.5 rounded text-primary">TYO-DEV-049</code> initiated an encrypted tunnel to an unknown external endpoint in the <code className="bg-surface-container-highest px-1.5 py-0.5 rounded text-primary">RU-UR-01</code> region. 
+                        </p>
+<ul className="space-y-2">
+<li className="flex items-center gap-2 font-label-md text-on-surface">
+<span className="w-1.5 h-1.5 bg-primary-container rounded-full"></span>
+                                Incident Type: Lateral Movement
+                            </li>
+<li className="flex items-center gap-2 font-label-md text-on-surface">
+<span className="w-1.5 h-1.5 bg-primary-container rounded-full"></span>
+                                Confidence Level: 98%
+                            </li>
+</ul>
+</div>
+<div className="bg-surface-container-low rounded-xl p-4 border border-outline-variant/30">
+<p className="font-label-sm text-secondary mb-3 uppercase tracking-tighter">AI Forensics Sentiment</p>
+<div className="flex items-center gap-2 mb-2">
+<div className="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div className="h-full bg-primary-container w-[88%]"></div>
+</div>
+<span className="font-label-sm text-primary">Hostile Intent</span>
+</div>
+<div className="flex items-center gap-2">
+<div className="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div className="h-full bg-primary-container w-[12%]"></div>
+</div>
+<span className="font-label-sm text-secondary">False Positive</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Incident Timeline -->
+<div className="col-span-12 lg:col-span-7 glass-card p-8 rounded-2xl border border-outline-variant">
+<div className="flex justify-between items-center mb-8">
+<div className="flex items-center gap-3">
+<span className="material-symbols-outlined text-primary">history</span>
+<h3 className="font-headline-sm text-on-surface">Incident Timeline</h3>
+</div>
+<button className="text-primary font-label-md flex items-center gap-1 hover:underline">
+                        View Full Logs <span className="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div className="relative pl-8 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+<div className="relative">
+<div className="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#1A1A1A] border-4 border-primary-container"></div>
+<p className="font-label-sm text-secondary mb-1">14:22:04 UTC — Initial Access</p>
+<p className="font-body-md text-on-surface font-semibold">Brute force successful on VPN Gateway #4</p>
+<p className="text-body-sm text-on-surface-variant mt-1">Source IP: 194.28.115.XX. Credential used: 'svc_deployment'.</p>
+</div>
+<div className="relative">
+<div className="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-surface border-4 border-outline"></div>
+<p className="font-label-sm text-secondary mb-1">14:31:12 UTC — Enumeration</p>
+<p className="font-body-md text-on-surface">Port scanning initiated on local subnet 10.4.0.0/24</p>
+</div>
+<div className="relative">
+<div className="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-[#1A1A1A] border-4 border-primary-container ai-pulse"></div>
+<p className="font-label-sm text-secondary mb-1">14:45:55 UTC — Detection Spike</p>
+<p className="font-body-md text-on-surface font-semibold">Large outbound DNS tunnel established</p>
+<p className="text-body-sm text-on-surface-variant mt-1">540MB exfiltrated via chunked DNS queries to domain 'cdn-verify.net'.</p>
+</div>
+</div>
+</div>
+<!-- Root Cause Card -->
+<div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div className="glass-card p-6 rounded-2xl border border-outline-variant bg-[#1A1A1A] text-white">
+<div className="flex items-center gap-3 mb-4">
+<span className="material-symbols-outlined text-primary-container">search_insights</span>
+<h3 className="font-headline-sm">Root Cause Discovery</h3>
+</div>
+<p className="text-secondary-fixed text-body-md leading-relaxed">
+                        The primary vulnerability was a <span className="text-primary-container font-bold">misconfigured LDAP policy</span> on the secondary authentication server which allowed service accounts to bypass Multi-Factor Authentication (MFA) from specific 'trusted' legacy IP blocks.
+                    </p>
+<div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+<div className="flex justify-between items-center mb-2">
+<span className="font-label-sm text-secondary">Attacker Persistence</span>
+<span className="font-label-sm text-primary-container">Medium-High</span>
+</div>
+<div className="h-1.5 w-full bg-white/10 rounded-full">
+<div className="h-full bg-primary-container w-[72%]"></div>
+</div>
+</div>
+</div>
+<div className="glass-card p-6 rounded-2xl border border-outline-variant bg-white">
+<h3 className="font-label-sm text-secondary uppercase tracking-widest mb-4">Network Visualization</h3>
+<div className="relative h-48 rounded-xl overflow-hidden group">
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated network node visualization showing complex interconnections in a high-end enterprise aesthetic. The background is a crisp white with fine-line geometric structures and glowing gold data points representing active network traffic. The style is architectural and clean, using a palette of white, black, and prestigious gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzCfp5bWRNSBcjGMfQj1EbCMdhe2bm3qRI-oGK3C9ryJIIXBnmLUeSmWSx1qWX4XHZ2sWHE8FMBZ6G1vjEqBeJHe_j3OTpXzymVEL8rvXj4lGPzoTECETJZohB8n1o3TqrSIHjbeRNFE2-WuW0KrFfxNmpLbrIeSH5yvX3fD3oOxB5T5nFf3V2OYO87C35XEy-gI4AKJpxju-zSFi7OrEB9ww5lKk2BVccnuhvYSTjIp8wEjccOUOb797fJuZi0_10-4Yhw_cDiP04"/>
+<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<p className="text-white font-label-md">View 3D Topology Map</p>
+</div>
+</div>
+</div>
+</div>
+<!-- MITRE ATT&CK Mapping -->
+<div className="col-span-12 glass-card p-8 rounded-2xl border border-outline-variant">
+<div className="flex items-center justify-between mb-8">
+<div className="flex items-center gap-3">
+<span className="material-symbols-outlined text-primary">grid_view</span>
+<h3 className="font-headline-sm text-on-surface">MITRE ATT&amp;CK® Mapping</h3>
+</div>
+<div className="flex gap-2">
+<span className="px-3 py-1 bg-surface-container rounded-full text-label-sm text-on-surface-variant">Techniques Found: 4</span>
+</div>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div className="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p className="font-label-sm text-secondary mb-1">Initial Access</p>
+<p className="font-body-md font-bold text-on-surface">External Remote Services</p>
+<p className="text-xs text-on-surface-variant mt-1">T1133</p>
+</div>
+<div className="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p className="font-label-sm text-secondary mb-1">Persistence</p>
+<p className="font-body-md font-bold text-on-surface">Account Manipulation</p>
+<p className="text-xs text-on-surface-variant mt-1">T1098</p>
+</div>
+<div className="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p className="font-label-sm text-secondary mb-1">Lateral Movement</p>
+<p className="font-body-md font-bold text-on-surface">Remote Services</p>
+<p className="text-xs text-on-surface-variant mt-1">T1021</p>
+</div>
+<div className="p-4 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+<p className="font-label-sm text-secondary mb-1">Exfiltration</p>
+<p className="font-body-md font-bold text-on-surface">Exfiltration Over Alternative Protocol</p>
+<p className="text-xs text-on-surface-variant mt-1">T1048</p>
+</div>
+</div>
+</div>
+<!-- Recommendations -->
+<div className="col-span-12 glass-card p-8 rounded-2xl border border-outline-variant bg-surface-container-highest/30">
+<div className="flex items-center gap-3 mb-6">
+<span className="material-symbols-outlined text-primary">verified_user</span>
+<h3 className="font-headline-sm text-on-surface">Remediation Recommendations</h3>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div className="space-y-3">
+<div className="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span className="material-symbols-outlined text-primary-container">lock_reset</span>
+</div>
+<h4 className="font-body-md font-bold text-on-surface">Immediate Lockdown</h4>
+<p className="text-body-sm text-on-surface-variant">Disable all 'svc_deployment' credentials across the TYO region and force MFA re-enrollment.</p>
+<button className="font-label-sm text-primary flex items-center gap-1">Execute Action <span className="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div className="space-y-3">
+<div className="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span className="material-symbols-outlined text-primary-container">dns</span>
+</div>
+<h4 className="font-body-md font-bold text-on-surface">Network Filtering</h4>
+<p className="text-body-sm text-on-surface-variant">Update Palo Alto firewalls to block DNS traffic to 'cdn-verify.net' and siblings.</p>
+<button className="font-label-sm text-primary flex items-center gap-1">Execute Action <span className="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div className="space-y-3">
+<div className="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center">
+<span className="material-symbols-outlined text-primary-container">psychology_alt</span>
+</div>
+<h4 className="font-body-md font-bold text-on-surface">AI Policy Update</h4>
+<p className="text-body-sm text-on-surface-variant">Increase sensitivity of user behavior models for service accounts in Tokyo VPC.</p>
+<button className="font-label-sm text-primary flex items-center gap-1">Update Model <span className="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Chat Input Placeholder (ChatGPT Style) -->
+<div className="sticky bottom-8 left-0 right-0 max-w-4xl mx-auto z-40">
+<div className="bg-white/80 backdrop-blur-xl border border-outline-variant shadow-2xl rounded-2xl p-2 flex items-center gap-2 group transition-all focus-within:ring-2 focus-within:ring-primary-container/50">
+<button className="p-3 hover:bg-surface-container rounded-xl text-on-surface-variant transition-colors">
+<span className="material-symbols-outlined">attach_file</span>
+</button>
+<input className="flex-1 border-none focus:ring-0 bg-transparent py-4 text-body-md" placeholder="Ask CyberSense to perform further forensic analysis..." type="text"/>
+<button className="p-3 bg-primary-container text-on-primary-container rounded-xl shadow-md hover:brightness-110 active:scale-95 transition-all">
+<span className="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+<p className="text-center text-label-sm text-secondary mt-3">CyberSense can make mistakes. Verify critical security findings with a human analyst.</p>
+</div>
+</main>

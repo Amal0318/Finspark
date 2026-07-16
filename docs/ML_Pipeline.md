@@ -1,6 +1,6 @@
-# SentinelX AI - ML Pipeline Design
+# CyberSense AI - ML Pipeline Design
 
-This document details the Machine Learning pipeline design, data splitting strategies, class-imbalance oversampling algorithms, cross-validation parameters, and model persistence boundaries in SentinelX AI.
+This document details the Machine Learning pipeline design, data splitting strategies, class-imbalance oversampling algorithms, cross-validation parameters, and model persistence boundaries in CyberSense AI.
 
 ---
 
@@ -23,7 +23,7 @@ graph TD
 ## 2. Oversampling (SMOTE) & Imbalance Handling
 
 Banking transactions are highly skewed, with fraud representing less than 0.2% of occurrences. Training classifiers directly on imbalanced sets causes severe classification bias toward the majority class (legitimate transactions).
-*   **Mechanism:** SentinelX AI employs **SMOTE (Synthetic Minority Over-sampling Technique)** to balance the dataset.
+*   **Mechanism:** CyberSense AI employs **SMOTE (Synthetic Minority Over-sampling Technique)** to balance the dataset.
 *   **Results:** SMOTE synthetically expanded the fraud transactions from **46** occurrences to **23,954** training rows, creating a balanced dataset for Random Forest tree splits.
 
 ---

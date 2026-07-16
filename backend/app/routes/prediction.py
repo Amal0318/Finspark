@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 from app.core.database import get_db
 from app.controllers.prediction_controller import PredictionController
-from app.middleware.auth import RoleChecker
+from app.middleware.auth import RoleChecker, get_current_user
 from app.models.user import User
 from app.schemas.prediction import MlPrediction as MlPredictionSchema
 
@@ -40,7 +40,7 @@ async def classify_transaction(
 async def get_predictions_history(
     limit: int = 50,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(analyst_only)
+    current_user: User = Depends(get_current_user)
 ):
     """
     Query historical log executions of the ML anomaly classifier.

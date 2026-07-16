@@ -1,4 +1,4 @@
-# SentinelX AI - Evaluation Report
+# CyberSense AI - Evaluation Report
 
 This report outlines the performance evaluations, accuracy metrics, confusion matrices, and ROC/PR scores of both models.
 

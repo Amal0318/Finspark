@@ -39,12 +39,15 @@ class LLMService:
         Active Features: {json.dumps(features)}
         
         Generate a structured threat report. Respond in raw JSON format (no markdown blocks, no leading/trailing text) containing exactly these keys:
-        - "threat_summary": A concise single-sentence summary of the active risk.
-        - "incident_report": A detailed security analysis of the event.
-        - "fraud_explanation": Logical assessment of potential monetary fraud vectors.
+        - "executive_summary": A concise summary of the active risk.
         - "root_cause": Identification of how this threat originated (e.g., credential leakage, active scanning).
-        - "confidence": Estimated confidence rating (0-100%) in this analysis.
-        - "recommended_actions": A list of specific security tasks to mitigate this threat (e.g. "Freeze Account", "Block IP", "Terminate Session", "Force MFA", "Notify SOC").
+        - "timeline": Proposed timeline of events.
+        - "reason": Why the AI model flagged this.
+        - "confidence": Estimated confidence rating (0-100) in this analysis.
+        - "mitre_attack_mapping": The relevant MITRE ATT&CK tactic/technique.
+        - "recommended_actions": A list of specific security tasks to mitigate this threat.
+        - "business_impact": The potential financial or operational impact.
+        - "next_steps": Immediate next steps for the SOC team.
         """
 
         report = None
@@ -81,9 +84,9 @@ class LLMService:
         try:
             logger.info("Persisting threat report to PostgreSQL database...")
             report_log = ThreatReport(
-                source="SentinelX_LLM",
-                title=report.get("threat_summary", "Threat Alert"),
-                description=report.get("incident_report", ""),
+                source="CyberSense_LLM",
+                title=report.get("executive_summary", "Threat Alert"),
+                description=report.get("reason", ""),
                 severity=risk_level,
                 indicators_json=report
             )
@@ -133,11 +136,14 @@ class LLMService:
             actions = ["Notify SOC", "Force MFA"]
 
         report = {
-            "threat_summary": summary,
-            "incident_report": f"SentinelX correlation analysis flagged a {risk_level} severity alert. Client initiated a payment of ${amount:,.2f} from device signature: {features.get('device', 'UNKNOWN')}.",
-            "fraud_explanation": f"Fraud likelihood estimated at {prediction_result.get('fraud_probability', 0.0)}%. Anomaly checks indicate {prediction_result.get('anomaly_score', 0.0)}% behavioral deviation.",
+            "executive_summary": summary,
             "root_cause": root_cause,
+            "timeline": f"1. Initial deviation detected at {prediction_result.get('timestamp', 'T0')}. 2. Threshold breached.",
+            "reason": f"Fraud likelihood estimated at {prediction_result.get('fraud_probability', 0.0)}%. Anomaly checks indicate {prediction_result.get('anomaly_score', 0.0)}% behavioral deviation.",
             "confidence": 85.0 if risk_level in ["Critical", "High"] else 70.0,
-            "recommended_actions": actions
+            "mitre_attack_mapping": "T1078 Valid Accounts" if failed_logins > 0 else "T1486 Data Encrypted for Impact",
+            "recommended_actions": actions,
+            "business_impact": f"Potential loss of ${amount:,.2f} and reputational damage.",
+            "next_steps": "Investigate logs and confirm with the customer."
         }
         return report

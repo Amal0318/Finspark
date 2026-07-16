@@ -11,7 +11,7 @@ const api = axios.create({
 // Request interceptor to append JWT token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('sentinelx_token');
+    const token = localStorage.getItem('cybersense_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -174,12 +174,12 @@ export const llmAPI = {
   },
 };
 
-// Core ML Platform bindings (SentinelX Core)
+// Core ML Platform bindings (CyberSense Core)
 export const mlAPI = {
   uploadDataset: async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-    const response = await api.post('/ml/upload-dataset', formData, {
+    const response = await api.post('/ml/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -202,7 +202,7 @@ export const mlAPI = {
     return response.data;
   },
   generateReport: async (reportData) => {
-    const response = await api.post('/ml/generate-report', reportData);
+    const response = await api.post('/llm/generate-report', reportData);
     return response.data;
   },
   getDashboard: async () => {
@@ -223,6 +223,14 @@ export const mlAPI = {
   },
   getMetrics: async () => {
     const response = await api.get('/ml/metrics');
+    return response.data;
+  },
+  getBehaviour: async (query) => {
+    const response = await api.get(`/ml/behaviour?q=${encodeURIComponent(query)}`);
+    return response.data;
+  },
+  getQuantum: async () => {
+    const response = await api.get('/ml/quantum');
     return response.data;
   }
 };

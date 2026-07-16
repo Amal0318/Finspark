@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { mlAPI } from '../services/api';
-import { motion } from 'framer-motion';
+import { mlAPI, alertAPI } from '../services/api';
 import {
   AreaChart,
   Area,
@@ -12,27 +11,15 @@ import {
   ResponsiveContainer,
   BarChart,
   Bar,
-  LineChart,
-  Line,
-  Legend
+  Cell
 } from 'recharts';
-import {
-  ShieldAlert,
-  ShieldCheck,
-  Cpu,
-  Database,
-  Terminal,
-  Activity,
-  AlertTriangle,
-  Server
-} from 'lucide-react';
 
 const Dashboard = () => {
-  // Query dashboard statistics using TanStack React Query
+  // Query dashboard statistics
   const { data: dashboardData, isLoading, refetch } = useQuery({
     queryKey: ['mlDashboard'],
     queryFn: mlAPI.getDashboard,
-    refetchInterval: 10000 // Poll every 10 seconds for real-time updates
+    refetchInterval: 10000
   });
 
   // Query analytics series for trend charts
@@ -41,182 +28,151 @@ const Dashboard = () => {
     queryFn: mlAPI.getAnalytics
   });
 
+  // Query recent alerts for the table
+  const { data: alertsList } = useQuery({
+    queryKey: ['dashboardAlerts'],
+    queryFn: () => alertAPI.list(0, 5),
+    refetchInterval: 10000
+  });
+
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-[#070b19]">
-        <div className="flex flex-col items-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-          <p className="text-gray-400 text-sm font-mono tracking-widest animate-pulse">CONNECTING TO SENTINELX CORE...</p>
-        </div>
+      <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] space-y-4">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-madrid-gold"></div>
+        <p className="text-on-surface-variant font-label-md text-label-md animate-pulse">CONNECTING TO FORTRESS AI...</p>
       </div>
     );
   }
 
-  // Format chart data
   const stats = dashboardData || {
-    total_incidents_analyzed: 100,
-    severity_distribution: { Low: 85, Medium: 12, High: 2, Critical: 1 },
-    anomalies_detected: 5,
-    frauds_detected: 1,
-    active_threats_blocked: 2
+    total_incidents_analyzed: 0,
+    severity_distribution: { Low: 0, Medium: 0, High: 0, Critical: 0 },
+    anomalies_detected: 0,
+    frauds_detected: 0,
+    active_threats_blocked: 0
   };
-
+  
   const severityData = [
     { name: 'Low', count: stats.severity_distribution.Low, fill: '#10b981' },
     { name: 'Medium', count: stats.severity_distribution.Medium, fill: '#f59e0b' },
     { name: 'High', count: stats.severity_distribution.High, fill: '#ef4444' },
-    { name: 'Critical', count: stats.severity_distribution.Critical, fill: '#7c3aed' }
+    { name: 'Critical', count: stats.severity_distribution.Critical, fill: '#ba1a1a' }
   ];
 
-  // Map analytics predictions to Recharts line format
   const rawTrends = analyticsData?.time_series_predictions || [];
   const trendData = rawTrends.length > 0 
-    ? rawTrends.map((t, idx) => ({
+    ? rawTrends.map((t) => ({
         time: new Date(t.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         risk: t.confidence_score,
-        threat: t.label === 'Critical' || t.label === 'High' ? 1 : 0
       })).reverse()
-    : [
-        { time: '09:00', risk: 12, threat: 0 },
-        { time: '10:00', risk: 18, threat: 0 },
-        { time: '11:00', risk: 45, threat: 1 },
-        { time: '12:00', risk: 25, threat: 0 },
-        { time: '13:00', risk: 15, threat: 0 },
-        { time: '14:00', risk: 90, threat: 2 },
-        { time: '15:00', risk: 35, threat: 0 }
-      ];
+    : [];
 
   return (
-    <div className="space-y-6 text-white bg-[#070b19] p-6 min-h-screen font-sans select-none">
-      
-      {/* Title Header */}
-      <div className="flex justify-between items-center">
+    <>
+      {/* Dashboard Header */}
+      <div className="flex justify-between items-end mb-xl">
         <div>
-          <h2 className="text-2xl font-bold tracking-wide flex items-center gap-2">
-            <Activity className="h-6 w-6 text-indigo-500 animate-pulse" />
-            SentinelX AI Command Dashboard
-          </h2>
-          <p className="text-xs text-gray-400 mt-1">Multi-modal cybersecurity telemetries and real-time transaction anomalies</p>
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Executive Overview</p>
+          <h2 className="font-headline-lg text-headline-lg font-extrabold text-night-black">Security Operations Center</h2>
         </div>
-        <button 
-          onClick={() => refetch()} 
-          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-mono font-bold transition-all shadow-lg hover:shadow-indigo-500/20"
-        >
-          RE-SYNC TELEMETRY
-        </button>
+        <div className="flex gap-md">
+          <button onClick={() => refetch()} className="flex items-center gap-2 px-md py-sm bg-white border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-all">
+            <span className="material-symbols-outlined text-[18px]">sync</span>
+            Sync Telemetry
+          </button>
+          <button className="flex items-center gap-2 px-md py-sm bg-night-black text-white rounded-lg font-label-md text-label-md hover:bg-black transition-all">
+            <span className="material-symbols-outlined text-[18px]">download</span>
+            Export Report
+          </button>
+        </div>
       </div>
 
-      {/* Grid: Indicators Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
-        >
-          <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
-            <Database className="h-6 w-6" />
+      {/* Top KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-lg mb-xl">
+        <div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover bg-white/95 backdrop-blur-md border border-surface-variant">
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Events Correlated</p>
+          <h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">{stats.total_incidents_analyzed.toLocaleString()}</h3>
+          <div className="flex items-center gap-1 mt-md text-green-600 font-label-sm text-label-sm">
+            <span className="material-symbols-outlined text-sm">trending_up</span>
+            <span>Live Data</span>
           </div>
-          <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Events Correlated</p>
-            <p className="text-2xl font-extrabold mt-0.5">{stats.total_incidents_analyzed}</p>
-            <p className="text-[9px] text-emerald-400 font-mono mt-1">Active datastreams aligned</p>
+        </div>
+        <div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover bg-white/95 backdrop-blur-md border border-surface-variant">
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Fraud Alerts</p>
+          <h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">{stats.frauds_detected}</h3>
+          <div className="flex items-center gap-1 mt-md text-error font-label-sm text-label-sm">
+            <span className="material-symbols-outlined text-sm">priority_high</span>
+            <span>RF Model</span>
           </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
-        >
-          <div className="p-3.5 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-500/20">
-            <ShieldAlert className="h-6 w-6" />
+        </div>
+        <div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover bg-white/95 backdrop-blur-md border border-surface-variant">
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Behaviour Anomalies</p>
+          <h3 className="font-metric-lg text-metric-lg text-night-black mt-xs">{stats.anomalies_detected}</h3>
+          <div className="flex items-center gap-1 mt-md text-on-surface-variant font-label-sm text-label-sm">
+            <span className="material-symbols-outlined text-sm">history</span>
+            <span>IF Model</span>
           </div>
-          <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Behavior Anomalies</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-rose-450">{stats.anomalies_detected}</p>
-            <p className="text-[9px] text-rose-400 font-mono mt-1">Isolation Forest flags</p>
+        </div>
+        <div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover bg-white/95 backdrop-blur-md border border-surface-variant">
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Critical Threats</p>
+          <h3 className="font-metric-lg text-metric-lg text-error mt-xs">{stats.active_threats_blocked}</h3>
+          <div className="flex items-center gap-1 mt-md text-error font-label-sm text-label-sm">
+            <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>warning</span>
+            <span>Action Required</span>
           </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
-        >
-          <div className="p-3.5 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
-            <AlertTriangle className="h-6 w-6" />
+        </div>
+        <div className="glass-card p-lg rounded-2xl custom-shadow metric-card-hover bg-white/95 backdrop-blur-md border border-surface-variant">
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase">Avg Risk Score</p>
+          <h3 className="font-metric-lg text-metric-lg text-green-600 mt-xs">Low</h3>
+          <div className="flex items-center gap-1 mt-md text-green-600 font-label-sm text-label-sm">
+            <span className="material-symbols-outlined text-sm">verified</span>
+            <span>Within Limits</span>
           </div>
-          <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Fraud Alerts</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-amber-450">{stats.frauds_detected}</p>
-            <p className="text-[9px] text-amber-400 font-mono mt-1">Random Forest predictions</p>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex items-center space-x-4"
-        >
-          <div className="p-3.5 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
-            <ShieldCheck className="h-6 w-6" />
-          </div>
-          <div>
-            <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Threats Blocked</p>
-            <p className="text-2xl font-extrabold mt-0.5 text-emerald-450">{stats.active_threats_blocked}</p>
-            <p className="text-[9px] text-emerald-400 font-mono mt-1">IPS auto-remediations</p>
-          </div>
-        </motion.div>
-
+        </div>
       </div>
 
-      {/* Grid: Charts & Console */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Left: Risk Score Timeline (LineChart) */}
-        <div className="lg:col-span-2 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Threat Risk Timeline</h3>
-            <span className="text-[9px] px-2 py-0.5 bg-indigo-500/10 text-indigo-400 rounded border border-indigo-500/20 font-mono">REAL-TIME RISK INDEX</span>
+      {/* Charts Bento Grid */}
+      <div className="grid grid-cols-12 gap-lg">
+        {/* Risk Timeline */}
+        <div className="col-span-12 lg:col-span-8 glass-card p-lg rounded-2xl custom-shadow bg-white/95 backdrop-blur-md border border-surface-variant">
+          <div className="flex justify-between items-start mb-xl">
+            <h4 className="font-headline-sm text-headline-sm text-night-black">Risk Timeline</h4>
+            <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-night-black">more_horiz</span>
           </div>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={trendData}>
-                <defs>
-                  <linearGradient id="colorRisk" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="time" stroke="#64748b" fontSize={9} />
-                <YAxis stroke="#64748b" fontSize={9} unit="%" />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#fff' }} />
-                <Area type="monotone" dataKey="risk" stroke="#6366f1" strokeWidth={2} fillOpacity={1} fill="url(#colorRisk)" name="Composite Risk" />
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="h-64 w-full relative">
+            {trendData.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={trendData}>
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#FEBE10" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#FEBE10" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ECECEC" vertical={false} />
+                  <XAxis dataKey="time" stroke="#A3A3A3" fontSize={12} tickLine={false} axisLine={false} />
+                  <YAxis stroke="#A3A3A3" fontSize={12} tickLine={false} axisLine={false} unit="%" />
+                  <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }} />
+                  <Area type="monotone" dataKey="risk" stroke="#FEBE10" strokeWidth={3} fillOpacity={1} fill="url(#goldGradient)" />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-full font-label-sm text-label-sm text-on-surface-variant">No Data Available</div>
+            )}
           </div>
         </div>
 
-        {/* Right: Severity Class Distribution (BarChart) */}
-        <div className="lg:col-span-1 bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Severity Distribution</h3>
-            <span className="text-[9px] px-2 py-0.5 bg-rose-500/10 text-rose-400 rounded border border-rose-500/20 font-mono">INCIDENT PROFILE</span>
-          </div>
-          <div className="h-44">
+        {/* Threat Distribution (Donut / Bar) */}
+        <div className="col-span-12 lg:col-span-4 glass-card p-lg rounded-2xl custom-shadow flex flex-col bg-white/95 backdrop-blur-md border border-surface-variant">
+          <h4 className="font-headline-sm text-headline-sm text-night-black mb-xl">Threat Distribution</h4>
+          <div className="flex-1 w-full relative h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={severityData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="name" stroke="#64748b" fontSize={9} />
-                <YAxis stroke="#64748b" fontSize={9} />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#fff' }} />
-                <Bar dataKey="count" radius={[4, 4, 0, 0]} name="Incidents">
+                <CartesianGrid strokeDasharray="3 3" stroke="#ECECEC" vertical={false} />
+                <XAxis dataKey="name" stroke="#A3A3A3" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="#A3A3A3" fontSize={12} tickLine={false} axisLine={false} />
+                <Tooltip cursor={{fill: '#f5f3f3'}} contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }} />
+                <Bar dataKey="count" radius={[4, 4, 0, 0]}>
                   {severityData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
@@ -224,53 +180,75 @@ const Dashboard = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="text-[10px] text-gray-400 border-t border-gray-850 pt-3 leading-relaxed mt-4">
-            Risk scores above 75% escalate automatically to Critical severity, triggering immediate SOC orchestration.
-          </div>
-        </div>
-
-      </div>
-
-      {/* Real-time System Logs Console */}
-      <div className="bg-[#0f172a]/80 border border-gray-800 rounded-2xl p-5 shadow-lg">
-        <div className="flex items-center space-x-2 text-xs font-bold text-gray-400 mb-3 font-mono">
-          <Terminal className="h-4 w-4 text-indigo-400 animate-pulse" />
-          <span>SENTINELX AI SEC-OPS SYSTEM LOGS</span>
-        </div>
-        <div className="bg-[#04060e] border border-gray-850 rounded-xl p-4 font-mono text-[10px] text-indigo-350 space-y-2 h-36 overflow-y-auto shadow-inner">
-          <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-emerald-400">System initialization complete. Loaded models: Isolation Forest, Random Forest.</span>
-          </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-indigo-400">Ingested CSV telemetry logs discoverer active: 30,000 files verified.</span>
-          </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-gray-600">[{new Date().toLocaleTimeString()}]</span>
-            <span className="text-indigo-400">$</span>
-            <span className="text-indigo-400">Class imbalance resampler active: SMOTE oversampled minority training rows dynamically.</span>
-          </div>
-          {rawTrends.slice(0, 3).map((t, idx) => (
-            <div key={idx} className="flex items-start space-x-2">
-              <span className="text-gray-600">[{new Date(t.timestamp).toLocaleTimeString()}]</span>
-              <span className="text-indigo-400">$</span>
-              <span className="text-amber-400">prediction model inference executed: Risk score classified at {t.confidence_score}% [{t.label}].</span>
-            </div>
-          ))}
         </div>
       </div>
 
-    </div>
+      {/* Recent Incidents Table */}
+      <div className="mt-xl glass-card rounded-2xl custom-shadow bg-white/95 backdrop-blur-md border border-surface-variant">
+        <div className="p-lg border-b border-outline-variant flex justify-between items-center">
+          <h4 className="font-headline-sm text-headline-sm text-night-black">Critical Incident Response</h4>
+          <button className="text-primary font-label-md text-label-md hover:underline">View All Intelligence</button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-surface-container-low">
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Incident ID</th>
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Type</th>
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Severity</th>
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Vector / Reason</th>
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Status</th>
+                <th className="px-lg py-md font-label-md text-label-md text-on-surface-variant">Risk Score</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-outline-variant">
+              {alertsList && alertsList.map((alert) => (
+                <tr key={alert.id} className="hover:bg-surface-container-low transition-colors cursor-pointer group">
+                  <td className="px-lg py-md font-body-sm text-body-sm font-bold">#SX-{alert.id}</td>
+                  <td className="px-lg py-md">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded bg-night-black flex items-center justify-center text-white font-bold text-xs">
+                        {alert.banking_transaction ? 'TX' : 'TL'}
+                      </div>
+                      <span className="font-body-sm text-body-sm">
+                        {alert.banking_transaction ? 'Transaction' : 'Telemetry'}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-lg py-md">
+                    <span className={`px-3 py-1 rounded-full font-label-sm text-label-sm border ${
+                      alert.risk_score > 80 ? 'bg-error/10 text-error border-error/20' : 
+                      alert.risk_score > 50 ? 'bg-orange-500/10 text-orange-700 border-orange-500/20' : 
+                      'bg-blue-500/10 text-blue-700 border-blue-500/20'
+                    }`}>
+                      {alert.risk_score > 80 ? 'Critical' : alert.risk_score > 50 ? 'High' : 'Medium'}
+                    </span>
+                  </td>
+                  <td className="px-lg py-md font-body-sm text-body-sm truncate max-w-[200px]">{alert.correlation_reason}</td>
+                  <td className="px-lg py-md">
+                    <div className="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+                      <span className={`w-2 h-2 rounded-full ${
+                        alert.status === 'OPEN' ? 'bg-error animate-pulse' :
+                        alert.status === 'INVESTIGATING' ? 'bg-madrid-gold' : 'bg-green-500'
+                      }`}></span> {alert.status}
+                    </div>
+                  </td>
+                  <td className="px-lg py-md font-body-sm text-body-sm font-bold">{alert.risk_score.toFixed(1)}%</td>
+                </tr>
+              ))}
+              {(!alertsList || alertsList.length === 0) && (
+                <tr>
+                  <td colSpan="6" className="px-lg py-md text-center font-body-sm text-on-surface-variant">
+                    No recent incidents found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
-};
-
-// Recharts cell wrapper to prevent compile error in Recharts 2
-const Cell = (props) => {
-  const { fill } = props;
-  return <rect {...props} fill={fill} />;
 };
 
 export default Dashboard;
