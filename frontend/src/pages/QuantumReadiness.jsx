@@ -110,7 +110,7 @@ const QuantumReadiness = () => {
           <h3 className="font-bold text-gray-300 uppercase tracking-wider text-[11px] mb-4">Algorithm Migration Ledger</h3>
           
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#070A13] text-gray-400 font-mono border-b border-gray-800">
+            <thead className="bg-[#1F2937] text-gray-400 font-mono border-b border-[#374151]">
               <tr>
                 <th className="p-3">Compliance Domain</th>
                 <th className="p-3">Legacy Algorithm</th>

@@ -104,7 +104,7 @@ const ThreatIntel = () => {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#0b0f19]/80 text-gray-400 font-mono border-b border-gray-800">
+                <thead className="bg-[#1F2937] text-gray-400 font-mono border-b border-[#374151]">
                   <tr>
                     <th className="p-3">Time</th>
                     <th className="p-3">Device Signature</th>

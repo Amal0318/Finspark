@@ -19,7 +19,7 @@ const SearchFilter = ({ onSearch, showStatus = true, showSeverity = true }) => {
   };
 
   return (
-    <form onSubmit={handleApply} className="bg-[#0F1424] border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs shadow-md">
+    <form onSubmit={handleApply} className="bg-[#1F2937] border border-[#374151] rounded-[16px] p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs shadow-soft">
       {/* Search Input */}
       <div className="relative flex-1">
         <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500" />
@@ -28,7 +28,7 @@ const SearchFilter = ({ onSearch, showStatus = true, showSeverity = true }) => {
           placeholder="Filter by IP, device name, account number or event pattern..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full bg-[#070A13] border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:border-purple-500 transition-colors"
+          className="w-full bg-[#111827] border border-[#374151] rounded-[10px] py-2 pl-10 pr-4 text-[#F9FAFB] focus:outline-none focus:border-[#2563EB] transition-colors"
         />
       </div>
 
@@ -40,7 +40,7 @@ const SearchFilter = ({ onSearch, showStatus = true, showSeverity = true }) => {
             <select
               value={severity}
               onChange={(e) => setSeverity(e.target.value)}
-              className="bg-[#070A13] border border-gray-800 rounded-lg p-2 text-white focus:outline-none focus:border-purple-500 transition-colors"
+              className="bg-[#111827] border border-[#374151] rounded-[10px] p-2 text-[#F9FAFB] focus:outline-none focus:border-[#2563EB] transition-colors"
             >
               <option value="ALL">All Severities</option>
               <option value="CRITICAL">CRITICAL</option>
@@ -57,7 +57,7 @@ const SearchFilter = ({ onSearch, showStatus = true, showSeverity = true }) => {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="bg-[#070A13] border border-gray-800 rounded-lg p-2 text-white focus:outline-none focus:border-purple-500 transition-colors"
+              className="bg-[#111827] border border-[#374151] rounded-[10px] p-2 text-[#F9FAFB] focus:outline-none focus:border-[#2563EB] transition-colors"
             >
               <option value="ALL">All Statuses</option>
               <option value="OPEN">OPEN</option>
@@ -71,14 +71,14 @@ const SearchFilter = ({ onSearch, showStatus = true, showSeverity = true }) => {
         <div className="flex items-center space-x-2 pl-2">
           <button
             type="submit"
-            className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+            className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold px-4 py-2 rounded-[12px] transition-colors"
           >
             Apply Filters
           </button>
           <button
             type="button"
             onClick={handleReset}
-            className="bg-gray-800 hover:bg-gray-700 text-gray-300 p-2 rounded-lg transition-colors"
+            className="bg-[#1F2937] hover:bg-[#374151] text-[#F9FAFB] p-2 rounded-[12px] transition-colors"
             title="Reset Filters"
           >
             <RotateCcw className="h-4 w-4" />
