@@ -4,28 +4,28 @@
 
 @layer base {
   body {
-    background-color: #0F172A;
-    color: #F8FAFC;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #0B1220;
+    color: #F9FAFB;
+    font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
 }
 
-/* Glassmorphism panel styles */
+/* Redefined card styling (no glassmorphism) */
 .glass-panel {
-  background: rgba(30, 41, 59, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(71, 85, 105, 0.35);
+  background-color: #1F2937;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease-in-out;
 }
 
 .glass-panel-hover:hover {
-  background: rgba(30, 41, 59, 0.95);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  background-color: #273549;
+  border-color: #475569;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.35);
 }
 
 /* Custom dark scrollbars */
@@ -35,7 +35,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0F19;
+  background: #0B1220;
 }
 
 ::-webkit-scrollbar-thumb {

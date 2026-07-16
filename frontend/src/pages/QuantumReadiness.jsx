@@ -95,7 +95,7 @@ const QuantumReadiness = () => {
                 <XAxis dataKey="name" stroke="#6B7280" style={{ fontSize: '9px' }} />
                 <YAxis stroke="#6B7280" style={{ fontSize: '9px' }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0B0F19', borderColor: '#1F2937', color: '#FFF' }}
+                  contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }}
                 />
                 <Legend style={{ fontSize: '10px' }} />
                 <Bar dataKey="legacy" stackId="a" fill="#F43F5E" name="Legacy Crypto" />

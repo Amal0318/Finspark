@@ -62,10 +62,10 @@ const Dashboard = () => {
   };
 
   const severityData = [
-    { name: 'Low', count: stats.severity_distribution.Low, fill: '#10b981' },
-    { name: 'Medium', count: stats.severity_distribution.Medium, fill: '#f59e0b' },
-    { name: 'High', count: stats.severity_distribution.High, fill: '#ef4444' },
-    { name: 'Critical', count: stats.severity_distribution.Critical, fill: '#7c3aed' }
+    { name: 'Low', count: stats.severity_distribution.Low, fill: '#10B981' },
+    { name: 'Medium', count: stats.severity_distribution.Medium, fill: '#F59E0B' },
+    { name: 'High', count: stats.severity_distribution.High, fill: '#F97316' },
+    { name: 'Critical', count: stats.severity_distribution.Critical, fill: '#DC2626' }
   ];
 
   // Map analytics predictions to Recharts line format
@@ -182,22 +182,22 @@ const Dashboard = () => {
         <div className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Risk Trend Over Time</h3>
-            <span className="text-[9px] px-2 py-0.5 bg-indigo-500/10 text-indigo-400 rounded border border-indigo-500/20 font-mono">LIVE RISK RATING</span>
+             <span className="text-[9px] px-2 py-0.5 bg-[#2563EB]/10 text-[#38BDF8] rounded border border-[#2563EB]/20 font-mono">LIVE RISK RATING</span>
           </div>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={trendData}>
                 <defs>
                   <linearGradient id="colorRisk" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.4}/>
+                    <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
                 <XAxis dataKey="time" stroke="#64748b" fontSize={9} />
                 <YAxis stroke="#64748b" fontSize={9} unit="%" />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#fff' }} />
-                <Area type="monotone" dataKey="risk" stroke="#6366f1" strokeWidth={2} fillOpacity={1} fill="url(#colorRisk)" name="Risk Level" />
+                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }} />
+                <Area type="monotone" dataKey="risk" stroke="#3B82F6" strokeWidth={2} fillOpacity={1} fill="url(#colorRisk)" name="Risk Level" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -215,7 +215,7 @@ const Dashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
                 <XAxis dataKey="name" stroke="#64748b" fontSize={9} />
                 <YAxis stroke="#64748b" fontSize={9} />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#fff' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }} />
                 <Bar dataKey="count" radius={[4, 4, 0, 0]} name="Alerts">
                   {severityData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />

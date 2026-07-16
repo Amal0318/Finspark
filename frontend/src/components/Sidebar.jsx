@@ -22,11 +22,16 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-[#0B0F19] border-r border-slate-800/60 flex flex-col h-full shrink-0 select-none">
-      <div className="h-16 flex items-center px-5 border-b border-slate-800/60 space-x-2">
-        <ShieldCheck className="h-6 w-6 text-cyan-400 shrink-0" />
-        <span className="font-extrabold text-[15px] tracking-wide text-white font-sans flex items-center gap-1.5 whitespace-nowrap">
-          CYBER<span className="text-purple-500">SENSE</span> <span className="text-[9px] bg-purple-500/20 text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded font-mono font-bold leading-none">SOC</span>
+    <aside className="w-64 bg-[#0F172A] border-r border-[#374151] flex flex-col h-full shrink-0 select-none">
+      <div className="h-20 flex flex-col justify-center px-5 border-b border-[#374151]">
+        <div className="flex items-center space-x-2">
+          <ShieldCheck className="h-5 w-5 text-[#2563EB] shrink-0" />
+          <span className="font-extrabold text-[15px] tracking-wide text-white font-sans flex items-center gap-1 whitespace-nowrap">
+            CYBER<span className="text-[#06B6D4]">SENSE</span>
+          </span>
+        </div>
+        <span className="text-[8.5px] text-[#94A3B8] tracking-wider uppercase mt-1 font-mono pl-7">
+          Detect • Correlate • Protect
         </span>
       </div>
 
@@ -39,14 +44,14 @@ const Sidebar = () => {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 border-l-2 ${
+                `flex items-center space-x-3 px-4 py-3 rounded-[12px] text-xs font-semibold tracking-wide transition-all duration-150 ${
                   isActive
-                    ? 'bg-indigo-600/15 text-indigo-400 border-indigo-500 shadow-sm shadow-indigo-950/10 font-bold'
-                    : 'text-gray-400 border-transparent hover:bg-slate-900/50 hover:text-gray-200'
+                    ? 'bg-[#2563EB] text-white font-bold shadow-md shadow-black/20'
+                    : 'text-[#CBD5E1] hover:bg-[#1E293B] hover:text-white'
                 }`
               }
             >
-              <Icon className="h-4.5 w-4.5 shrink-0" />
+              <Icon className="h-4.5 w-4.5 shrink-0 text-current" />
               <span>{item.name}</span>
             </NavLink>
           );
@@ -54,7 +59,7 @@ const Sidebar = () => {
       </nav>
 
       {/* Version badge */}
-      <div className="p-4 border-t border-gray-800 text-[10px] text-gray-600 font-mono text-center">
+      <div className="p-4 border-t border-[#374151] text-[10px] text-[#64748B] font-mono text-center">
         CYBERSENSE // SEC-OPS // 2026
       </div>
     </aside>

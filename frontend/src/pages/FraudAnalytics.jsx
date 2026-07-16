@@ -143,8 +143,8 @@ const FraudAnalytics = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
                     <XAxis type="number" stroke="#64748b" fontSize={9} unit="%" />
                     <YAxis dataKey="name" type="category" stroke="#64748b" fontSize={9} />
-                    <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#fff' }} />
-                    <Bar dataKey="value" fill="#6366f1" radius={[0, 4, 4, 0]} name="Gini split contribution" />
+                    <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }} />
+                    <Bar dataKey="value" fill="#3B82F6" radius={[0, 4, 4, 0]} name="Gini split contribution" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

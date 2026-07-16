@@ -94,7 +94,7 @@ const TelemetryChart = ({ logs }) => {
               <XAxis dataKey="name" stroke="#6B7280" style={{ fontSize: '10px', fontFamily: 'monospace' }} />
               <YAxis stroke="#6B7280" style={{ fontSize: '10px' }} allowDecimals={false} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#0B0F19', borderColor: '#1F2937', color: '#FFF' }}
+                contentStyle={{ backgroundColor: '#1E293B', borderColor: '#374151', color: '#F9FAFB' }}
                 labelStyle={{ color: '#6B7280', fontSize: '11px', fontFamily: 'monospace' }}
               />
               <Area type="monotone" dataKey="info" stroke="#10B981" fillOpacity={1} fill="url(#colorInfo)" strokeWidth={2} name="Info logs" />

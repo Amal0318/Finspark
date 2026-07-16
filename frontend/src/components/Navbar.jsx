@@ -18,10 +18,10 @@ const Navbar = ({ onRefresh, refreshing, notifications = [] }) => {
   };
 
   return (
-    <header className="h-16 border-b border-slate-800/60 bg-[#0F172A]/95 backdrop-blur-md flex items-center justify-between px-6 z-20 shrink-0 select-none">
+    <header className="h-16 border-b border-[#374151] bg-[#111827] flex items-center justify-between px-6 z-20 shrink-0 select-none">
       {/* System Brand Header */}
-      <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-400">
-        <ShieldCheck className="h-4 w-4 text-purple-500" />
+      <div className="flex items-center space-x-2 text-[10px] font-mono text-[#CBD5E1]">
+        <ShieldCheck className="h-4 w-4 text-[#2563EB]" />
         <span className="tracking-widest uppercase">CyberSense Security Platform</span>
       </div>
 
